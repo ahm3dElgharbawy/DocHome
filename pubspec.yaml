@@ -1,0 +1,48 @@
+name: dochome
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+#--- dependencies ---#
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  intl: ^0.19.0
+  flutter_inset_box_shadow: ^1.0.8
+
+#--- dev dependencies ---#
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  #--- our assets ---#
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/logos/
+  #--- our fonts ---#
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Black.ttf 
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf 
+        - asset: assets/fonts/poppins/Poppins-Medium.ttf 
+        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf 
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/outfit/Outfit-Bold.ttf
+        - asset: assets/fonts/outfit/Outfit-Medium.ttf
+        - asset: assets/fonts/outfit/Outfit-Regular.ttf
+        - asset: assets/fonts/outfit/Outfit-SemiBold.ttf
+
+
