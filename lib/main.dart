@@ -1,3 +1,5 @@
+
+import 'package:dochome/features/welcome/screens/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
           fontFamily: "Poppins",
           useMaterial3: false,
           scaffoldBackgroundColor: Colors.white),
-      // home: const Home(),
+      home: const WelcomeScreen(),
     );
   }
 }
+
