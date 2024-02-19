@@ -9,6 +9,11 @@ abstract class CAppStyles {
     fontFamily: fontFamily,
   );
   
+  static final textStyle20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    fontFamily: fontFamily,
+  );
   static final textStyle10 = TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w400,

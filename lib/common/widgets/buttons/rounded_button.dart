@@ -2,9 +2,16 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CRoundedButton extends StatelessWidget {
-  const CRoundedButton({super.key, required this.title, required this.onPressed, this.margin, this.width = double.infinity, this.height = 50});
-  final String title;
+  const CRoundedButton({
+    super.key,
+    required this.onPressed,
+    required this.title,
+    this.margin,
+    this.width = double.infinity,
+    this.height = 50,
+  });
   final VoidCallback onPressed;
+  final String title;
   final EdgeInsets? margin;
   final double width;
   final double height;
@@ -18,10 +25,9 @@ class CRoundedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          elevation: 0,
           backgroundColor: CColors.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25)
-          )
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         ),
         child: Text(title),
       ),
