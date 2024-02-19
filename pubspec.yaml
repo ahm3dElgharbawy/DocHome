@@ -5,7 +5,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.5 <4.0.0'
+  sdk: '>=3.1.5 <4.0.0'
 
 #--- dependencies ---#
 dependencies:
@@ -27,10 +27,10 @@ flutter:
   uses-material-design: true
   #--- our assets ---#
   assets:
-    - assets/icons/
     - assets/images/
     - assets/images/onboarding/
     - assets/logos/
+    - assets/icons/social-media/
   #--- our fonts ---#
   fonts:
     - family: Poppins

@@ -1,8 +1,8 @@
-import 'package:dochome/common/styles/app_styles.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class ContinueAsScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class ContinueAsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Continue As",style: CAppStyles.textStyleBold30.copyWith(color: CColors.primary),),
+                Text("Continue As",style: CAppStyles.styleBold30(context).copyWith(color: CColors.primary),),
                 Image.asset(CImages.appLogo,height: 250,),
                 CRoundedButton(onPressed: (){}, title: "Patient"),
                 const SizedBox(height: CSizes.spaceBtwItems),
