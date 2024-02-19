@@ -248,28 +248,28 @@ abstract class AppStyles {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontFamily: 'Poppins',
-      fontWeight: FontWeight.w200,
+      fontWeight: FontWeight.w300,
     );
   }
  static TextStyle styleLight10(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 10),
       fontFamily: 'Poppins',
-      fontWeight: FontWeight.w200,
+      fontWeight: FontWeight.w300,
     );
   }
  static TextStyle styleLight12(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 12),
       fontFamily: 'Poppins',
-      fontWeight: FontWeight.w200,
+      fontWeight: FontWeight.w300,
     );
   }
  static TextStyle styleLight17(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 17),
       fontFamily: 'Poppins',
-      fontWeight: FontWeight.w200,
+      fontWeight: FontWeight.w300,
     );
   }
 
