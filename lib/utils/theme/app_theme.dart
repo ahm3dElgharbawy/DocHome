@@ -14,23 +14,22 @@ import 'custom_themes/checkbox_theme.dart';
 
 abstract class CAppTheme {
   static ThemeData lightTheme = ThemeData(
-    // useMaterial3: true,
     fontFamily: "Poppins",
     brightness: Brightness.light,
     useMaterial3: false,
     primaryColor: CColors.primary,
     disabledColor: CColors.grey,
     scaffoldBackgroundColor: CColors.white,
-    textTheme: CTextTheme.lightTextTheme,
-    elevatedButtonTheme: CElevatedButtonTheme.lightElevatedButtonTheme,
-    outlinedButtonTheme: COutlinedButtonTheme.lightOutlinedButtonTheme,
-    textButtonTheme: CTextButtonTheme.lightTextButtonTheme,
-    appBarTheme: CAppBarTheme.lightAppBarTheme,
-    navigationBarTheme: CNavigationBarTheme.lightNavigationBarTheme,
-    bottomSheetTheme: CBottomSheetTheme.lightBottomSheetTheme,
-    inputDecorationTheme: CTextFieldTheme.lightTextFieldDecorationTheme,
+    // textTheme: CTextTheme.lightTextTheme,
+    // elevatedButtonTheme: CElevatedButtonTheme.lightElevatedButtonTheme,
+    // outlinedButtonTheme: COutlinedButtonTheme.lightOutlinedButtonTheme,
+    // textButtonTheme: CTextButtonTheme.lightTextButtonTheme,
+    // appBarTheme: CAppBarTheme.lightAppBarTheme,
+    // navigationBarTheme: CNavigationBarTheme.lightNavigationBarTheme,
+    // bottomSheetTheme: CBottomSheetTheme.lightBottomSheetTheme,
+    // inputDecorationTheme: CTextFieldTheme.lightTextFieldDecorationTheme,
+    // chipTheme: CChipTheme.lightChipTheme,
     checkboxTheme: CCheckBoxTheme.lightCheckBoxTheme,
-    chipTheme: CChipTheme.lightChipTheme,
     
   );
   static ThemeData darkTheme = ThemeData(

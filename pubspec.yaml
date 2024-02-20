@@ -16,6 +16,7 @@ dependencies:
   flutter_inset_box_shadow: ^1.0.8
   flutter_native_splash: ^2.3.11
   flutter_bloc: ^8.1.4
+  flutter_svg: ^2.0.9
 
 #--- dev dependencies ---#
 dev_dependencies:

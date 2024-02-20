@@ -1,5 +1,6 @@
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
@@ -52,7 +53,7 @@ class CTextFieldWithInnerShadow extends StatelessWidget {
           obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: const TextStyle(color: Color(0xff757575), fontSize: 13),
+            hintStyle: CAppStyles.styleMedium13(context).copyWith(color: const Color(0xff757575)),
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon != null
                 ? GestureDetector(

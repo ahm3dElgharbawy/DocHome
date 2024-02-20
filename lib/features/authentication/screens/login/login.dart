@@ -3,14 +3,16 @@ import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/features/authentication/screens/login/widgets/remember_me.dart';
 import 'package:dochome/features/authentication/screens/login/widgets/sign_with.dart';
+import 'package:dochome/features/authentication/screens/signup/signup.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class SignupScreen extends StatelessWidget {
                   child: Image.asset(CImages.appLogo),
                 ),
                 // const SizedBox(height: CSizes.spaceBtwItems),
-                Text("Create an Account", style: CAppStyles.styleSemiBold25(context)),
+                Text("Login", style: CAppStyles.styleSemiBold25(context)),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 const CTextFieldWithInnerShadow(
                   hintText: "Email",
@@ -41,8 +43,8 @@ class SignupScreen extends StatelessWidget {
                   margin: EdgeInsets.zero,
                   prefixIcon: Icon(Icons.lock),
                 ),
-                // //? remember me and forget password section
-                // const CRememberMe(),
+                //? remember me and forget password section
+                const CRememberMe(),
                 CRoundedButton(onPressed: () {}, title: "Sign in"),
 
                 //? sign with section
@@ -57,7 +59,9 @@ class SignupScreen extends StatelessWidget {
                       style: CAppStyles.styleRegular16(context),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        CHelperFunctions.navigateToScreen(context, const SignupScreen());
+                      },
                       child: Text(
                         "Sign up",
                         style: CAppStyles.styleSemiBold16(context).copyWith(

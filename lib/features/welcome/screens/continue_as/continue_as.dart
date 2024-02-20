@@ -1,7 +1,10 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
+import 'package:dochome/features/authentication/screens/login/login.dart';
+import 'package:dochome/features/authentication/screens/signup/signup.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +24,9 @@ class ContinueAsScreen extends StatelessWidget {
               children: [
                 Text("Continue As",style: CAppStyles.styleBold30(context).copyWith(color: CColors.primary),),
                 Image.asset(CImages.appLogo,height: 250,),
-                CRoundedButton(onPressed: (){}, title: "Patient"),
+                CRoundedButton(onPressed: (){
+                  CHelperFunctions.navigateToScreen(context, const LoginScreen());
+                }, title: "Patient"),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 CRoundedButton(onPressed: (){}, title: "Caregiver")
               ],

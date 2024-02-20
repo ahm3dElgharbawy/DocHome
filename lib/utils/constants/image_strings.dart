@@ -11,5 +11,10 @@ class CImages {
   static const String onBoarding2 = "assets/images/onboarding/onboarding-2.png";
   static const String onBoarding3 = "assets/images/onboarding/onboarding-3.png";
 
+  // -- Icons
+  static const String apple = "assets/icons/social-media/apple.png";
+  static const String google = "assets/icons/social-media/google.png";
+  static const String facebook = "assets/icons/social-media/facebook.png";
+
 }
 
