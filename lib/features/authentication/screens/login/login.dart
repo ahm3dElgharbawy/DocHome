@@ -9,6 +9,7 @@ import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
+import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -32,16 +33,19 @@ class LoginScreen extends StatelessWidget {
                 // const SizedBox(height: CSizes.spaceBtwItems),
                 Text("Login", style: CAppStyles.styleSemiBold25(context)),
                 const SizedBox(height: CSizes.spaceBtwItems),
-                const CTextFieldWithInnerShadow(
+                CTextFieldWithInnerShadow(
                   hintText: "Email",
                   margin: EdgeInsets.zero,
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: const Icon(Icons.email),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) => CTextFieldValidator.emailCheck(value),
                 ),
                 const SizedBox(height: CSizes.spaceBtwInputFields),
                 const CTextFieldWithInnerShadow(
                   hintText: "Password",
                   margin: EdgeInsets.zero,
                   prefixIcon: Icon(Icons.lock),
+                  obscureText: true,
                 ),
                 //? remember me and forget password section
                 const CRememberMe(),

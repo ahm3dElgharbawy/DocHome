@@ -1,6 +1,5 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/features/authentication/screens/login/login.dart';
-import 'package:dochome/features/authentication/screens/signup/signup.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';

@@ -4,7 +4,7 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
-class CTextFieldWithInnerShadow extends StatelessWidget {
+class CTextFieldWithInnerShadow extends StatefulWidget {
   const CTextFieldWithInnerShadow({
     super.key,
     this.margin,
@@ -14,7 +14,7 @@ class CTextFieldWithInnerShadow extends StatelessWidget {
     this.onTapSuffixIcon,
     required this.hintText,
     this.validator,
-    this.obscureText = false,
+    this.obscureText = false, this.keyboardType,
   });
   final String hintText;
   final EdgeInsets? margin;
@@ -24,11 +24,23 @@ class CTextFieldWithInnerShadow extends StatelessWidget {
   final VoidCallback? onTapSuffixIcon;
   final String? Function(String?)? validator;
   final bool obscureText;
+  final TextInputType? keyboardType;
 
+  @override
+  State<CTextFieldWithInnerShadow> createState() => _CTextFieldWithInnerShadowState();
+}
+
+class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
+  late bool isHidden;
+  @override
+  void initState() {
+    isHidden = widget.obscureText;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: margin ?? const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
+      margin: widget.margin ?? const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
       child: Stack(children: [
         //? adding shadow from inside
         Container(
@@ -48,19 +60,20 @@ class CTextFieldWithInnerShadow extends StatelessWidget {
         ),
         //? our text field
         TextFormField(
-          controller: controller,
-          validator: validator,
-          obscureText: obscureText,
+          controller: widget.controller,
+          validator: widget.validator,
+          obscureText: isHidden,
+          keyboardType: widget.keyboardType,
           decoration: InputDecoration(
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: CAppStyles.styleMedium13(context).copyWith(color: const Color(0xff757575)),
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon != null
+            prefixIcon: widget.prefixIcon,
+            suffixIcon: widget.suffixIcon != null
                 ? GestureDetector(
-                    onTap: onTapSuffixIcon,
-                    child: suffixIcon!,
+                    onTap: widget.onTapSuffixIcon,
+                    child: widget.suffixIcon!,
                   )
-                : null,
+                :toggleVisibility(),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             border: InputBorder.none,
@@ -68,5 +81,18 @@ class CTextFieldWithInnerShadow extends StatelessWidget {
         ),
       ]),
     );
+  }
+  Widget? toggleVisibility() {
+    if (widget.obscureText) {
+      return GestureDetector(
+        onTap: () {
+          setState(() {
+            isHidden = !isHidden;
+          });
+        },
+        child: Icon(isHidden ? Icons.visibility_off : Icons.visibility),
+      );
+    }
+    return null;
   }
 }
