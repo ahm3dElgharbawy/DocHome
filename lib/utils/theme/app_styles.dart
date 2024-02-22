@@ -204,6 +204,13 @@ abstract class CAppStyles {
       fontWeight: FontWeight.w600,
     );
   }
+  static TextStyle styleSemiBold14(context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w600,
+    );
+  }
 
   static TextStyle styleSemiBold15(context) {
     return TextStyle(

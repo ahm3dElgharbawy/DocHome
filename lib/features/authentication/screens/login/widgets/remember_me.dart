@@ -1,3 +1,5 @@
+import 'package:dochome/features/authentication/screens/forgot_password/forgot_password.dart';
+import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,9 @@ class CRememberMe extends StatelessWidget {
         Text("Remember me", style: CAppStyles.styleRegular13(context)),
         const Spacer(),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            CHelperFunctions.navigateToScreen(context, const ForgotPasswordScreen());
+          },
           child: Text(
             "Forget your password?",
             style: CAppStyles.styleRegular13(context)

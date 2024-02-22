@@ -17,6 +17,7 @@ dependencies:
   flutter_native_splash: ^2.3.11
   flutter_bloc: ^8.1.4
   flutter_svg: ^2.0.9
+  otp_text_field: ^1.1.3
 
 #--- dev dependencies ---#
 dev_dependencies:
@@ -30,6 +31,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/onboarding/
+    - assets/images/password/
     - assets/logos/
     - assets/icons/social-media/
     - assets/terms_and_conditions.txt
