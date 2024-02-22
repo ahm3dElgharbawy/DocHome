@@ -1,7 +1,8 @@
+import 'package:dochome/features/find_cargiver/widgets/custom_app_bar.dart';
 import 'package:dochome/features/find_cargiver/widgets/services_list_view.dart';
 import 'package:dochome/utils/constants/colors.dart';
-import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NursingCategory extends StatelessWidget {
   const NursingCategory({super.key});
@@ -9,19 +10,9 @@ class NursingCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        toolbarHeight: 80,
-        title: Text(
-          'Nursing Services',
-          style: AppStyles.styleBold25(context),
-        ),
-        centerTitle: true,
-        leading: const Icon(
-          Icons.arrow_back_ios_new_outlined,
-          color: Colors.black,
-        ),
+      appBar: const CustomAppBar(
+        titel: 'Nursing Services',
+        
       ),
       body: const SingleChildScrollView(
         child: Padding(
@@ -30,7 +21,9 @@ class NursingCategory extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: (){
+          Get.toNamed('/NursingStuff');
+        },
         backgroundColor: CColors.primary,
         child: Center(
           child: Transform.rotate(

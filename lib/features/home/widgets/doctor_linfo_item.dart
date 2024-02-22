@@ -4,8 +4,8 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class PopularDoctorsListViewItem extends StatelessWidget {
-  const PopularDoctorsListViewItem({
+class DoctorInfoItem extends StatelessWidget {
+  const DoctorInfoItem({
     super.key,
     required this.doctorDetalisModel,
   });
