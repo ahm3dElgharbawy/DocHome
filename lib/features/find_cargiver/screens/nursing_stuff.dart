@@ -1,6 +1,6 @@
 import 'package:dochome/features/find_cargiver/widgets/custom_app_bar.dart';
 import 'package:dochome/features/home/models/Doctor_detalis_model.dart';
-import 'package:dochome/features/home/widgets/doctor_linfo_item.dart';
+import 'package:dochome/features/home/widgets/populer_doctor_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class NursingStuff extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class CAppBarTitel extends StatelessWidget {
   const CAppBarTitel({
@@ -26,12 +27,17 @@ class CAppBarTitel extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadiusDirectional.circular(88),
                 color: const Color(0xffEBF1F0)),
-            child: const Center(
-                child: Icon(
-              Icons.notifications,
-              size: 28,
-              color: CColors.primary,
-            ))),
+            child: GestureDetector(
+              onTap: () {
+                Get.toNamed('/NotificationsScreen');
+              },
+              child: const Center(
+                  child: Icon(
+                Icons.notifications,
+                size: 28,
+                color: CColors.primary,
+              )),
+            )),
       ],
     );
   }
