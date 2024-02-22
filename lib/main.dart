@@ -1,3 +1,4 @@
+import 'package:dochome/features/find_cargiver/screens/nursing_category.dart';
 import 'package:dochome/features/home/screens/home.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
           fontFamily: "Poppins",
           useMaterial3: false,
           scaffoldBackgroundColor: Colors.white),
-      home: const Home(),
+      home: const NursingCategory(),
     );
   }
 }
