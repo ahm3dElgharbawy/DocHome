@@ -1,3 +1,4 @@
+import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppStyles {
@@ -161,6 +162,7 @@ abstract class AppStyles {
   }
  static TextStyle styleMedium24(context) {
     return TextStyle(
+      color: CColors.primary,
       fontSize: getResponsiveFontSize(context, fontSize: 24),
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w500,
@@ -297,7 +299,7 @@ double getScaleFactor(context) {
 
   double width = MediaQuery.sizeOf(context).width;
   if (width < 800) {
-    return width /600;
+    return width /400;
   } else if (width < 1200) {
     return width / 900;
   } else {
