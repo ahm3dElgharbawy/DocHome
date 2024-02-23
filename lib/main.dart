@@ -1,3 +1,4 @@
+import 'package:dochome/features/find_cargiver/screens/booking_screen.dart';
 import 'package:dochome/features/find_cargiver/screens/nursing_category.dart';
 import 'package:dochome/features/find_cargiver/screens/nursing_stuff.dart';
 import 'package:dochome/features/home/screens/home.dart';
@@ -15,21 +16,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'Doc Home',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: "Poppins",
           useMaterial3: false,
           scaffoldBackgroundColor: Colors.white),
-      // home: const NursingCategory(),
-       initialRoute: '/Home',
-      getPages: [
-        GetPage(name: '/Home', page: () => Home()),
-        GetPage(name: '/NursingCategory', page: () => NursingCategory()),
-        GetPage(name: '/NursingStuff', page: () => NursingStuff()),
-        GetPage(name: '/NotificationsScreen', page: () => NotificationsScreen()),
-      ],
+      home: const BookingScreen(),
+    //    initialRoute: '/Home',
+    //   getPages: [
+    //     GetPage(name: '/Home', page: () => Home()),
+    //     GetPage(name: '/NursingCategory', page: () => NursingCategory()),
+    //     GetPage(name: '/NursingStuff', page: () => NursingStuff()),
+    //     GetPage(name: '/NotificationsScreen', page: () => NotificationsScreen()),
+    //   ],
     );
   }
 }

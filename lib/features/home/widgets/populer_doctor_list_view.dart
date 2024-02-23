@@ -1,5 +1,5 @@
 import 'package:dochome/features/home/models/Doctor_detalis_model.dart';
-import 'package:dochome/features/home/widgets/populer_doctor_list_view_item.dart';
+import 'package:dochome/features/home/widgets/doctor_info.dart';
 import 'package:flutter/material.dart';
 
 class PopularDoctorsListView extends StatelessWidget {

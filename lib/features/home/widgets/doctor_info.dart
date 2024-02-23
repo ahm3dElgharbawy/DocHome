@@ -1,4 +1,5 @@
 import 'package:dochome/features/home/models/Doctor_detalis_model.dart';
+import 'package:dochome/features/home/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -48,19 +49,7 @@ class DoctorInfoItem extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Row(
-                  children: [
-                    SvgPicture.asset('assets/images/stars.svg'),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      '${doctorDetalisModel.rate} | ${doctorDetalisModel.reviews} Reviews',
-                      style: AppStyles.styleRegular10(context)
-                          .copyWith(fontFamily: 'Outfit'),
-                    ),
-                  ],
-                ),
+                CustomRateRow(),
               ],
             ),
             Column(
