@@ -1,17 +1,18 @@
+import 'package:dochome/features/find_cargiver/screens/analysis_labs/analysis_lab_stuff.dart';
+import 'package:dochome/features/find_cargiver/screens/physical_therapy/pysical_therapy_stuff.dart';
 import 'package:dochome/features/find_cargiver/widgets/custom_app_bar.dart';
 import 'package:dochome/features/find_cargiver/widgets/services_list_view.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class NursingCategory extends StatelessWidget {
-  const NursingCategory({super.key});
+class PysicalTherapyCategory extends StatelessWidget {
+  const PysicalTherapyCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        titel: 'Nursing Services',
+        titel: 'Pysical Therapy Services',
         
       ),
       body: const SingleChildScrollView(
@@ -22,7 +23,9 @@ class NursingCategory extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          Get.toNamed('/NursingStuff');
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return PysicalTherapyStuff();
+          }));
         },
         backgroundColor: CColors.primary,
         child: Center(

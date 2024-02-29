@@ -36,7 +36,7 @@ class BookingDoctorDetails extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Dr. Asmaa Adel ',
+                        'Dr. Ahmed Adel ',
                         style: AppStyles.styleRegular23(context),
                       ),
                     ),

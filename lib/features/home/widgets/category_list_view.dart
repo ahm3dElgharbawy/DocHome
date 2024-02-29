@@ -1,3 +1,6 @@
+import 'package:dochome/features/find_cargiver/screens/analysis_labs/analysis_lab_category.dart';
+import 'package:dochome/features/find_cargiver/screens/nursing/nursing_category.dart';
+import 'package:dochome/features/find_cargiver/screens/physical_therapy/pysical_therapy_category.dart';
 import 'package:dochome/features/home/widgets/category_list_view_item.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
@@ -17,22 +20,34 @@ class CategorieListView extends StatelessWidget {
             image: CImages.nursingCategory,
             text: 'Nursing',
             onTap: () {
-              Get.toNamed('/NursingCategory');
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return NursingCategory();
+              }));
             },
           ),
           const SizedBox(
             width: 30,
           ),
-          const CategorieListViewItem(
+           CategorieListViewItem(
             image: CImages.physicaltherapyCategory,
-            text: 'Physiotherapist',
+            text: 'Pysical Therapy',
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PysicalTherapyCategory();
+              }));
+            },
           ),
           const SizedBox(
             width: 30,
           ),
-          const CategorieListViewItem(
+          CategorieListViewItem(
             image: CImages.analysisabsCategory,
             text: 'Analysis labs',
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AnalysisLabCategory();
+              }));
+            },
           ),
         ],
       ),

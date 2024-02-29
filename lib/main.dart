@@ -1,6 +1,6 @@
 import 'package:dochome/features/find_cargiver/screens/booking_screen.dart';
-import 'package:dochome/features/find_cargiver/screens/nursing_category.dart';
-import 'package:dochome/features/find_cargiver/screens/nursing_stuff.dart';
+import 'package:dochome/features/find_cargiver/screens/nursing/nursing_category.dart';
+import 'package:dochome/features/find_cargiver/screens/nursing/nursing_stuff.dart';
 import 'package:dochome/features/home/screens/home.dart';
 import 'package:dochome/features/home/screens/notifications_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           fontFamily: "Poppins",
           useMaterial3: false,
           scaffoldBackgroundColor: Colors.white),
-      home: const BookingScreen(),
+      home: const Home(),
     //    initialRoute: '/Home',
     //   getPages: [
     //     GetPage(name: '/Home', page: () => Home()),

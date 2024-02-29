@@ -1,7 +1,6 @@
 
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
   const CustomAppBar({
@@ -14,15 +13,17 @@ final String titel;
       backgroundColor: Colors.white,
       elevation: 0,
       toolbarHeight: 80,
-      title: Text(
-        titel,
-        style: AppStyles.styleBold25(context),
+      title: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          titel,
+          style: AppStyles.styleBold25(context),
+        ),
       ),
       centerTitle: true,
       leading: GestureDetector(
         onTap:(){
-          Get.back();
-        } ,
+Navigator.pop(context);        } ,
         child: const Icon(
           Icons.arrow_back_ios_new_outlined,
           color: Colors.black,

@@ -1,10 +1,11 @@
+import 'package:dochome/features/find_cargiver/widgets/custom_app_bar.dart';
 import 'package:dochome/features/home/models/Doctor_detalis_model.dart';
 import 'package:dochome/features/home/widgets/doctor_info.dart';
 import 'package:flutter/material.dart';
 
-class PopularDoctorsListView extends StatelessWidget {
-  const PopularDoctorsListView({super.key});
-  static List populerDoctors = const [
+class PysicalTherapyStuff extends StatelessWidget {
+  const PysicalTherapyStuff({super.key});
+  static List nursingStuff = const [
     DoctorDetalisModel(
         image: 'assets/images/Rectangle 45.png',
         name: 'Dr. Asmaa Adel ',
@@ -41,12 +42,22 @@ class PopularDoctorsListView extends StatelessWidget {
         titel: 'Doctor of physical therapy',
         rate: 4.5,
         reviews: 177),
- 
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: populerDoctors.map((e) => DoctorInfoItem(doctorDetalisModel: e)).toList(),
+    return Scaffold(
+      appBar: const CustomAppBar(titel: 'Pysical Therapy Stuff'),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          itemCount: nursingStuff.length,
+          itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: DoctorInfoItem(doctorDetalisModel: nursingStuff[index]),
+          );
+        }),
+      ),
     );
   }
 }
