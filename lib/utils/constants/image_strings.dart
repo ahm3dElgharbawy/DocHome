@@ -21,5 +21,22 @@ class CImages {
   static const String google = "assets/icons/social-media/google.png";
   static const String facebook = "assets/icons/social-media/facebook.png";
 
+  // -- Select Region
+  static const String region1 = "assets/images/region/region1.png";
+  static const String region2 = "assets/images/region/region2.png";
+
+  // -- MyAccount
+  static const String account = "assets/images/region/messi.png";
+
+  // -- payment
+  static const String visa1 = "assets/images/payment/visa1.png";
+  static const String visa2 = "assets/images/payment/visa2.png";
+
+  // -- booking
+  static const String doc1 = "assets/images/booking/doctor1.jpg";
+  static const String doc2 = "assets/images/booking/doctor2.jpg";
+  static const String doc3 = "assets/images/booking/doctor3.jpg";
+  
+
 }
 
