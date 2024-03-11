@@ -1,5 +1,4 @@
 import 'package:dochome/common/widgets/containers/circular_container.dart';
-import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';

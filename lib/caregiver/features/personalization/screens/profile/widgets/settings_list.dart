@@ -26,7 +26,7 @@ class CSettingsList extends StatelessWidget {
               leadingIcon: Icons.person,
               leadingBackgroundColor: const Color(0xfffeb204),
               onTap: () {
-                print("object");
+                // print("object");
               },
             ),
             const Divider(

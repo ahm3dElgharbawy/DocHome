@@ -68,7 +68,7 @@ class _CUploadButtonState extends State<CUploadButton> {
         });
       }
     } catch (e) {
-      print('Error picking image: $e');
+      // print('Error picking image: $e');
     }
   }
 }

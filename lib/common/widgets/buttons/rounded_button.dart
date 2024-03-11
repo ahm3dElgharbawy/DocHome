@@ -30,7 +30,7 @@ class CRoundedButton extends StatelessWidget {
           backgroundColor: CColors.primary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         ),
-        child: Text(title , style: AppStyles.styleBold16(context),),
+        child: Text(title , style: CAppStyles.styleBold16(context),),
       ),
     );
   }

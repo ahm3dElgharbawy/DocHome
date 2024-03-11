@@ -4,6 +4,8 @@ import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/remember_me.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/sign_with.dart';
 import 'package:dochome/patient/features/authentication/screens/signup/signup.dart';
+import 'package:dochome/patient/features/home/screens/home.dart';
+import 'package:dochome/patient/features/home/screens/home_screen.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
@@ -49,7 +51,15 @@ class LoginScreen extends StatelessWidget {
                 ),
                 //? remember me and forget password section
                 const CRememberMe(),
-                CRoundedButton(onPressed: () {}, title: "Sign in"),
+                CRoundedButton(
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home()),
+                        (route) => false,
+                      );
+                    },
+                    title: "Sign in"),
 
                 //? sign with section
                 const CSignInWith(),
@@ -64,7 +74,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        CHelperFunctions.navigateToScreen(context, const SignupScreen());
+                        CHelperFunctions.navigateToScreen(
+                            context, const SignupScreen());
                       },
                       child: Text(
                         "Sign up",

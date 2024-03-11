@@ -1,6 +1,4 @@
 import 'package:dochome/caregiver/features/authentication/screens/join/join.dart';
-import 'package:dochome/caregiver/features/bookings/screens/booking/booking.dart';
-import 'package:dochome/caregiver/features/personalization/screens/profile/profile.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/caregiver/features/navigation_menu.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
