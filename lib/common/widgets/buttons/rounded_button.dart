@@ -1,4 +1,5 @@
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CRoundedButton extends StatelessWidget {
@@ -29,7 +30,7 @@ class CRoundedButton extends StatelessWidget {
           backgroundColor: CColors.primary,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         ),
-        child: Text(title),
+        child: Text(title , style: AppStyles.styleBold16(context),),
       ),
     );
   }

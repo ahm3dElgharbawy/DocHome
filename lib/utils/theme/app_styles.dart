@@ -1,3 +1,4 @@
+import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class CAppStyles {
@@ -20,6 +21,7 @@ abstract class CAppStyles {
 
   static TextStyle styleBold25(context) {
     return TextStyle(
+      color: Colors.black,
       fontSize: getResponsiveFontSize(context, fontSize: 25),
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w700,
@@ -174,6 +176,7 @@ abstract class CAppStyles {
 
   static TextStyle styleMedium24(context) {
     return TextStyle(
+      color: CColors.primary,
       fontSize: getResponsiveFontSize(context, fontSize: 24),
       fontFamily: 'Poppins',
       fontWeight: FontWeight.w500,
