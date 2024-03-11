@@ -7,11 +7,12 @@ class CMainAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.showBackArrow = true,
       this.centerTitle,
-      this.leading});
+      this.leading, this.actions});
   final String? title;
   final bool showBackArrow;
   final bool? centerTitle;
   final Widget? leading;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class CMainAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
               icon: const Icon(Icons.arrow_back_ios))
           : leading,
+      actions: actions,
     );
   }
 

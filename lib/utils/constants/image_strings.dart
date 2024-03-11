@@ -5,6 +5,7 @@ class CImages {
 
   // -- Images
   static const String welcome = "assets/images/welcome.png";
+  static const String caregiver = "assets/images/caregiver.png";
 
   // -- Onboarding images
   static const String onBoarding1 = "assets/images/onboarding/onboarding-1.png";

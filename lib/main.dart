@@ -1,4 +1,4 @@
-import 'package:dochome/features/welcome/screens/welcome/welcome.dart';
+import 'package:dochome/patient/features/welcome/screens/welcome/welcome.dart';
 import 'package:dochome/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
