@@ -4,8 +4,8 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-class CCaregiverInfoContainer extends StatelessWidget {
-  const CCaregiverInfoContainer({super.key});
+class CPatientInfoContainer extends StatelessWidget {
+  const CPatientInfoContainer({super.key});
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -21,9 +21,9 @@ class CCaregiverInfoContainer extends StatelessWidget {
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           const CInfoKeyAndValue(value: 3, k: "Bookings"),
           Container(height: 30, width: 3, color: CColors.softGrey),
-          const CInfoKeyAndValue(value: 5, k: "Patients"),
+          const CInfoKeyAndValue(value: 2, k: "Caregivers"),
           Container(height: 30, width: 3, color: CColors.softGrey),
-          const CInfoKeyAndValue(value: 20, k: "Reviews"),
+          const CInfoKeyAndValue(value: 10, k: "Reviews"),
         ]),
       ),
     );

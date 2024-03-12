@@ -9,14 +9,23 @@ class CCaregiverNavigationMenu extends StatefulWidget {
     super.key,
   });
   @override
-  State<CCaregiverNavigationMenu> createState() => _CCaregiverNavigationMenuState();
+  State<CCaregiverNavigationMenu> createState() =>
+      _CCaregiverNavigationMenuState();
 }
 
 class _CCaregiverNavigationMenuState extends State<CCaregiverNavigationMenu> {
   int selectedIndex = 0;
-  List<Widget> screens  = [const BookingsScreen(),const CaregiverChatsScreen(),const CaregiverProfileScreen()];
-  List<String> labels = ['bookings','chat',"profile"];
-  List<IconData> icons = [Icons.library_books_outlined,Icons.chat_bubble, Icons.person];
+  List<Widget> screens = [
+    const CaregiverBookingsScreen(),
+    const CaregiverChatsScreen(),
+    const CaregiverProfileScreen()
+  ];
+  List<String> labels = ['bookings', 'chat', "profile"];
+  List<IconData> icons = [
+    Icons.library_books_outlined,
+    Icons.chat_bubble,
+    Icons.person
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

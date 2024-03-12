@@ -1,3 +1,4 @@
+import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/patient/features/find_caregiver/screens/booking_screen.dart';
 import 'package:dochome/patient/features/home/models/doctor_details_model.dart';
 import 'package:dochome/patient/features/home/widgets/custom_rate_row.dart';
@@ -33,9 +34,9 @@ class DoctorInfoItem extends StatelessWidget {
               Container(
                 height: 55,
                 width: 55,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(12),
-                    ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Image.asset(
                   doctorDetailsModel.image,
                   fit: BoxFit.fill,
@@ -72,19 +73,18 @@ class DoctorInfoItem extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    height: 16,
-                    width: 36,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color: const Color.fromARGB(255, 201, 252, 223)),
-                    child: Center(
-                        child: Text(
+                  CRoundedContainer(
+                    color: const Color(0xff20C968).withOpacity(.14),
+                    height: 18,
+                    width: 40,
+                    radius: 6,
+                    child: Text(
                       'Active',
-                      style: CAppStyles.styleRegular10(context)
-                          .copyWith(color: const Color(0xff20C968)),
-                    )),
-                  )
+                      style: CAppStyles.styleRegular10(context).copyWith(
+                        color: const Color(0xff20C968),
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],

@@ -14,7 +14,11 @@ class CTextFieldWithInnerShadow extends StatefulWidget {
     this.onTapSuffixIcon,
     required this.hintText,
     this.validator,
-    this.obscureText = false, this.keyboardType,
+    this.obscureText = false,
+    this.keyboardType,
+    this.readOnly = false,
+    this.onTap
+    
   });
   final String hintText;
   final EdgeInsets? margin;
@@ -25,9 +29,12 @@ class CTextFieldWithInnerShadow extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType? keyboardType;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   @override
-  State<CTextFieldWithInnerShadow> createState() => _CTextFieldWithInnerShadowState();
+  State<CTextFieldWithInnerShadow> createState() =>
+      _CTextFieldWithInnerShadowState();
 }
 
 class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
@@ -37,10 +44,12 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
     isHidden = widget.obscureText;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: widget.margin ?? const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
+      margin: widget.margin ??
+          const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
       child: Stack(children: [
         //? adding shadow from inside
         Container(
@@ -64,16 +73,19 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
           validator: widget.validator,
           obscureText: isHidden,
           keyboardType: widget.keyboardType,
+          readOnly: widget.readOnly,
+          onTap: widget.onTap,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            hintStyle: CAppStyles.styleMedium13(context).copyWith(color: const Color(0xff757575)),
+            hintStyle: CAppStyles.styleMedium13(context)
+                .copyWith(color: const Color(0xff757575)),
             prefixIcon: widget.prefixIcon,
             suffixIcon: widget.suffixIcon != null
                 ? GestureDetector(
                     onTap: widget.onTapSuffixIcon,
                     child: widget.suffixIcon!,
                   )
-                :toggleVisibility(),
+                : toggleVisibility(),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
             border: InputBorder.none,
@@ -82,6 +94,7 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
       ]),
     );
   }
+
   Widget? toggleVisibility() {
     if (widget.obscureText) {
       return GestureDetector(

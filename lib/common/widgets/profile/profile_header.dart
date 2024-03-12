@@ -1,6 +1,5 @@
 import 'package:dochome/common/widgets/containers/circular_container.dart';
 import 'package:dochome/utils/constants/colors.dart';
-import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +9,11 @@ class CProfileHeader extends StatelessWidget {
       {super.key,
       required this.userName,
       required this.userEmail,
-      this.color = CColors.primary});
+      this.color = CColors.primary, required this.image});
   final String userName;
   final String userEmail;
   final Color color;
+  final Widget image;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class CProfileHeader extends StatelessWidget {
             width: 60,
             padding: const EdgeInsets.all(2),
             color: Colors.white,
-            child: Image.asset(CImages.caregiver),
+            child: image,
           ),
           const SizedBox(
             height: CSizes.spaceBtwItems,

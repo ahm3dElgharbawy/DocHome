@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:dochome/common/widgets/appbars/main_appbar.dart';
+import 'package:dochome/common/widgets/buttons/rounded_button.dart';
+import 'package:dochome/common/widgets/containers/rounded_container.dart';
+import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
-import '../../../common/widgets/appbars/main_appbar.dart';
-import '../../../common/widgets/buttons/rounded_button.dart';
-import '../../../common/widgets/text_fields/text_field_with_shadow.dart';
-import '../select_region_there/selectRegion3Screen.dart';
+import '../select_region_three/select_region3_screen.dart';
 
 class SelectRegion2Screen extends StatefulWidget {
   const SelectRegion2Screen({Key? key}) : super(key: key);
@@ -17,26 +19,18 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
   TextEditingController searchController = TextEditingController();
 
   Widget _buildRegionOption(String title) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: 50,
-      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: MediaQuery.of(context).size.width * 0.0035,
-          color: Color(0xFF4D8BBB),
-        ),
-        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width * 0.05),
-      ),
-      child: RadioListTile(
+    return CRoundedContainer (
+      width: double.infinity,
+      enableBorder: true,
+      borderColor: CColors.primary,
+      color: Colors.white,
+      radius: 12,
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.05),
+          child:  RadioListTile(
         title: Text(
           title,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: MediaQuery.of(context).size.width * 0.05,
-            fontFamily: 'Outfit',
-            height: 0,
-          ),
+          style: CAppStyles.styleRegular18(context)
         ),
         value: title,
         groupValue: region,
@@ -52,7 +46,7 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CMainAppBar(
+      appBar: const CMainAppBar(
         leading: Icon(Icons.arrow_back_ios),
       ),
       body: SingleChildScrollView(
@@ -60,7 +54,8 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
+              padding:
+                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +76,8 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.01),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.01),
               child: CTextFieldWithInnerShadow(
                 controller: searchController,
                 validator: (value) {
@@ -91,12 +87,13 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
                   return null;
                 },
                 hintText: 'Search',
-                prefixIcon: Icon(Icons.search_rounded),
+                prefixIcon: const Icon(Icons.search_rounded),
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.06),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.06),
               child: Column(
                 children: [
                   _buildRegionOption("El Delengat"),
@@ -121,7 +118,8 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.06),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.05),
               child: CRoundedButton(
                 onPressed: () {
                   print(region);
@@ -146,7 +144,3 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
     );
   }
 }
-
-
-
-

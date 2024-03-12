@@ -2,14 +2,17 @@
 class CImages {
   // -- App Logos
   static const String appLogo = "assets/logos/main-logo.png";
+
+  // -- categories
   static const String nursingCategory = "assets/logos/fontisto_nursing-home.svg";
   static const String physicaltherapyCategory = "assets/logos/medical-icon_i-physical-therapy.svg";
   static const String analysisabsCategory = "assets/logos/Vector (1).svg";
-  static const String doctorImage = "assets/logos/doctorImage.svg";
 
   // -- Images
   static const String welcome = "assets/images/welcome.png";
   static const String caregiver = "assets/images/caregiver.png";
+  static const String user = "assets/images/user.png";
+  static const String doctorImage = "assets/logos/doctorImage.svg";
 
   // -- Onboarding images
   static const String onBoarding1 = "assets/images/onboarding/onboarding-1.png";

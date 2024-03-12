@@ -36,7 +36,7 @@ class BookingDoctorDetails extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Dr. Ahmed Adel ',
+                        'Dr. Ahmed faheem ',
                         style: CAppStyles.styleRegular23(context),
                       ),
                     ),
@@ -49,7 +49,8 @@ class BookingDoctorDetails extends StatelessWidget {
                     ),
                   ],
                 ),
-                const CustomElevatedButton(
+                CustomElevatedButton(
+                  onTap: () {},
                   icon: Icons.phone_enabled_outlined,
                   color: CColors.primary,
                 ),
@@ -58,11 +59,12 @@ class BookingDoctorDetails extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomRateRow(),
+                const CustomRateRow(),
                 CustomElevatedButton(
+                  onTap: () {},
                   icon: Icons.email,
                   color: Colors.amber,
                 ),
@@ -74,18 +76,18 @@ class BookingDoctorDetails extends StatelessWidget {
               height: 20,
             ),
             const StatusSection(),
-           const Expanded(
-              child:  SizedBox(
+            const Expanded(
+              child: SizedBox(
                 height: 20,
               ),
             ),
             CRoundedButton(
-              title: 'Make an appointmentle',
+              title: 'Make an Appointment',
               onPressed: () {},
             ),
-          const  SizedBox(
-                height: 20,
-              ),
+            const SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),

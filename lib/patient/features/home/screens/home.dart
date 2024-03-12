@@ -1,3 +1,5 @@
+import 'package:dochome/patient/features/bookings/screens/booking_screen/bookingScreen.dart';
+import 'package:dochome/patient/features/personalization/screens/profile/profile.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,8 +18,8 @@ class _HomeState extends State<Home> {
 
   final pages = [
     const HomeScreen(),
-    const SizedBox(),
-    const SizedBox(),
+    const PatientBookingsScreen(),
+    const PatientProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class _HomeState extends State<Home> {
                 'assets/images/streamline_waiting-appointments-calendar.svg'),
             selectedIcon: SvgPicture.asset(
                 'assets/images/streamline_waiting-appointments-calendar.svg'),
-            label: 'Booking',
+            label: 'Bookings',
           ),
           const NavigationDestination(
             icon: Icon(
