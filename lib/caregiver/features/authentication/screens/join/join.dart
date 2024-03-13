@@ -45,7 +45,7 @@ class JoinScreen extends StatelessWidget {
                 const SizedBox(height: CSizes.spaceBtwInputFields),
 
                 //? caregiver specialty drop down
-                const CServicesDropdown(items: ["Lotion Installation","Sensitivity Test","Intravenous Injection","Enema"], hint: "Select Your Category"),
+                const CServicesDropdown(items: ["Lotion Installation","Sensitivity Test","Intravenous Injection","Enema"], hint: "Select Your Specialty"),
                 const SizedBox(height: CSizes.spaceBtwInputFields),
 
                 //? uploads

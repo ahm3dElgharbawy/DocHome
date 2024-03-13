@@ -1,6 +1,7 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/patient/features/authentication/screens/otp/otp.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
@@ -71,8 +72,13 @@ class ResetPasswordScreen extends StatelessWidget {
                     ),
                     CRoundedButton(
                         onPressed: () {
-                          CHelperFunctions.navigateToScreen(
-                              context, const OTPScreen());
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen(showBackArrow: false),
+                            ),
+                            (route) => false,
+                          );
                         },
                         title: "Save")
                   ]),

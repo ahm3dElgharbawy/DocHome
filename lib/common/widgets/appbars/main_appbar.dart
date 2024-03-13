@@ -1,4 +1,5 @@
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CMainAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -7,7 +8,8 @@ class CMainAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.showBackArrow = true,
       this.centerTitle,
-      this.leading, this.actions});
+      this.leading,
+      this.actions});
   final String? title;
   final bool showBackArrow;
   final bool? centerTitle;
@@ -18,7 +20,12 @@ class CMainAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: showBackArrow,
-      title: title != null ? Text(title!) : null,
+      title: title != null
+          ? Text(
+              title!,
+              style: CAppStyles.styleBold25(context),
+            )
+          : null,
       centerTitle: centerTitle,
       backgroundColor: Colors.transparent,
       foregroundColor: Colors.black,

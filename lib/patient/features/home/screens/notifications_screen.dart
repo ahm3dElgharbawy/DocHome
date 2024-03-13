@@ -1,4 +1,4 @@
-import 'package:dochome/patient/features/find_caregiver/widgets/custom_app_bar.dart';
+import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,7 +9,7 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Notifications'),
+      appBar: const CMainAppBar(title: 'Notifications',centerTitle: true,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

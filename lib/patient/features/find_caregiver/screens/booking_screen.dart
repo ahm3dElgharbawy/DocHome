@@ -10,26 +10,26 @@ class BookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: CColors.primary,
-        body: Stack(
-          children: [
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Image.asset(
-                    CImages.doc3,
-                    fit: BoxFit.cover,
-                  ),
+      backgroundColor: CColors.primary,
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Image.asset(
+                  CImages.doc3,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            Positioned(
+          ),
+          Positioned(
               top: 60,
               left: 10,
               child: CRoundedContainer(
@@ -37,17 +37,17 @@ class BookingScreen extends StatelessWidget {
                 width: 40,
                 radius: 12,
                 color: Colors.white24,
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 child: const Icon(Icons.arrow_back_ios_new_outlined),
-              )
-            ),
-            const Positioned.fill(
-              top: 300,
-              child: BookingDoctorDetails(),
-            ),
-          ],
-        ));
+              )),
+          const Positioned.fill(
+            top: 300,
+            child: BookingDoctorDetails(),
+          ),
+        ],
+      ),
+    );
   }
 }

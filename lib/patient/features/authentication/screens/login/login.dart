@@ -15,12 +15,13 @@ import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key,this.showBackArrow = true});
+  final bool showBackArrow;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(),
+      appBar: CMainAppBar(showBackArrow: showBackArrow,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
