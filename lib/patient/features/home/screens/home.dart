@@ -1,6 +1,7 @@
 import 'package:dochome/patient/features/bookings/screens/booking_screen/bookingScreen.dart';
 import 'package:dochome/patient/features/personalization/screens/profile/profile.dart';
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -45,10 +46,8 @@ class _HomeState extends State<Home> {
             label: 'Home',
           ),
           NavigationDestination(
-            icon: SvgPicture.asset(
-                'assets/images/streamline_waiting-appointments-calendar.svg'),
-            selectedIcon: SvgPicture.asset(
-                'assets/images/streamline_waiting-appointments-calendar.svg'),
+            icon: SvgPicture.asset(CImages.bookings),
+            selectedIcon: SvgPicture.asset(CImages.bookings),
             label: 'Bookings',
           ),
           const NavigationDestination(

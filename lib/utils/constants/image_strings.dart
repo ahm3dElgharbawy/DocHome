@@ -13,7 +13,7 @@ class CImages {
   static const String caregiver = "assets/images/caregiver.png";
   static const String user = "assets/images/user.png";
   static const String doctorImage = "assets/logos/doctorImage.svg";
-
+  static const String bookings = 'assets/images/streamline_waiting-appointments-calendar.svg';
   // -- Onboarding images
   static const String onBoarding1 = "assets/images/onboarding/onboarding-1.png";
   static const String onBoarding2 = "assets/images/onboarding/onboarding-2.png";
