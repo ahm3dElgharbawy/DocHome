@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class UpcomingSchedule extends StatelessWidget {
+  const UpcomingSchedule({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -8,17 +10,17 @@ class UpcomingSchedule extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "About Doctor",
             style: TextStyle(fontSize: 18,fontFamily: 'Outfit', fontWeight: FontWeight.w500),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 5),
+            padding: const EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 4,
@@ -31,22 +33,22 @@ class UpcomingSchedule extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text(
+                    title: const Text(
                       "Dr. Doctor Name",
                       style: TextStyle(
                         fontFamily: 'Outfit',
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text("Physical therapy"),
+                    subtitle: const Text("Physical therapy"),
                     trailing: CircleAvatar(
                       radius: 20,
-                      child: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.error_outline), label: Text('mo')),
+                      child: ElevatedButton.icon(onPressed: (){}, icon: const Icon(Icons.error_outline), label: const Text('mo')),
                       //backgroundImage: AssetImage("assets/images/booking/doctor1.jpg"),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Divider(
                       // color: Colors.black,
                       thickness: 1,
@@ -56,7 +58,7 @@ class UpcomingSchedule extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
+                      const Row(
                         children: [
                           Icon(
                             Icons.calendar_month,
@@ -72,7 +74,7 @@ class UpcomingSchedule extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Row(
+                      const Row(
                         children: [
                           Icon(
                             Icons.access_time_filled,
@@ -91,14 +93,14 @@ class UpcomingSchedule extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.all(5),
+                            decoration: const BoxDecoration(
                               color: Colors.green,
                               shape: BoxShape.circle,
                             ),
                           ),
-                          SizedBox(width: 5),
-                          Text(
+                          const SizedBox(width: 5),
+                          const Text(
                             "Confirmed",
                             style: TextStyle(
                               fontFamily: 'Outfit',
@@ -109,7 +111,7 @@ class UpcomingSchedule extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -117,12 +119,12 @@ class UpcomingSchedule extends StatelessWidget {
                         onTap: () {},
                         child: Container(
                           width: 150,
-                          padding: EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
                           decoration: BoxDecoration(
-                            color: Color(0xFFF4F6FA),
+                            color: const Color(0xFFF4F6FA),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Cancel",
                               style: TextStyle(
@@ -139,12 +141,12 @@ class UpcomingSchedule extends StatelessWidget {
                         onTap: () {},
                         child: Container(
                           width: 150,
-                          padding: EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
                           decoration: BoxDecoration(
-                            color: Color(0xFF4D8BBB),
+                            color: const Color(0xFF4D8BBB),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "Reschedule",
                               style: TextStyle(
@@ -159,7 +161,7 @@ class UpcomingSchedule extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),

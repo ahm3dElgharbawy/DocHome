@@ -10,12 +10,14 @@ class CRoundedButton extends StatelessWidget {
     this.margin,
     this.width = double.infinity,
     this.height = 50,
+    this.color = CColors.primary
   });
   final VoidCallback onPressed;
   final String title;
   final EdgeInsets? margin;
   final double width;
   final double height;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CRoundedButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: CColors.primary,
+          backgroundColor: color,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         ),
         child: Text(title , style: CAppStyles.styleBold16(context),),

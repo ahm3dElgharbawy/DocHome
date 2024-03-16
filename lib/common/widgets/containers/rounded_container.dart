@@ -13,7 +13,7 @@ class CRoundedContainer extends StatelessWidget {
     this.color = CColors.primary,
     this.radius = 36,
     this.enableBorder = false,
-    this.borderColor = CColors.grey,
+    this.borderColor = CColors.grey, this.backgroundImage,
   });
   final double? height;
   final double? width;
@@ -25,6 +25,7 @@ class CRoundedContainer extends StatelessWidget {
   final double radius;
   final bool enableBorder;
   final Color borderColor;
+  final ImageProvider? backgroundImage;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class CRoundedContainer extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(radius),
             color: color,
+            image: backgroundImage != null ? DecorationImage(image: backgroundImage!,fit: BoxFit.cover) : null,
             border: enableBorder
                 ? Border.all(
                     color: borderColor,

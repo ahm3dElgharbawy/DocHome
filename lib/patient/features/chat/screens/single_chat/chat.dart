@@ -5,8 +5,8 @@ import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 
-class CaregiverSingleChatScreen extends StatelessWidget {
-  const CaregiverSingleChatScreen({
+class PatientSingleChatScreen extends StatelessWidget {
+  const PatientSingleChatScreen({
     super.key,
     required this.userId,
     required this.userName,
@@ -28,8 +28,7 @@ class CaregiverSingleChatScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(CSizes.defaultSpace),
                 children: const [
                   MessageWidget(
-                      message:
-                          "Dr. Hoda, I need help reading the prescription",
+                      message: "Dr. Hoda, I need help reading the prescription",
                       createdAt: "12:10 PM",
                       isMe: true),
                   MessageWidget(
@@ -44,7 +43,6 @@ class CaregiverSingleChatScreen extends StatelessWidget {
                       message: "Send me a picture of the prescription",
                       createdAt: "12:10 PM",
                       isMe: false),
-                  
                 ]),
           ),
           const CSendMessageBottomBar()

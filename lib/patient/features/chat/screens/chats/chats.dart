@@ -1,20 +1,20 @@
 import 'package:dochome/common/widgets/chat/chat_tile.dart';
-import 'package:dochome/caregiver/features/chat/screens/single_chat/chat.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/patient/features/chat/screens/single_chat/chat.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
-class CaregiverChatsScreen extends StatefulWidget {
-  const CaregiverChatsScreen({super.key});
+class PatientChatsScreen extends StatefulWidget {
+  const PatientChatsScreen({super.key});
 
   @override
-  State<CaregiverChatsScreen> createState() => _CaregiverChatsScreenState();
+  State<PatientChatsScreen> createState() => _PatientChatsScreenState();
 }
 
-class _CaregiverChatsScreenState extends State<CaregiverChatsScreen> {
+class _PatientChatsScreenState extends State<PatientChatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,7 @@ class _CaregiverChatsScreenState extends State<CaregiverChatsScreen> {
               onTap: () {
                 CHelperFunctions.navigateToScreen(
                   context,
-                  const CaregiverSingleChatScreen(
+                  const PatientSingleChatScreen(
                     userId: '1',
                     userName: "Hoda Mohamed",
                     image: CImages.doc1,
@@ -55,7 +55,7 @@ class _CaregiverChatsScreenState extends State<CaregiverChatsScreen> {
               time: "9:10 PM",
               image: CImages.doc2,
               name: "Essra Gamal",
-              unReadMessages: 10,
+              unReadMessages: 4,
             ),
             const ChatTile(
               lastMessage: "send me your x-ray please",

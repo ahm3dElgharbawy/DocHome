@@ -1,4 +1,5 @@
 import 'package:dochome/patient/features/bookings/screens/booking_screen/bookingScreen.dart';
+import 'package:dochome/patient/features/chat/screens/chats/chats.dart';
 import 'package:dochome/patient/features/personalization/screens/profile/profile.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
@@ -20,6 +21,7 @@ class _HomeState extends State<Home> {
   final pages = [
     const HomeScreen(),
     const PatientBookingsScreen(),
+    const PatientChatsScreen(),
     const PatientProfileScreen(),
   ];
   @override
@@ -49,6 +51,11 @@ class _HomeState extends State<Home> {
             icon: SvgPicture.asset(CImages.bookings),
             selectedIcon: SvgPicture.asset(CImages.bookings),
             label: 'Bookings',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.chat_bubble_outline_rounded,color: CColors.primary,),
+            selectedIcon: Icon(Icons.chat_bubble,color: CColors.primary,),
+            label: 'chats',
           ),
           const NavigationDestination(
             icon: Icon(

@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class CMessageBottomBar extends StatelessWidget {
-  const CMessageBottomBar({super.key});
+class CSendMessageBottomBar extends StatelessWidget {
+  const CSendMessageBottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
