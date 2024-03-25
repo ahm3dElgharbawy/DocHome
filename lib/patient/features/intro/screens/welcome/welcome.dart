@@ -1,5 +1,5 @@
-import 'package:dochome/patient/features/welcome/screens/onboarding/onboarding.dart';
-import 'package:dochome/patient/features/welcome/screens/welcome/widgets/container_with_gradient.dart';
+import 'package:dochome/patient/features/intro/screens/onboarding/onboarding.dart';
+import 'package:dochome/patient/features/intro/screens/welcome/widgets/container_with_gradient.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 

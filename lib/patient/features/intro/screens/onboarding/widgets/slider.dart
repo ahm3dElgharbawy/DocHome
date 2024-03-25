@@ -1,4 +1,5 @@
-import 'package:dochome/patient/features/welcome/screens/onboarding/widgets/slider_content.dart';
+import 'package:dochome/localization/app_localizations.dart';
+import 'package:dochome/patient/features/intro/screens/onboarding/widgets/slider_content.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
@@ -12,23 +13,24 @@ class COnBoardingSlider extends StatelessWidget {
     return PageView(
       controller: pageController,
       onPageChanged: onPageChanged,
-      children: const [
+      children: [
         COnBoardingSliderContent(
             image: CImages.onBoarding1,
-            title: "Home visit",
+            title: "Home visit".tr(context),
             subtitle:
-                "Without going to the hospital, you can install a solution, injections, catheterization, breathing sessions,"),
+                "Without going to the hospital, you can install a solution, injections, catheterization, breathing sessions,".tr(context)),
         COnBoardingSliderContent(
             image: CImages.onBoarding2,
-            title: "physical therapy",
+            title: "physical therapy".tr(context),
             subtitle:
-                "They can bring specialized equipment and provide hands-on therapy, tailoring a treatment plan that fits your specific needs and goals"),
+                "They can bring specialized equipment and provide hands-on therapy, tailoring a treatment plan that fits your specific needs and goals".tr(context)),
         COnBoardingSliderContent(
             image: CImages.onBoarding3,
-            title: "Continuous follow-up",
+            title: "Continuous follow-up".tr(context),
             subtitle:
-                "Monitoring patients, the elderly, and their diet, moment by moment"),
+                "Monitoring patients, the elderly, and their diet, moment by moment".tr(context)),
       ],
     );
   }
 }
+

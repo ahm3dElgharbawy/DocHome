@@ -1,3 +1,4 @@
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
@@ -14,17 +15,17 @@ class CWelcomeText extends StatelessWidget {
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(style: CAppStyles.styleBold30(context), children: [
-            const TextSpan(text: "welcome to "),
+            TextSpan(text: "welcome to ".tr(context)),
             TextSpan(
-                text: "Doc",
+                text: "Doc".tr(context),
                 style: CAppStyles.styleBold30(context)
                     .copyWith(color: CColors.primary)),
-            const TextSpan(text: "Home"),
+            TextSpan(text: "Home".tr(context)),
           ]),
         ),
         const SizedBox(height: CSizes.spaceBtwItems),
         Text(
-          "the home care system is designed to enhance the delivery of healthcare services to individuals in the comfort of their homes",
+          "the home care system is designed to enhance the delivery of healthcare services to individuals in the comfort of their homes".tr(context),
           style: CAppStyles.styleRegular10(context).copyWith(color: Colors.white),
           textAlign: TextAlign.center,
         )

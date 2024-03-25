@@ -1,3 +1,4 @@
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:dochome/utils/theme/custom_themes/bottom_sheet_theme.dart';
@@ -14,7 +15,8 @@ import 'custom_themes/checkbox_theme.dart';
 
 abstract class CAppTheme {
   static ThemeData lightTheme = ThemeData(
-    fontFamily: "Poppins",
+    // fontFamily: "Poppins",
+    // fontFamily: AppLocalizations().locale!.languageCode == 'en' ? "Poppins" : "Cairo",
     brightness: Brightness.light,
     useMaterial3: false,
     primaryColor: CColors.primary,
@@ -33,7 +35,7 @@ abstract class CAppTheme {
     
   );
   static ThemeData darkTheme = ThemeData(
-    fontFamily: "Poppins",
+    // fontFamily: "Poppins",
     brightness: Brightness.dark,
     useMaterial3: false,
     primaryColor: CColors.primary,

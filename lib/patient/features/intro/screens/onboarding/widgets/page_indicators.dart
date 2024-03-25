@@ -1,5 +1,5 @@
-import 'package:dochome/patient/features/welcome/logic/onboarding/onboarding_cubit.dart';
-import 'package:dochome/patient/features/welcome/logic/onboarding/onboarding_state.dart';
+import 'package:dochome/patient/features/intro/logic/onboarding/onboarding_cubit.dart';
+import 'package:dochome/patient/features/intro/logic/onboarding/onboarding_state.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';

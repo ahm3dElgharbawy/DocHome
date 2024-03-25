@@ -1,5 +1,6 @@
 import 'package:dochome/caregiver/features/authentication/screens/login/caregiver_login.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
@@ -22,15 +23,15 @@ class ContinueAsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Continue As",style: CAppStyles.styleBold30(context).copyWith(color: CColors.primary),),
+                Text("Continue As".tr(context),style: CAppStyles.styleBold30(context).copyWith(color: CColors.primary),),
                 Image.asset(CImages.appLogo,height: 250,),
                 CRoundedButton(onPressed: (){
                   CHelperFunctions.navigateToScreen(context, const LoginScreen());
-                }, title: "Patient"),
+                }, title: "Patient".tr(context)),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 CRoundedButton(onPressed: (){
                   CHelperFunctions.navigateToScreen(context, const CareGiverLoginScreen());
-                }, title: "Caregiver")
+                }, title: "Caregiver".tr(context))
               ],
             ),
           ),
@@ -39,3 +40,4 @@ class ContinueAsScreen extends StatelessWidget {
     );
   }
 }
+

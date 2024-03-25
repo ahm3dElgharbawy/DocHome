@@ -1,9 +1,10 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
-import 'package:dochome/patient/features/welcome/logic/onboarding/onboarding_cubit.dart';
-import 'package:dochome/patient/features/welcome/logic/onboarding/onboarding_state.dart';
-import 'package:dochome/patient/features/welcome/screens/continue_as/continue_as.dart';
-import 'package:dochome/patient/features/welcome/screens/onboarding/widgets/page_indicators.dart';
-import 'package:dochome/patient/features/welcome/screens/onboarding/widgets/slider.dart';
+import 'package:dochome/localization/app_localizations.dart';
+import 'package:dochome/patient/features/intro/logic/onboarding/onboarding_cubit.dart';
+import 'package:dochome/patient/features/intro/logic/onboarding/onboarding_state.dart';
+import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
+import 'package:dochome/patient/features/intro/screens/onboarding/widgets/page_indicators.dart';
+import 'package:dochome/patient/features/intro/screens/onboarding/widgets/slider.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,13 +38,13 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
                 state == OnBoardingState.completed
                     ? CRoundedButton(
-                        title: "Start",
+                        title: "Start".tr(context),
                         onPressed: () {
                           //? navigate to continue as screen
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const ContinueAsScreen()));
                         })
                     : CRoundedButton(
-                        title: "Next",
+                        title: "Next".tr(context),
                         onPressed: () {
                           onBoardingCubit.goToNextScreen();
                         })

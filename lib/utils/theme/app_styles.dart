@@ -2,11 +2,12 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class CAppStyles {
+
   ///Bold
   static TextStyle styleBold10(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 10),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w700,
     );
   }
@@ -14,7 +15,7 @@ abstract class CAppStyles {
   static TextStyle styleBold16(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w700,
     );
   }
@@ -23,7 +24,7 @@ abstract class CAppStyles {
     return TextStyle(
       color: Colors.black,
       fontSize: getResponsiveFontSize(context, fontSize: 25),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w700,
     );
   }
@@ -31,7 +32,7 @@ abstract class CAppStyles {
   static TextStyle styleBold30(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 30),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w700,
     );
   }
@@ -40,7 +41,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular10(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 10),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -48,7 +49,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular12(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 12),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -56,7 +57,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular13(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 13),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -64,7 +65,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular14(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 14),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -72,7 +73,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular15(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 15),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -80,7 +81,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular16(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -88,7 +89,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular17(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 17),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -96,7 +97,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular18(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -104,7 +105,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular20(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 20),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -112,7 +113,7 @@ abstract class CAppStyles {
   static TextStyle styleRegular23(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 23),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w400,
     );
   }
@@ -121,7 +122,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium8(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 8),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -129,7 +130,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium13(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 13),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -137,7 +138,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium14(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 14),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -145,7 +146,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium15(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 15),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -153,7 +154,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium16(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -161,7 +162,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium18(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -169,7 +170,7 @@ abstract class CAppStyles {
   static TextStyle styleMedium20(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 20),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -178,7 +179,7 @@ abstract class CAppStyles {
     return TextStyle(
       color: CColors.primary,
       fontSize: getResponsiveFontSize(context, fontSize: 24),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w500,
     );
   }
@@ -187,7 +188,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold8(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 8),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -195,7 +196,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold10(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 10),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -203,14 +204,14 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold13(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 13),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
   static TextStyle styleSemiBold14(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 14),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -218,7 +219,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold15(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 15),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -226,7 +227,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold16(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -234,7 +235,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold17(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 17),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -242,7 +243,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold18(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -250,7 +251,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold21(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 21),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -258,7 +259,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold24(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 24),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -266,7 +267,7 @@ abstract class CAppStyles {
   static TextStyle styleSemiBold25(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 25),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w600,
     );
   }
@@ -275,7 +276,7 @@ abstract class CAppStyles {
   static TextStyle styleLight16(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w300,
     );
   }
@@ -283,7 +284,7 @@ abstract class CAppStyles {
   static TextStyle styleLight10(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 10),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w300,
     );
   }
@@ -291,7 +292,7 @@ abstract class CAppStyles {
   static TextStyle styleLight12(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 12),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w300,
     );
   }
@@ -299,7 +300,7 @@ abstract class CAppStyles {
   static TextStyle styleLight17(context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 17),
-      fontFamily: 'Poppins',
+      fontFamily: Localizations.localeOf(context).languageCode=="en" ? "Poppins" : "Cairo",
       fontWeight: FontWeight.w300,
     );
   }

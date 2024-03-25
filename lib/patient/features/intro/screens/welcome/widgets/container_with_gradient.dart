@@ -1,4 +1,4 @@
-import 'package:dochome/patient/features/welcome/screens/welcome/widgets/welcome_text.dart';
+import 'package:dochome/patient/features/intro/screens/welcome/widgets/welcome_text.dart';
 import 'package:flutter/material.dart';
 
 class CContainerWithGradient extends StatelessWidget {
