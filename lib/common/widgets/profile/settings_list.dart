@@ -17,7 +17,7 @@ class CSettingsList extends StatelessWidget {
         height: null,
         margin: const EdgeInsets.symmetric(
             horizontal: CSizes.defaultSpace, vertical: CSizes.md),
-        padding: const EdgeInsets.symmetric(vertical: CSizes.md),
+        // padding: const EdgeInsets.symmetric(vertical: CSizes.md),
         radius: 20,
         color: Colors.white,
         child: child

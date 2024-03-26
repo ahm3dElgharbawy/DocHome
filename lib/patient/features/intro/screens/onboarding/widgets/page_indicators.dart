@@ -1,5 +1,3 @@
-import 'package:dochome/patient/features/intro/logic/onboarding/onboarding_cubit.dart';
-import 'package:dochome/patient/features/intro/logic/onboarding/onboarding_state.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -10,28 +8,24 @@ class CPageIndicators extends StatelessWidget {
   final int activeDot;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnBoardingCubit, OnBoardingState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: CSizes.spaceBtwItems),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              3,
-              (index) => AnimatedContainer(
-                height: 10,
-                width: activeDot == index ? 30 : 10,
-                duration: const Duration(milliseconds: 500),
-                margin: const EdgeInsets.only(right: 3),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: activeDot == index ? CColors.primary : CColors.grey,
-                ),
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: CSizes.spaceBtwItems),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          3,
+          (index) => AnimatedContainer(
+            height: 10,
+            width: activeDot == index ? 30 : 10,
+            duration: const Duration(milliseconds: 500),
+            margin: const EdgeInsets.only(right: 3),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: activeDot == index ? CColors.primary : CColors.grey,
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dochome/caregiver/features/personalization/screens/profile/widgets/info_container.dart';
+import 'package:dochome/common/widgets/dialogs/languages_dialog.dart';
 import 'package:dochome/common/widgets/profile/profile_header.dart';
 import 'package:dochome/common/widgets/profile/settings_list.dart';
 import 'package:dochome/common/widgets/profile/settings_tile.dart';
@@ -19,7 +20,7 @@ class PatientProfileScreen extends StatelessWidget {
       backgroundColor: CColors.softGrey,
       body: SingleChildScrollView(
         child: SizedBox(
-          height: 650,
+          height: 680,
           child: Stack(
             children: [
               CProfileHeader(
@@ -47,7 +48,7 @@ class PatientProfileScreen extends StatelessWidget {
                       },
                     ),
                     const Divider(
-                      height: CSizes.spaceBtwItems * 2,
+                      height: 0,
                       thickness: 1,
                     ),
                     CSettingsTile(
@@ -65,7 +66,7 @@ class PatientProfileScreen extends StatelessWidget {
                       },
                     ),
                     const Divider(
-                      height: CSizes.spaceBtwItems * 2,
+                      height: 0,
                       thickness: 1,
                     ),
                     const CSettingsTile(
@@ -74,7 +75,22 @@ class PatientProfileScreen extends StatelessWidget {
                       leadingBackgroundColor: Color(0xff00b383),
                     ),
                     const Divider(
-                      height: CSizes.spaceBtwItems * 2,
+                      height: 0,
+                      thickness: 1,
+                    ),
+                    CSettingsTile(
+                      title: "Language",
+                      leadingIcon: Icons.translate_rounded,
+                      leadingBackgroundColor: Colors.deepPurpleAccent,
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const CLanguagesDialog()
+                        );
+                      },
+                    ),
+                    const Divider(
+                      height: 0,
                       thickness: 1,
                     ),
                     const CSettingsTile(

@@ -1,10 +1,13 @@
 import 'package:dochome/caregiver/features/personalization/screens/profile/widgets/info_container.dart';
+import 'package:dochome/common/widgets/dialogs/languages_dialog.dart';
+import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/common/widgets/profile/profile_header.dart';
 import 'package:dochome/common/widgets/profile/settings_list.dart';
 import 'package:dochome/common/widgets/profile/settings_tile.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CaregiverProfileScreen extends StatelessWidget {
@@ -20,11 +23,10 @@ class CaregiverProfileScreen extends StatelessWidget {
           child: Stack(
             children: [
               CProfileHeader(
-                userName: "Ahm3dElsafy",
-                userEmail: "@gmail.com",
-                color: CColors.primary,
-                image: Image.asset(CImages.caregiver)
-              ),
+                  userName: "Ahm3dElsafy",
+                  userEmail: "@gmail.com",
+                  color: CColors.primary,
+                  image: Image.asset(CImages.caregiver)),
               //? containing info like bookings and patients, ...
               const CCaregiverInfoContainer(),
               CSettingsList(
@@ -39,7 +41,7 @@ class CaregiverProfileScreen extends StatelessWidget {
                       },
                     ),
                     const Divider(
-                      height: CSizes.spaceBtwItems * 2,
+                      height: 0,
                       thickness: 1,
                     ),
                     const CSettingsTile(
@@ -48,7 +50,22 @@ class CaregiverProfileScreen extends StatelessWidget {
                       leadingBackgroundColor: Color(0xff00b383),
                     ),
                     const Divider(
-                      height: CSizes.spaceBtwItems * 2,
+                      height: 0,
+                      thickness: 1,
+                    ),
+                    CSettingsTile(
+                      title: "Language",
+                      leadingIcon: Icons.translate_rounded,
+                      leadingBackgroundColor: Colors.deepPurpleAccent,
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const CLanguagesDialog()
+                        );
+                      },
+                    ),
+                    const Divider(
+                      height: 0,
                       thickness: 1,
                     ),
                     const CSettingsTile(

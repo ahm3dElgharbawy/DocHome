@@ -36,6 +36,7 @@ class CRoundedContainer extends StatelessWidget {
         width: width,
         padding: padding,
         margin: margin,
+        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(radius),
             color: color,
