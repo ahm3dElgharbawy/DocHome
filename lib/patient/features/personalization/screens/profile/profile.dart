@@ -1,14 +1,15 @@
-import 'package:dochome/caregiver/features/personalization/screens/profile/widgets/info_container.dart';
 import 'package:dochome/common/widgets/dialogs/languages_dialog.dart';
 import 'package:dochome/common/widgets/profile/profile_header.dart';
 import 'package:dochome/common/widgets/profile/settings_list.dart';
 import 'package:dochome/common/widgets/profile/settings_tile.dart';
+import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/patient/features/payment/payment_screen/payment_screen.dart';
 import 'package:dochome/patient/features/personalization/screens/my_account_screen/myAccountScreen.dart';
 import 'package:dochome/patient/features/personalization/screens/profile/widgets/info_container.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
-import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
+import 'package:dochome/utils/services/preference_services.dart';
 import 'package:flutter/material.dart';
 
 class PatientProfileScreen extends StatelessWidget {
@@ -60,7 +61,7 @@ class PatientProfileScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreditCardForm(),
+                            builder: (context) => const CreditCardForm(),
                           ),
                         );
                       },
@@ -93,7 +94,12 @@ class PatientProfileScreen extends StatelessWidget {
                       height: 0,
                       thickness: 1,
                     ),
-                    const CSettingsTile(
+                    CSettingsTile(
+                      onTap: () {
+                        PreferenceServices.remove("PATIENT"); // remove local patient data
+                        PreferenceServices.setInt("STEP", 1);
+                        context.pushReplacementAll(const LoginScreen());
+                      },
                       title: "Logout",
                       leadingIcon: Icons.logout,
                       leadingBackgroundColor: Colors.red,

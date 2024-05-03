@@ -1,5 +1,3 @@
-import 'package:dochome/utils/constants/colors.dart';
-import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';

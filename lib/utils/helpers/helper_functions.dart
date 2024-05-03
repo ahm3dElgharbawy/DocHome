@@ -1,15 +1,19 @@
+import 'package:dochome/utils/helpers/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 abstract class CHelperFunctions {
-
-  static void showSnackBar(String message,context) {
+  static void showSnackBar({required context,required String message, StatusType type = StatusType.failure}) {
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
+      SnackBar(
+        content: Text(message),
+        backgroundColor: type == StatusType.failure ? Colors.red : Colors.green,
+      ),
     );
   }
 
-  static void showAlert(String title, String message,context) {
+  static void showAlert(String title, String message, context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -54,13 +58,11 @@ abstract class CHelperFunctions {
     return MediaQuery.of(context).size.width;
   }
 
-  static String getFormattedDate(DateTime date,
-      {String format = 'dd/MM/yyy'}) {
+  static String getFormattedDate(DateTime date, {String format = 'dd/MM/yyy'}) {
     return DateFormat(format).format(date);
   }
 
   static List<T> removeDuplicates<T>(List<T> list) {
     return list.toSet().toList();
   }
-
 }

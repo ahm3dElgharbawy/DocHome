@@ -1,8 +1,7 @@
 abstract class CTextFieldValidator {
-  static String? requiredTextField(String? value,
-      {String message = "This field is required"}) {
+  static String? requiredTextField(String? value) {
     if (value == null || value.isEmpty) {
-      return message;
+      return "this field is required";
     }
     return null;
   }

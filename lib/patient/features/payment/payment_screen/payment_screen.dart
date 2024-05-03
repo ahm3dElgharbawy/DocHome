@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/appbars/main_appbar.dart';
@@ -7,6 +6,8 @@ import '../../../../utils/constants/image_strings.dart';
 
 
 class CreditCardForm extends StatefulWidget {
+  const CreditCardForm({super.key});
+
   @override
   _CreditCardFormState createState() => _CreditCardFormState();
 }
@@ -25,7 +26,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
     final double screenWidth = screenSize.width;
 
     return Scaffold(
-      appBar: CMainAppBar(),
+      appBar: const CMainAppBar(),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -38,7 +39,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                     top: screenHeight * 0.04,
                     bottom: screenHeight * 0.04,
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
@@ -64,12 +65,12 @@ class _CreditCardFormState extends State<CreditCardForm> {
                         onTap: () {},
                         child: Container(
                           width: screenWidth * 0.65,
-                          padding: EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
                             color: Colors.white70,
                             borderRadius: BorderRadius.circular(screenWidth * 0.04),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Image(image: AssetImage(CImages.visa1)),
                           ),
                         ),
@@ -87,7 +88,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                     decoration: InputDecoration(
                       labelText: 'Name on card',
                       hintText: 'mohamed Gebriel',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Colors.black,
                         fontSize: 14,
                         fontFamily: 'Poppins',
@@ -123,12 +124,12 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       hintText: '0000 0000 0000 0000',
                       suffixIcon: Padding(
                         padding: EdgeInsets.all(screenWidth * 0.055),
-                        child: ImageIcon(AssetImage(CImages.visa2),
+                        child: ImageIcon(const AssetImage(CImages.visa2),
                           size: screenWidth * 0.08,
                         ),
                       ),
-                      suffixIconColor: Color(0xFF4D8BBB),
-                      labelStyle: TextStyle(
+                      suffixIconColor: const Color(0xFF4D8BBB),
+                      labelStyle: const TextStyle(
                         color: Colors.black,
                         fontSize: 14,
                         fontFamily: 'Poppins',
@@ -166,7 +167,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                           decoration: InputDecoration(
                             labelText: 'Card expiration',
                             hintText: '3/14',
-                            labelStyle: TextStyle(
+                            labelStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: 'Poppins',
@@ -196,7 +197,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
                           decoration: InputDecoration(
                             labelText: 'Code Security',
                             hintText: '123',
-                            labelStyle: TextStyle(
+                            labelStyle: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: 'Poppins',

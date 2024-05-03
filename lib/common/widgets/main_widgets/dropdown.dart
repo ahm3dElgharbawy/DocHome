@@ -3,17 +3,18 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-class CCategoryDropdown extends StatefulWidget {
-  const CCategoryDropdown({super.key, required this.items, required this.hint});
-  final List<String> items;
+class CDropdown<T> extends StatefulWidget {
+  const CDropdown({super.key, required this.items, required this.hint, this.validator,this.onChanged});
+  final List<T?> items;
   final String hint;
+  final String? Function(String?)? validator;
+  final void Function(String?)? onChanged;
 
   @override
-  State<CCategoryDropdown> createState() => _CCategoryDropdownState();
+  State<CDropdown> createState() => _CDropdownState();
 }
 
-class _CCategoryDropdownState extends State<CCategoryDropdown> {
-  String? selectedValue = "Nursing";
+class _CDropdownState extends State<CDropdown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField2<String>(
@@ -27,31 +28,24 @@ class _CCategoryDropdownState extends State<CCategoryDropdown> {
       ),
       hint: Text(
         widget.hint,
-        style: CAppStyles.styleMedium13(context).copyWith(color: CColors.darkGrey),
+        style:
+            CAppStyles.styleMedium13(context).copyWith(color: CColors.darkGrey),
       ),
       items: widget.items
-          .map((item) => DropdownMenuItem<String>(
-                value: item,
-                child: Text(
-                  item,
-                  style: const TextStyle(
-                    fontSize: 14,
-                  ),
+          .map(
+            (item) => DropdownMenuItem<String>(
+              value: item.id.toString(),
+              child: Text(
+                item.name,
+                style: const TextStyle(
+                  fontSize: 14,
                 ),
-              ))
+              ),
+            ),
+          )
           .toList(),
-      validator: (value) {
-        if (value == null) {
-          return 'Please enter your category.';
-        }
-        return null;
-      },
-      onChanged: (value) {
-        //Do something when selected item is changed.
-      },
-      onSaved: (value) {
-        selectedValue = value.toString();
-      },
+      validator: widget.validator,
+      onChanged: widget.onChanged,
       buttonStyleData: const ButtonStyleData(
         padding: EdgeInsets.only(right: 8),
       ),

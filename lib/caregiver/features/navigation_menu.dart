@@ -1,7 +1,6 @@
 import 'package:dochome/caregiver/features/bookings/screens/booking/booking.dart';
 import 'package:dochome/caregiver/features/chat/screens/chats/chats.dart';
 import 'package:dochome/caregiver/features/personalization/screens/profile/profile.dart';
-import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

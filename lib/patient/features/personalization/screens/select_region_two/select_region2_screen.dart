@@ -56,22 +56,20 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
             Padding(
               padding:
                   EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Select region',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.width * 0.06,
-                        fontFamily: 'Outfit',
-                        fontWeight: FontWeight.w500,
-                        height: 0,
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Select region',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: MediaQuery.of(context).size.width * 0.06,
+                      fontFamily: 'Outfit',
+                      fontWeight: FontWeight.w500,
+                      height: 0,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),

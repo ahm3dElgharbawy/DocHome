@@ -1,13 +1,10 @@
 import 'package:dochome/caregiver/features/personalization/screens/profile/widgets/info_container.dart';
 import 'package:dochome/common/widgets/dialogs/languages_dialog.dart';
-import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/common/widgets/profile/profile_header.dart';
 import 'package:dochome/common/widgets/profile/settings_list.dart';
 import 'package:dochome/common/widgets/profile/settings_tile.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
-import 'package:dochome/utils/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CaregiverProfileScreen extends StatelessWidget {

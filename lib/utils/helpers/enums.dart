@@ -1,0 +1,4 @@
+enum StatusType {
+  failure,
+  success
+}

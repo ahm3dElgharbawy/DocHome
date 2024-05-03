@@ -1,5 +1,4 @@
 import 'package:dochome/common/widgets/containers/circular_container.dart';
-import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/patient/features/personalization/screens/select_region_one/select_region1_screen.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';

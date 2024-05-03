@@ -5,6 +5,7 @@ import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.d
 import 'package:dochome/patient/features/intro/screens/onboarding/widgets/page_indicators.dart';
 import 'package:dochome/patient/features/intro/screens/onboarding/widgets/slider.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/services/preference_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,6 +44,7 @@ class OnBoardingScreen extends StatelessWidget {
                             : "Next".tr(context),
                         onPressed: state.pageIndex == 2
                             ? () {
+                                PreferenceServices.setInt("STEP", 1); // To ignore onboarding next time
                                 //? navigate to continue as screen
                                 Navigator.pushReplacement(
                                   context,

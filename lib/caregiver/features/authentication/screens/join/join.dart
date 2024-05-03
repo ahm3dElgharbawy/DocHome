@@ -1,4 +1,4 @@
-import 'package:dochome/caregiver/features/authentication/screens/join/widgets/category_dropdown.dart';
+import 'package:dochome/common/widgets/main_widgets/dropdown.dart';
 import 'package:dochome/caregiver/features/authentication/screens/join/widgets/services_dropdown.dart';
 import 'package:dochome/caregiver/features/authentication/screens/join/widgets/uploads.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
@@ -41,7 +41,7 @@ class JoinScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: CSizes.spaceBtwInputFields),
                 //? caregiver category drop down menu
-                const CCategoryDropdown(items: ["Nursing","Physical Therapy","Laboratory","X-Rays"], hint: "Select Your Category"),
+                const CDropdown(items: [], hint: "Select Your Category"),
                 const SizedBox(height: CSizes.spaceBtwInputFields),
 
                 //? caregiver specialty drop down

@@ -1,6 +1,7 @@
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
+import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
@@ -70,7 +71,7 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
         //? our text field
         TextFormField(
           controller: widget.controller,
-          validator: widget.validator,
+          validator: widget.validator ?? CTextFieldValidator.requiredTextField,
           obscureText: isHidden,
           keyboardType: widget.keyboardType,
           readOnly: widget.readOnly,

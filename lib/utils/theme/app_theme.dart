@@ -1,4 +1,3 @@
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:dochome/utils/theme/custom_themes/bottom_sheet_theme.dart';

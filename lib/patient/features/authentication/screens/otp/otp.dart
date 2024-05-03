@@ -1,18 +1,30 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
+import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
+import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/reset_password/reset_password.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 
-class OTPScreen extends StatelessWidget {
-  const OTPScreen({super.key});
+class OTPScreen extends StatefulWidget {
+  const OTPScreen({super.key, required this.email});
+  final String email;
+
+  @override
+  State<OTPScreen> createState() => _OTPScreenState();
+}
+
+class _OTPScreenState extends State<OTPScreen> {
+  String? otp;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +64,10 @@ class OTPScreen extends StatelessWidget {
                     fieldStyle: FieldStyle.box,
                     width: 260,
                     style: CAppStyles.styleMedium18(context),
+                    onChanged: (val) {},
+                    onCompleted: (val) {
+                      otp = val;
+                    },
                   ),
                   const SizedBox(height: CSizes.spaceBtwItems),
                   //? remaining time
@@ -81,12 +97,34 @@ class OTPScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: CSizes.spaceBtwSections),
-              CRoundedButton(
-                onPressed: () {
-                  CHelperFunctions.navigateToScreen(
-                      context, const ResetPasswordScreen());
+              BlocConsumer<AuthBloc, AuthState>(
+                listener: (context, state) {
+                  if (state is SuccessState) {
+                    context.push(ResetPasswordScreen(
+                      email: widget.email,
+                    ));
+                  } else if (state is FailureState) {
+                    CHelperFunctions.showSnackBar(
+                        context: context, message: state.message);
+                  }
                 },
-                title: "Continue",
+                builder: (context, state) {
+                  return CRoundedButton(
+                      onPressed: () {
+                        if (otp != null) {
+                          context.read<AuthBloc>().add(
+                              CheckOtpEvent(email: widget.email, otp: otp!));
+                        } else {
+                          CHelperFunctions.showSnackBar(
+                              context: context,
+                              message: "You must add the otp");
+                        }
+                      },
+                      title: "Continue",
+                      child: state is LoadingState
+                          ? const CLoadingWidget()
+                          : null);
+                },
               )
             ]),
           ),

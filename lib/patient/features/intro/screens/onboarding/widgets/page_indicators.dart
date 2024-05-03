@@ -1,7 +1,6 @@
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CPageIndicators extends StatelessWidget {
   const CPageIndicators({super.key, required this.activeDot});

@@ -1,5 +1,4 @@
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
-import 'package:dochome/common/widgets/profile/settings_tile.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
