@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 abstract class ApiCalls {
@@ -11,7 +12,9 @@ abstract class ApiCalls {
 
   static Future<http.Response> postData(String url, Object? body,
       [Map<String, String>? headers]) async {
-    return await http.post(Uri.parse(url), body: body, headers: headers);
+    http.Response response = await http.post(Uri.parse(url), body: body, headers: headers);
+    debugPrint('response: ${response.body}');
+    return response;
   }
 
   static Future<http.Response> putData(String url, Object? body,
@@ -42,6 +45,7 @@ abstract class ApiCalls {
     //? sending the request and getting the response
     http.StreamedResponse streamedResponse = await request.send();
     http.Response response = await http.Response.fromStream(streamedResponse);
+    debugPrint('response: ${response.body}');
     return response;
   }
 }

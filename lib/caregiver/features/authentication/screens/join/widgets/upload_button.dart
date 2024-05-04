@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:dochome/caregiver/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CUploadButton extends StatefulWidget {
@@ -13,10 +15,13 @@ class CUploadButton extends StatefulWidget {
     required this.title,
     required this.icon,
     required this.source,
+    required this.index
+
   });
   final String title;
   final IconData icon;
   final ImageSource source;
+  final int index;
 
   @override
   State<CUploadButton> createState() => _CUploadButtonState();
@@ -27,8 +32,14 @@ class _CUploadButtonState extends State<CUploadButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        _pickImage(widget.source);
+      onTap: () async {
+        final pickedFile = await ImagePicker().pickImage(source: widget.source);
+        if (pickedFile != null) {
+          setState(() {
+            image = File(pickedFile.path);
+            context.read<CaregiverAuthBloc>().files[widget.index] = image;
+          });
+        }
       },
       child: Column(
         children: [
@@ -56,19 +67,5 @@ class _CUploadButtonState extends State<CUploadButton> {
         ],
       ),
     );
-  }
-
-  Future<void> _pickImage(ImageSource source) async {
-    try {
-      final pickedFile = await ImagePicker().pickImage(source: source);
-      if (pickedFile != null) {
-        // Do something with the picked image (e.g., display it in an Image widget)
-        setState(() {
-          image = File(pickedFile.path);
-        });
-      }
-    } catch (e) {
-      // print('Error picking image: $e');
-    }
   }
 }

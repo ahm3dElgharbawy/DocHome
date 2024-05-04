@@ -1,4 +1,5 @@
 import 'package:dochome/caregiver/features/authentication/screens/join/join.dart';
+import 'package:dochome/caregiver/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/caregiver/features/navigation_menu.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
@@ -21,77 +22,45 @@ class CareGiverLoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
-          child: Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 200,
-                  child: Image.asset(CImages.appLogo),
-                ),
-                // const SizedBox(height: CSizes.spaceBtwItems),
-                Text("Login Caregiver",
-                    style: CAppStyles.styleSemiBold25(context)),
-                const SizedBox(height: CSizes.spaceBtwItems),
-                CTextFieldWithInnerShadow(
-                  hintText: "Email",
-                  margin: EdgeInsets.zero,
-                  prefixIcon: const Icon(Icons.email),
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) => CTextFieldValidator.emailCheck(value),
-                ),
-                const SizedBox(height: CSizes.spaceBtwInputFields),
-                const CTextFieldWithInnerShadow(
-                  hintText: "Password",
-                  margin: EdgeInsets.zero,
-                  prefixIcon: Icon(Icons.lock),
-                  obscureText: true,
-                ),
-                //? remember me
-                Row(
-                  children: [
-                    Checkbox(value: true, onChanged: (val) {}),
-                    Text("Remember me",
-                        style: CAppStyles.styleRegular13(context)),
-                  ],
-                ),
-                CRoundedButton(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 200,
+                child: Image.asset(CImages.appLogo),
+              ),
+              // const SizedBox(height: CSizes.spaceBtwItems),
+              Text("Login Caregiver",
+                  style: CAppStyles.styleSemiBold25(context)),
+              const SizedBox(height: CSizes.spaceBtwItems),
+              //? login form
+              const CCaregiverLoginForm(),
+              //? don't have an account
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Not A Caregiver Yet ? ",
+                    style: CAppStyles.styleRegular16(context),
+                  ),
+                  TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
+                      CHelperFunctions.navigateToScreen(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const CCaregiverNavigationMenu(),
-                        ),
+                        const JoinScreen(),
                       );
                     },
-                    title: "Sign in"),
-                //? don't have an account
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Not A Caregiver Yet ? ",
-                      style: CAppStyles.styleRegular16(context),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        CHelperFunctions.navigateToScreen(
-                          context,
-                          const JoinScreen(),
-                        );
-                      },
-                      child: Text(
-                        "Join us",
-                        style: CAppStyles.styleSemiBold16(context).copyWith(
-                          color: CColors.primary,
-                          decoration: TextDecoration.underline,
-                        ),
+                    child: Text(
+                      "Join us",
+                      style: CAppStyles.styleSemiBold16(context).copyWith(
+                        color: CColors.primary,
+                        decoration: TextDecoration.underline,
                       ),
                     ),
-                  ],
-                )
-              ],
-            ),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
       ),

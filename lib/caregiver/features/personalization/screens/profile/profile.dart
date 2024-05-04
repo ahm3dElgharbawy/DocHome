@@ -3,8 +3,13 @@ import 'package:dochome/common/widgets/dialogs/languages_dialog.dart';
 import 'package:dochome/common/widgets/profile/profile_header.dart';
 import 'package:dochome/common/widgets/profile/settings_list.dart';
 import 'package:dochome/common/widgets/profile/settings_tile.dart';
+import 'package:dochome/patient/features/authentication/screens/login/login.dart';
+import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
+import 'package:dochome/patient/features/intro/screens/welcome/welcome.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
+import 'package:dochome/utils/helpers/extension.dart';
+import 'package:dochome/utils/services/preference_services.dart';
 import 'package:flutter/material.dart';
 
 class CaregiverProfileScreen extends StatelessWidget {
@@ -56,16 +61,23 @@ class CaregiverProfileScreen extends StatelessWidget {
                       leadingBackgroundColor: Colors.deepPurpleAccent,
                       onTap: () {
                         showDialog(
-                          context: context,
-                          builder: (context) => const CLanguagesDialog()
-                        );
+                            context: context,
+                            builder: (context) => const CLanguagesDialog());
                       },
                     ),
                     const Divider(
                       height: 0,
                       thickness: 1,
                     ),
-                    const CSettingsTile(
+                    CSettingsTile(
+                      onTap: () {
+                        PreferenceServices.remove(
+                            "CAREGIVER"); // remove local patient data
+                        PreferenceServices.setInt("STEP", 1);
+                        context.pushReplacementAll(
+                          const ContinueAsScreen(),
+                        );
+                      },
                       title: "Logout",
                       leadingIcon: Icons.logout,
                       leadingBackgroundColor: Colors.red,

@@ -20,6 +20,7 @@ class CLanguagesDialog extends StatelessWidget {
       },
       builder: (context, state) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: state is ChangeLocaleState
               ? Column(
                   mainAxisSize: MainAxisSize.min,

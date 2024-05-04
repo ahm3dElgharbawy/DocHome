@@ -5,6 +5,7 @@ abstract class CStrings {
   static const String sendOtpSuccess = "Send otp success";
   static const String checkOtpSuccess = "check otp success";
   static const String resetPasswordSuccess = "Reset password success";
+  static const String caregiverSuccessRegister = "Join request sended successfully, Please wait until the admin accept you";
   // failure messages
   static const String invalidCredentials = "invalid credentials";
   static const String offlineFailure = "Your are offline";

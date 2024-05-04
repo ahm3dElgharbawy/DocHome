@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppProviders.init(), 
+      providers: AppBlocProviders.init(), 
       child: BlocBuilder<LocaleCubit, LocaleState>(
         builder: (context, state) {
           return state is ChangeLocaleState

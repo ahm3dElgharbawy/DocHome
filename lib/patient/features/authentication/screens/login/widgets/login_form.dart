@@ -40,7 +40,6 @@ class CLoginForm extends StatelessWidget {
               message: state.message,
             );
           }
-          debugPrint('message: ${state.message}');
         }
       },
       builder: (context, state) {

@@ -25,46 +25,44 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (event is LoginPatientEvent) {
         emit(LoadingState()); // show loading indicator in the ui
         // ------------------------
-        Either<Failure, Patient> eitherFailureOrSuccess = await repoImp
-            .patientLogin(email: event.email, password: event.password);
+        final eitherFailureOrSuccess = await repoImp.patientLogin(
+            email: event.email, password: event.password);
         // ------------------------
         emit(eitherFailureOrSuccess.fold(
           (failure) => FailureState(
-            message: _mapFailureToMessage(failure),
+            message: failure.message,
           ),
           (data) => SuccessState(message: CStrings.loginSuccess, data: data),
         ));
       } else if (event is RegisterPatientEvent) {
         emit(LoadingState());
-        Either<Failure, Unit> eitherFailureOrSuccess =
+        final eitherFailureOrSuccess =
             await repoImp.patientRegister(event.patientData);
         emit(_mapFailureOrSuccessState(
             eitherFailureOrSuccess, CStrings.registerSuccess));
       } else if (event is SendOtpEvent) {
         emit(LoadingState());
-        Either<Failure, Unit> eitherFailureOrSuccess =
-            await repoImp.sendOtp(event.email);
+        final eitherFailureOrSuccess = await repoImp.sendOtp(event.email);
         emit(_mapFailureOrSuccessState(
             eitherFailureOrSuccess, CStrings.sendOtpSuccess));
       } else if (event is CheckOtpEvent) {
         emit(LoadingState());
-        Either<Failure, Unit> eitherFailureOrSuccess =
+        final eitherFailureOrSuccess =
             await repoImp.checkOtp(event.email, event.otp);
         emit(_mapFailureOrSuccessState(
             eitherFailureOrSuccess, CStrings.checkOtpSuccess));
       } else if (event is ResetPasswordEvent) {
         emit(LoadingState());
-        Either<Failure, Unit> eitherFailureOrSuccess =
+        final eitherFailureOrSuccess =
             await repoImp.resetPassword(event.email, event.newPassword);
         emit(_mapFailureOrSuccessState(
             eitherFailureOrSuccess, CStrings.resetPasswordSuccess));
       } else if (event is FetchCentersEvent) {
         emit(LoadingCentersState());
-        Either<Failure, List<CenterModel>> eitherFailureOrSuccess =
-            await repoImp.getCenters();
+        final eitherFailureOrSuccess = await repoImp.getCenters();
         emit(eitherFailureOrSuccess.fold(
           (failure) => FailureState(
-            message: _mapFailureToMessage(failure),
+            message: failure.message,
           ),
           (centers) => LoadedCentersState(centers: centers),
         ));
@@ -73,27 +71,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   AuthState _mapFailureOrSuccessState(
-      Either eitherFailureOrSuccess, String successMessage) {
+      Either<Failure,dynamic> eitherFailureOrSuccess, String successMessage) {
     return eitherFailureOrSuccess.fold(
       (failure) => FailureState(
-        message: _mapFailureToMessage(failure),
+        message: failure.message,
       ),
       (success) => SuccessState(message: successMessage),
     );
   }
 
-  String _mapFailureToMessage(Failure failure) {
-    switch (failure.runtimeType) {
-      case InvalidCredentialsFailure:
-        return CStrings.invalidCredentials;
-      case NotFoundFailure:
-        return CStrings.notFoundFailure;
-      case OfflineFailure:
-        return CStrings.offlineFailure;
-      default:
-        return CStrings.serverFailure;
-    }
-  }
 
   @override
   Future<void> close() {

@@ -3,9 +3,9 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-class CDropdown<T> extends StatefulWidget {
+class CDropdown extends StatefulWidget {
   const CDropdown({super.key, required this.items, required this.hint, this.validator,this.onChanged});
-  final List<T?> items;
+  final List items;
   final String hint;
   final String? Function(String?)? validator;
   final void Function(String?)? onChanged;

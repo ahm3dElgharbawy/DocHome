@@ -48,7 +48,6 @@ class _CSignupFormState extends State<CSignupForm> {
             context: context,
             message: state.message,
           );
-          debugPrint('message: ${state.message}');
         }
       },
       builder: (context, state) => IgnorePointer(

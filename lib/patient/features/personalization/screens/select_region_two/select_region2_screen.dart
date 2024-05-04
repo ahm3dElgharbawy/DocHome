@@ -120,7 +120,6 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
                   horizontal: MediaQuery.of(context).size.width * 0.05),
               child: CRoundedButton(
                 onPressed: () {
-                  print(region);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
