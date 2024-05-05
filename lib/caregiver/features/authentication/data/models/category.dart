@@ -1,28 +1,36 @@
 
 class CategoryModel {
   final int id;
-  final String name;
-  final String description;
+  final String nameAr;
+  final String nameEn;
+  final String descriptionAr;
+  final String descriptionEn;
   final String image;
 
   CategoryModel({
     required this.id,
-    required this.name,
-    required this.description,
+    required this.nameAr,
+    required this.nameEn,
+    required this.descriptionAr,
+    required this.descriptionEn,
     required this.image,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
         id: json["id"],
-        name: json["name"],
-        description: json["description"],
+        nameAr: json["name_ar"],
+        nameEn: json["name_en"],
+        descriptionAr: json["description_ar"],
+        descriptionEn: json["description_en"],
         image: json["image"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "name": name,
-        "description": description,
+        "name_ar": nameAr,
+        "name_en": nameEn,
+        "description_ar": descriptionAr,
+        "description_en": descriptionEn,
         "image": image,
       };
 }

@@ -14,6 +14,7 @@ import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class CSignupForm extends StatefulWidget {
   const CSignupForm({super.key});
@@ -23,9 +24,7 @@ class CSignupForm extends StatefulWidget {
 }
 
 class _CSignupFormState extends State<CSignupForm> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late AuthBloc authBloc;
-  String? centerId;
   @override
   void initState() {
     super.initState();
@@ -53,7 +52,7 @@ class _CSignupFormState extends State<CSignupForm> {
       builder: (context, state) => IgnorePointer(
         ignoring: state is LoadingState ? true : false,
         child: Form(
-          key: formKey,
+          key: authBloc.patientRegisterFormKey,
           child: Column(
             children: [
               CTextFieldWithInnerShadow(
@@ -97,32 +96,23 @@ class _CSignupFormState extends State<CSignupForm> {
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               //? Centers dropdown menu
-              if (state is LoadingCentersState)
-                const CLoadingWidget(indicatorColor: CColors.primary),
-              if (state is FailureState)
-                const CDropdown(
-                  items: [],
-                  hint: "Center",
-                  validator: CTextFieldValidator.requiredTextField,
-                ),
-              if (state is LoadedCentersState)
-                CDropdown(
-                  items: state.centers,
-                  hint: "Center",
-                  validator: CTextFieldValidator.requiredTextField,
-                  onChanged: (val) {
-                    centerId = val;
-                  },
-                ),
+              CDropdown(
+                items: authBloc.centers ?? [],
+                hint: "Center",
+                validator: CTextFieldValidator.requiredTextField,
+                onChanged: (centerId) {
+                  authBloc.centerId = centerId;
+                },
+              ),
               //? terms and conditions
               const CTermsAndConditions(),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CRoundedButton(
-                onPressed: (){
-                  registerUser();
+                onPressed: () {
+                  authBloc.registerPatient(context);
                 },
                 title: "Sign up",
-                child: state is LoadingState ? const CLoadingWidget() : null,
+                child: state is RegisterPatientLoadingState ? const CLoadingWidget() : null,
               ),
             ],
           ),
@@ -131,32 +121,5 @@ class _CSignupFormState extends State<CSignupForm> {
     );
   }
 
-  registerUser() {
-    if (formKey.currentState!.validate()) {
-      List<TextEditingController> controllers = authBloc.signupControllers;
-      //? show error on confirmation password not match
-      if (controllers.elementAt(3).text != controllers.elementAt(4).text) {
-        return CHelperFunctions.showSnackBar(
-            context: context, message: CStrings.passwordNotMatch);
-      }
-      //? show error on not accept terms and conditions
-      if (!authBloc.agreeTerms) {
-        return CHelperFunctions.showSnackBar(
-            context: context, message: CStrings.agreeTerms);
-      }
-      //? form data
-      Map<String, String> patientData = {
-        'name': controllers.elementAt(0).text,
-        'phone': controllers.elementAt(1).text,
-        'email': controllers.elementAt(2).text,
-        'password': controllers.elementAt(3).text,
-        'password_confirmation': controllers.elementAt(4).text,
-        'center_id': centerId!,
-      };
-      //? register event
-      context
-          .read<AuthBloc>()
-          .add(RegisterPatientEvent(patientData: patientData));
-    }
-  }
+  
 }

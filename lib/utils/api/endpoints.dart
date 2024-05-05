@@ -1,5 +1,6 @@
 abstract class EndPoints {
   static const baseUrl = "https://dochomd4u.000webhostapp.com/api";
+  // static const baseUrl = "http://192.168.248.10:8000/api";
   
   // Patient authentication routes
   static const loginPatient = "$baseUrl/login/user";

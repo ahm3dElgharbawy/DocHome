@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dochome/utils/errors/failures.dart';
 import 'package:dochome/utils/network/network_info.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
@@ -14,6 +15,10 @@ class ResponseHandler {
     try {
       if (await networkInfo.isConnected) {
         Response response = await request();
+        debugPrint("############################");
+        debugPrint(response.body);
+        debugPrint("############################");
+
         if (response.statusCode == 200 || response.statusCode == 201) {
           return right(response);
         } else {

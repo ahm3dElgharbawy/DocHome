@@ -12,7 +12,7 @@ class PreferenceServices {
     return _prefsInstance!;
   }
 
-  static String getString(String key, [String? defValue]) {
+  static String? getString(String key, [String? defValue]) {
     return _prefsInstance!.getString(key) ?? defValue ?? "";
   }
 

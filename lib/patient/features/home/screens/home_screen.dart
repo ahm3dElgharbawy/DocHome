@@ -14,10 +14,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String,dynamic> localPatientData = jsonDecode(PreferenceServices.getString("PATIENT"));
+    Map<String,dynamic> localPatientData = jsonDecode(PreferenceServices.getString("PATIENT")!);
     Patient patient = Patient.fromJson(localPatientData);
     return Scaffold(
-      
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 50),

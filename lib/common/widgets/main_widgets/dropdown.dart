@@ -1,4 +1,5 @@
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/helpers/api_data_translate.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -36,7 +37,7 @@ class _CDropdownState extends State<CDropdown> {
             (item) => DropdownMenuItem<String>(
               value: item.id.toString(),
               child: Text(
-                item.name,
+                trans(enText: item.nameEn, arText:item.nameAr),
                 style: const TextStyle(
                   fontSize: 14,
                 ),

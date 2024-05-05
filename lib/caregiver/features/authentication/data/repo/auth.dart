@@ -4,10 +4,10 @@ import 'package:dartz/dartz.dart';
 import 'package:dochome/caregiver/features/authentication/data/models/caregiver.dart';
 import 'package:dochome/caregiver/features/authentication/data/models/category.dart';
 import 'package:dochome/patient/features/authentication/data/models/center.dart';
-import 'package:dochome/utils/endpoints/endpoints.dart';
-import 'package:dochome/utils/services/api_calls.dart';
+import 'package:dochome/utils/api/endpoints.dart';
+import 'package:dochome/utils/api/api_calls.dart';
 import 'package:dochome/utils/network/network_info.dart';
-import 'package:dochome/utils/services/response_handler.dart';
+import 'package:dochome/utils/api/response_handler.dart';
 import 'package:http/http.dart' as http;
 import 'package:dochome/utils/errors/failures.dart';
 

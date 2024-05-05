@@ -18,7 +18,7 @@ class CUploadsButtons extends StatelessWidget {
         ),
         CUploadButton(
           title: "Identity\ncard",
-          icon: Icons.card_giftcard,
+          icon: Icons.contact_emergency,
           source: ImageSource.gallery,
           index: 1,
         ),

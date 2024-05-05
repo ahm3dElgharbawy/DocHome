@@ -37,16 +37,12 @@ class CaregiverAuthBloc extends Bloc<CaregiverAuthEvent, CaregiverAuthState> {
         final eitherFailureOrSuccess = await repoImp.caregiverLogin(
             email: event.email, password: event.password);
         // ------------------------
-        print("##################################3ddd4");
         emit(
           eitherFailureOrSuccess.fold(
             (failure) => FailureState(
               message: failure.message,
             ),
             (data) {
-              print("###############################");
-              print(data);
-              print("###############################");
               return SuccessLoginCaregiver(
                   message: CStrings.loginSuccess, caregiver: data);
             },
@@ -113,11 +109,6 @@ class CaregiverAuthBloc extends Bloc<CaregiverAuthEvent, CaregiverAuthState> {
       "center_id": centerId!,
       "category_id": categoryId!,
     };
-    print("###################################");
-    debugPrint('images: $images');
-    debugPrint('caregiverData: $caregiverData');
-    print("###################################");
-
     add(RegisterCaregiverEvent(caregiverData: caregiverData, files: images));
   }
 

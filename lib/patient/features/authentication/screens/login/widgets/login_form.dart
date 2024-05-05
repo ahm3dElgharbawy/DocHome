@@ -19,7 +19,6 @@ class CLoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthBloc authBloc = context.read<AuthBloc>();
-    GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) async {
@@ -46,7 +45,7 @@ class CLoginForm extends StatelessWidget {
         return IgnorePointer(
           ignoring: state is LoadingState ? true : false,
           child: Form(
-            key: formKey,
+            key: authBloc.patientLoginFormKey,
             child: Column(
               children: [
                 CTextFieldWithInnerShadow(
@@ -71,7 +70,7 @@ class CLoginForm extends StatelessWidget {
                 const CRememberMe(),
                 CRoundedButton(
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
+                    if (authBloc.patientLoginFormKey.currentState!.validate()) {
                       authBloc.add(LoginPatientEvent(
                         email: authBloc.loginControllers.elementAt(0).text,
                         password: authBloc.loginControllers.elementAt(1).text,
@@ -79,7 +78,7 @@ class CLoginForm extends StatelessWidget {
                     }
                   },
                   title: "Sign in",
-                  child: state is LoadingState ? const CLoadingWidget() : null,
+                  child: state is LoginPatientLoadingState ? const CLoadingWidget() : null,
                 ),
               ],
             ),
