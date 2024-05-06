@@ -1,6 +1,6 @@
 import 'package:dochome/patient/features/find_caregiver/screens/nursing/nursing_stuff.dart';
-import 'package:dochome/patient/features/find_caregiver/widgets/custom_app_bar.dart';
-import 'package:dochome/patient/features/find_caregiver/widgets/services_list_view.dart';
+import 'package:dochome/patient/features/find_caregiver/screens/widgets/custom_app_bar.dart';
+import 'package:dochome/patient/features/find_caregiver/screens/widgets/services_list_view.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 

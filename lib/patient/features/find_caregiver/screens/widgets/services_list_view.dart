@@ -1,5 +1,5 @@
-import 'package:dochome/patient/features/find_caregiver/models/service_model.dart';
-import 'package:dochome/patient/features/find_caregiver/widgets/service_item.dart';
+import 'package:dochome/patient/features/find_caregiver/data/models/service_model.dart';
+import 'package:dochome/patient/features/find_caregiver/screens/widgets/service_item.dart';
 import 'package:flutter/material.dart';
 
 class ServicesListView extends StatelessWidget {

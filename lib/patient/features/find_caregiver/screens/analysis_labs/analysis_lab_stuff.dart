@@ -1,4 +1,4 @@
-import 'package:dochome/patient/features/find_caregiver/widgets/custom_app_bar.dart';
+import 'package:dochome/patient/features/find_caregiver/screens/widgets/custom_app_bar.dart';
 import 'package:dochome/patient/features/home/models/doctor_details_model.dart';
 import 'package:dochome/patient/features/home/widgets/doctor_info.dart';
 import 'package:flutter/material.dart';
