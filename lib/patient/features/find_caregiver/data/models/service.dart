@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Service extends Equatable {
+class ServiceMod extends Equatable {
   final int? id;
   final String? nameAr;
   final String? nameEn;
@@ -9,7 +9,7 @@ class Service extends Equatable {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  const Service({
+  const ServiceMod({
     this.id,
     this.nameAr,
     this.nameEn,
@@ -19,7 +19,7 @@ class Service extends Equatable {
     this.updatedAt,
   });
 
-  factory Service.fromJson(Map<String, dynamic> json) => Service(
+  factory ServiceMod.fromJson(Map<String, dynamic> json) => ServiceMod(
         id: json['id'] as int?,
         nameAr: json['name_ar'] as String?,
         nameEn: json['name_en'] as String?,
