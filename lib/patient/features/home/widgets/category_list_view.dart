@@ -1,8 +1,8 @@
-import 'package:dochome/patient/features/find_caregiver/screens/analysis_labs/analysis_lab_category.dart';
-import 'package:dochome/patient/features/find_caregiver/screens/nursing/nursing_category.dart';
-import 'package:dochome/patient/features/find_caregiver/screens/physical_therapy/pysical_therapy_category.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
+import 'package:dochome/patient/features/find_caregiver/views/screens/services_list.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import './category_list_view_item.dart';
 
 class CategoryListView extends StatelessWidget {
@@ -19,8 +19,12 @@ class CategoryListView extends StatelessWidget {
             image: CImages.nursingCategory,
             text: 'Nursing',
             onTap: () {
+              BlocProvider.of<ServiceCubit>(context)
+            .getAllServices(id: 1);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const NursingCategory();
+                return const ServicesList(
+                  title: 'Nursing',
+                );
               }));
             },
           ),
@@ -31,8 +35,10 @@ class CategoryListView extends StatelessWidget {
             image: CImages.physicaltherapyCategory,
             text: 'Pysical Therapy',
             onTap: () {
+               BlocProvider.of<ServiceCubit>(context)
+            .getAllServices(id: 2);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const PhysicalTherapyCategory();
+                return const ServicesList(title: 'Pysical Therapy',);
               }));
             },
           ),
@@ -43,8 +49,10 @@ class CategoryListView extends StatelessWidget {
             image: CImages.analysisabsCategory,
             text: 'Analysis labs',
             onTap: () {
+               BlocProvider.of<ServiceCubit>(context)
+            .getAllServices(id: 3);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const AnalysisLabCategory();
+                return const ServicesList(title: 'Analysis Labs',);
               }));
             },
           ),

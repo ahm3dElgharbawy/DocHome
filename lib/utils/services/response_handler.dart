@@ -14,7 +14,7 @@ class ResponseHandler {
     try {
       if (await networkInfo.isConnected) {
         Response response = await request();
-        print(response.body);
+        // print(response.body);
         if (response.statusCode == 200 || response.statusCode == 201) {
           return right(response);
         } else {
