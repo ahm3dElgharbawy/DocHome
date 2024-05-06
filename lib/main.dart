@@ -17,7 +17,7 @@ import 'localization/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PreferenceServices.init();
-  ServiceCubit(FindCargiverRepoImpl(ApiService(Dio()))).getAllServices();
+  FindCargiverRepoImpl().getAllServices();
   runApp(const MyApp());
 }
 

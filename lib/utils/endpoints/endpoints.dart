@@ -1,6 +1,7 @@
 abstract class EndPoints {
   static const baseUrl = "https://dochomd4u.000webhostapp.com/api";
   
+  
   // Patient authentication routes
   static const loginPatient = "$baseUrl/login/user";
   static const registerPatient = "$baseUrl/register/user";
@@ -23,7 +24,8 @@ abstract class EndPoints {
   //? [get] provide 'categoryID' when using this end point like => getCategory + "1"
   static const getCategory = "$baseUrl/categories/";
   //? [get] all services in the category
-  static const allServices = "$baseUrl/categories/{id}/services";
+  // static const allServices = "$baseUrl/categories/4/services";
+  static const allServices = "$baseUrl/categories/1/services";
   //? [get] provide 'categoryID' when using this end point like => getCategory + "1"
   static const getService = "$baseUrl/services/{id}";
 
