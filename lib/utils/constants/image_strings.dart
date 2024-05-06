@@ -4,8 +4,10 @@ class CImages {
   static const String appLogo = "assets/logos/main-logo.png";
 
   // -- categories
-  static const String nursingCategory = "assets/logos/fontisto_nursing-home.svg";
-  static const String physicaltherapyCategory = "assets/logos/medical-icon_i-physical-therapy.svg";
+  static const String nursingCategory =
+      "assets/logos/fontisto_nursing-home.svg";
+  static const String physicaltherapyCategory =
+      "assets/logos/medical-icon_i-physical-therapy.svg";
   static const String analysisabsCategory = "assets/logos/Vector (1).svg";
 
   // -- Images
@@ -13,16 +15,19 @@ class CImages {
   static const String caregiver = "assets/images/caregiver.png";
   static const String user = "assets/images/user.png";
   static const String doctorImage = "assets/logos/doctorImage.svg";
-  static const String bookings = 'assets/images/streamline_waiting-appointments-calendar.svg';
+  static const String bookings =
+      'assets/images/streamline_waiting-appointments-calendar.svg';
   // -- Onboarding images
   static const String onBoarding1 = "assets/images/onboarding/onboarding-1.png";
   static const String onBoarding2 = "assets/images/onboarding/onboarding-2.png";
   static const String onBoarding3 = "assets/images/onboarding/onboarding-3.png";
 
   // -- Reset password images
-  static const String forgotPassword = "assets/images/password/forgot-password.svg";
+  static const String forgotPassword =
+      "assets/images/password/forgot-password.svg";
   static const String otp = "assets/images/password/otp.svg";
-  static const String resetPassword = "assets/images/password/reset-password.svg";
+  static const String resetPassword =
+      "assets/images/password/reset-password.svg";
 
   // -- Icons
   static const String apple = "assets/icons/social-media/apple.png";
@@ -44,7 +49,4 @@ class CImages {
   static const String doc1 = "assets/images/booking/doctor1.jpg";
   static const String doc2 = "assets/images/booking/doctor2.jpg";
   static const String doc3 = "assets/images/booking/doctor3.jpg";
-  
-
 }
-

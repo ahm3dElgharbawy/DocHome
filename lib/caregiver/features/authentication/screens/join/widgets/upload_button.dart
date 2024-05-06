@@ -10,14 +10,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CUploadButton extends StatefulWidget {
-  const CUploadButton({
-    super.key,
-    required this.title,
-    required this.icon,
-    required this.source,
-    required this.index
-
-  });
+  const CUploadButton(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.source,
+      required this.index});
   final String title;
   final IconData icon;
   final ImageSource source;

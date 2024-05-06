@@ -1,6 +1,5 @@
-
 import 'package:bloc/bloc.dart';
-import 'package:dochome/patient/features/find_caregiver/data/models/service.dart';
+import 'package:dochome/patient/features/find_caregiver/data/models/service_model.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo.dart';
 import 'package:equatable/equatable.dart';
 

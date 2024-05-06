@@ -11,7 +11,8 @@ class ChatTile extends StatelessWidget {
     required this.image,
     required this.name,
     required this.unReadMessages,
-    this.isLastMessage = false, this.onTap,
+    this.isLastMessage = false,
+    this.onTap,
   });
   final String lastMessage;
   final String time;
@@ -36,7 +37,8 @@ class ChatTile extends StatelessWidget {
           ),
           subtitle: Text(
             lastMessage,
-            style: CAppStyles.styleRegular14(context).copyWith(color: const Color(0xff90A4AE)),
+            style: CAppStyles.styleRegular14(context)
+                .copyWith(color: const Color(0xff90A4AE)),
             maxLines: 1,
           ),
           onTap: onTap,
@@ -58,15 +60,14 @@ class ChatTile extends StatelessWidget {
                   width: 23,
                   height: 23,
                   color: CColors.primary,
-                  child: Text(
-                    unReadMessages > 9 ? "+9" : "$unReadMessages",
-                    style: CAppStyles.styleSemiBold13(context).copyWith(color: Colors.white)
-                  ),
+                  child: Text(unReadMessages > 9 ? "+9" : "$unReadMessages",
+                      style: CAppStyles.styleSemiBold13(context)
+                          .copyWith(color: Colors.white)),
                 ),
               Text(
                 time,
-                style: CAppStyles.styleRegular14(context).copyWith(color: const Color(0xff90A4AE)),
-
+                style: CAppStyles.styleRegular14(context)
+                    .copyWith(color: const Color(0xff90A4AE)),
               ),
             ],
           ),

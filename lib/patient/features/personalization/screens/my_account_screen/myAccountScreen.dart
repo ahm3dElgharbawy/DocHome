@@ -8,7 +8,6 @@ import '../../../../../common/widgets/buttons/rounded_button.dart';
 import '../../../../../common/widgets/text_fields/text_field_with_shadow.dart';
 import '../../../../../utils/constants/image_strings.dart';
 
-
 class MyAccountScreen extends StatelessWidget {
   const MyAccountScreen({super.key});
 
@@ -35,13 +34,15 @@ class MyAccountScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomLeft,
                       child: CCircularContainer(
-                        onTap: (){
-                        },
-                        color: Colors.white,
-                        height: screenWidth*.09,
-                        width: screenWidth*.09,
-                        child: Icon(Icons.camera_alt,size: screenWidth*.05,color: Colors.black,)
-                      ),
+                          onTap: () {},
+                          color: Colors.white,
+                          height: screenWidth * .09,
+                          width: screenWidth * .09,
+                          child: Icon(
+                            Icons.camera_alt,
+                            size: screenWidth * .05,
+                            color: Colors.black,
+                          )),
                     )
                   ],
                 ),
@@ -80,7 +81,10 @@ class MyAccountScreen extends StatelessWidget {
               SizedBox(height: screenHeight * 0.025),
               TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const SelectRegion1Screen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SelectRegion1Screen()));
                 },
                 child: Text(
                   'Choose your region?',
@@ -112,5 +116,3 @@ class MyAccountScreen extends StatelessWidget {
     );
   }
 }
-
-

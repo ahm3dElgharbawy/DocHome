@@ -54,12 +54,12 @@ class CCaregiverLoginForm extends StatelessWidget {
                 if (context.mounted) {
                   context.pushReplacementAll(const CCaregiverNavigationMenu());
                 }
-              }
-              else if(state is FailureState){
-                CHelperFunctions.showSnackBar(context: context, message: state.message);
+              } else if (state is FailureState) {
+                CHelperFunctions.showSnackBar(
+                    context: context, message: state.message);
               }
             },
-            builder:(context,state)=> CRoundedButton(
+            builder: (context, state) => CRoundedButton(
               onPressed: () {
                 if (bloc.loginFormKey.currentState!.validate()) {
                   bloc.add(
@@ -71,7 +71,7 @@ class CCaregiverLoginForm extends StatelessWidget {
                 }
               },
               title: "Sign in",
-              child: state is LoadingState ? const CLoadingWidget() : null ,
+              child: state is LoadingState ? const CLoadingWidget() : null,
             ),
           ),
         ],

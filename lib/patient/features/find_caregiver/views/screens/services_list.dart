@@ -5,22 +5,24 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class ServicesList extends StatelessWidget {
-  const ServicesList({super.key, required this.title,});
+  const ServicesList({
+    super.key,
+    required this.title,
+  });
   final String title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CustomAppBar(
+      appBar: CustomAppBar(
         title: '$title Services',
-        
       ),
-      body:const  Padding(
-        padding:  EdgeInsets.only(left: 20, right: 20, top: 20),
+      body: const Padding(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 20),
         child: ServicesListView(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context){
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
             return const StuffList();
           }));
         },

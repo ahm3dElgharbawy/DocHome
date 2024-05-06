@@ -71,7 +71,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   AuthState _mapFailureOrSuccessState(
-      Either<Failure,dynamic> eitherFailureOrSuccess, String successMessage) {
+      Either<Failure, dynamic> eitherFailureOrSuccess, String successMessage) {
     return eitherFailureOrSuccess.fold(
       (failure) => FailureState(
         message: failure.message,
@@ -79,7 +79,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (success) => SuccessState(message: successMessage),
     );
   }
-
 
   @override
   Future<void> close() {

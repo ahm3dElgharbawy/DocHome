@@ -12,7 +12,7 @@ final class ServiceInitial extends ServiceState {}
 final class ServiceLoding extends ServiceState {}
 
 final class ServiceSuccess extends ServiceState {
-  final List<ServiceMod> services;
+  final List<ServiceModel> services;
 
   const ServiceSuccess({required this.services});
 }

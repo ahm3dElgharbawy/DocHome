@@ -13,14 +13,15 @@ class CLanguagesDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LocaleCubit, LocaleState>(
-      listener: (context,state){
-        if(state is ChangeLocaleState){
+      listener: (context, state) {
+        if (state is ChangeLocaleState) {
           Navigator.pop(context);
         }
       },
       builder: (context, state) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           content: state is ChangeLocaleState
               ? Column(
                   mainAxisSize: MainAxisSize.min,
@@ -34,7 +35,10 @@ class CLanguagesDialog extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Arabic".tr(context),style: CAppStyles.styleMedium16(context),),
+                          Text(
+                            "Arabic".tr(context),
+                            style: CAppStyles.styleMedium16(context),
+                          ),
                           if (state.locale.languageCode == 'ar')
                             const Icon(
                               Icons.circle_rounded,
@@ -53,7 +57,10 @@ class CLanguagesDialog extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("English".tr(context),style: CAppStyles.styleMedium16(context),),
+                          Text(
+                            "English".tr(context),
+                            style: CAppStyles.styleMedium16(context),
+                          ),
                           if (state.locale.languageCode == 'en')
                             const Icon(
                               Icons.circle_rounded,

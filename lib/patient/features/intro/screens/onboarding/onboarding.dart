@@ -44,7 +44,8 @@ class OnBoardingScreen extends StatelessWidget {
                             : "Next".tr(context),
                         onPressed: state.pageIndex == 2
                             ? () {
-                                PreferenceServices.setInt("STEP", 1); // To ignore onboarding next time
+                                PreferenceServices.setInt("STEP",
+                                    1); // To ignore onboarding next time
                                 //? navigate to continue as screen
                                 Navigator.pushReplacement(
                                   context,

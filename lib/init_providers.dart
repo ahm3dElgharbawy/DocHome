@@ -4,6 +4,7 @@ import 'package:dochome/localization/cubit/locale_cubit.dart';
 import 'package:dochome/patient/features/authentication/data/repo/auth.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo_impl.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/cargiver_cubit/cargiver_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
 import 'package:dochome/utils/network/network_info.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,6 +37,9 @@ abstract class AppBlocProviders {
       BlocProvider(
           create: (context) =>
               ServiceCubit(FindCargiverRepoImpl())..getAllServices()),
+      BlocProvider(
+          create: (context) =>
+              CargiverCubit(FindCargiverRepoImpl())..getAllCargivers()),
     ];
   }
 }

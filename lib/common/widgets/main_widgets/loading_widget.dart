@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CLoadingWidget extends StatelessWidget {
-  const CLoadingWidget({super.key, this.indicatorColor=Colors.white});
+  const CLoadingWidget({super.key, this.indicatorColor = Colors.white});
   final Color indicatorColor;
 
   @override

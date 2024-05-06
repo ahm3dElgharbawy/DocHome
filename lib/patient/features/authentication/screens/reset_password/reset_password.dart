@@ -108,7 +108,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             }
                           },
                           title: "Save",
-                          child: state is LoadingState ? const CLoadingWidget() : null,
+                          child: state is LoadingState
+                              ? const CLoadingWidget()
+                              : null,
                         );
                       },
                     )

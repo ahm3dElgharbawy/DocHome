@@ -11,13 +11,15 @@ sealed class AuthEvent extends Equatable {
 class LoginPatientEvent extends AuthEvent {
   final String email;
   final String password;
-  const LoginPatientEvent({required this.email,required this.password});
+  const LoginPatientEvent({required this.email, required this.password});
 }
+
 // register patient
 class RegisterPatientEvent extends AuthEvent {
-  final Map<String,String> patientData;
+  final Map<String, String> patientData;
   const RegisterPatientEvent({required this.patientData});
 }
+
 // send otp to email
 class SendOtpEvent extends AuthEvent {
   final String email;
@@ -25,6 +27,7 @@ class SendOtpEvent extends AuthEvent {
   @override
   List<Object> get props => [email];
 }
+
 // resend otp to email
 class ResendOtpEvent extends AuthEvent {
   final String email;
@@ -33,7 +36,7 @@ class ResendOtpEvent extends AuthEvent {
   List<Object> get props => [email];
 }
 
-// checking the otp 
+// checking the otp
 class CheckOtpEvent extends AuthEvent {
   final String otp;
   final String email;
@@ -46,7 +49,7 @@ class CheckOtpEvent extends AuthEvent {
 class ResetPasswordEvent extends AuthEvent {
   final String email;
   final String newPassword;
-  const ResetPasswordEvent({required this.email,required this.newPassword});
+  const ResetPasswordEvent({required this.email, required this.newPassword});
   @override
   List<Object> get props => [newPassword];
 }
@@ -56,8 +59,3 @@ class FetchCentersEvent extends AuthEvent {
   @override
   List<Object> get props => [];
 }
-
-
-
-
-

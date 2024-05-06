@@ -118,7 +118,7 @@ class _CSignupFormState extends State<CSignupForm> {
               const CTermsAndConditions(),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CRoundedButton(
-                onPressed: (){
+                onPressed: () {
                   registerUser();
                 },
                 title: "Sign up",

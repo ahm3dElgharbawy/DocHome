@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import '../../constants/sizes.dart';
 
 abstract class CTextFieldTheme {
-  static InputDecorationTheme lightTextFieldDecorationTheme = InputDecorationTheme(
+  static InputDecorationTheme lightTextFieldDecorationTheme =
+      InputDecorationTheme(
     errorMaxLines: 3,
     prefixIconColor: CColors.darkGrey,
     suffixIconColor: CColors.darkGrey,
     contentPadding: const EdgeInsets.symmetric(vertical: 15),
-    labelStyle: const TextStyle().copyWith(fontSize: CSizes.fontSizeSm, color: CColors.black),
-    hintStyle: const TextStyle().copyWith(fontSize: CSizes.fontSizeSm, color: CColors.black),
+    labelStyle: const TextStyle()
+        .copyWith(fontSize: CSizes.fontSizeSm, color: CColors.black),
+    hintStyle: const TextStyle()
+        .copyWith(fontSize: CSizes.fontSizeSm, color: CColors.black),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: CColors.black.withOpacity(0.8)),
+    floatingLabelStyle:
+        const TextStyle().copyWith(color: CColors.black.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(CSizes.inputFieldRadius),
       borderSide: const BorderSide(width: 1, color: CColors.grey),
@@ -20,7 +24,7 @@ abstract class CTextFieldTheme {
       borderRadius: BorderRadius.circular(CSizes.inputFieldRadius),
       borderSide: const BorderSide(width: 1, color: CColors.grey),
     ),
-    focusedBorder:const OutlineInputBorder().copyWith(
+    focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(CSizes.inputFieldRadius),
       borderSide: const BorderSide(width: 1, color: CColors.dark),
     ),
@@ -34,14 +38,18 @@ abstract class CTextFieldTheme {
     ),
   );
 
-  static InputDecorationTheme darkTextFieldDecorationTheme = InputDecorationTheme(
+  static InputDecorationTheme darkTextFieldDecorationTheme =
+      InputDecorationTheme(
     errorMaxLines: 2,
     prefixIconColor: CColors.darkGrey,
     suffixIconColor: CColors.darkGrey,
     contentPadding: const EdgeInsets.symmetric(vertical: 15),
-    labelStyle: const TextStyle().copyWith(fontSize: CSizes.fontSizeSm, color: CColors.white),
-    hintStyle: const TextStyle().copyWith(fontSize: CSizes.fontSizeSm, color: CColors.white),
-    floatingLabelStyle: const TextStyle().copyWith(color: CColors.white.withOpacity(0.8)),
+    labelStyle: const TextStyle()
+        .copyWith(fontSize: CSizes.fontSizeSm, color: CColors.white),
+    hintStyle: const TextStyle()
+        .copyWith(fontSize: CSizes.fontSizeSm, color: CColors.white),
+    floatingLabelStyle:
+        const TextStyle().copyWith(color: CColors.white.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(CSizes.inputFieldRadius),
       borderSide: const BorderSide(width: 1, color: CColors.darkGrey),

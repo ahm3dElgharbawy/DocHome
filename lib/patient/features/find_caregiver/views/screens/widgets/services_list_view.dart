@@ -7,7 +7,7 @@ class ServicesListView extends StatelessWidget {
   const ServicesListView({
     super.key,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ServiceCubit, ServiceState>(
@@ -16,16 +16,18 @@ class ServicesListView extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else if (state is ServiceSuccess) {
           return ListView.builder(
-            itemCount:  state.services.length,
-            itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ServiceItem(service:state.services[index]),
-            );
-          });
-        }
-        else{
-          return const Center(child: SizedBox(child: Text('HHHHHHHHHH'),));
+              itemCount: state.services.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: ServiceItem(service: state.services[index]),
+                );
+              });
+        } else {
+          return const Center(
+              child: SizedBox(
+            child: Text('HHHHHHHHHH'),
+          ));
         }
       },
     );

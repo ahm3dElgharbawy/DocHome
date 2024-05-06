@@ -19,6 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     super.initState();
     waitAndGo(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +36,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void waitAndGo(context) {
     Future.delayed(const Duration(seconds: 3), () async {
       int? currentStep = await PreferenceServices.getInt("STEP") ?? 0;
-      final page = currentStep == 0? const OnBoardingScreen() : (currentStep == 1) ? const ContinueAsScreen() : const Home();
+      final page = currentStep == 0
+          ? const OnBoardingScreen()
+          : (currentStep == 1)
+              ? const ContinueAsScreen()
+              : const Home();
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => page),

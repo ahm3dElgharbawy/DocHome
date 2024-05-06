@@ -1,4 +1,3 @@
-
 class CategoryModel {
   final int id;
   final String name;
@@ -26,4 +25,3 @@ class CategoryModel {
         "image": image,
       };
 }
-

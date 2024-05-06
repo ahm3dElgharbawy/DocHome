@@ -1,12 +1,13 @@
-import 'package:dochome/patient/features/find_caregiver/data/models/service.dart';
+import 'package:dochome/patient/features/find_caregiver/data/models/service_model.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class ServiceItem extends StatelessWidget {
   const ServiceItem({
-    super.key, required this.service,
+    super.key,
+    required this.service,
   });
-final ServiceMod service;
+  final ServiceModel service;
   @override
   Widget build(BuildContext context) {
     return Container(

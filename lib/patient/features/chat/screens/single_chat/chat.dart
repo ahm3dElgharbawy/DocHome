@@ -4,7 +4,6 @@ import 'package:dochome/common/widgets/chat/send_message_bottom_bar.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-
 class PatientSingleChatScreen extends StatelessWidget {
   const PatientSingleChatScreen({
     super.key,
@@ -19,7 +18,7 @@ class PatientSingleChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CChatAppBar(username: userName, image: image),
+      appBar: CChatAppBar(username: userName, image: image),
       body: Column(
         children: [
           Expanded(

@@ -87,7 +87,8 @@ class _SelectRegion3ScreenState extends State<SelectRegion3Screen> {
             ),
             SizedBox(height: screenHeight * 0.13),
             CRoundedButton(
-              margin: const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
+              margin:
+                  const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                     context,
@@ -97,7 +98,6 @@ class _SelectRegion3ScreenState extends State<SelectRegion3Screen> {
               title: 'Save',
             ),
             const SizedBox(height: CSizes.spaceBtwItems),
-
           ],
         ),
       ),

@@ -59,9 +59,11 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
                     child: Text(data),
                   ),
                 ),
-                CRoundedButton(onPressed: () {
-                  Navigator.pop(context);
-                }, title: "I Agree")
+                CRoundedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    title: "I Agree")
               ],
             ),
           ),

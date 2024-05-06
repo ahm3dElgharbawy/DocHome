@@ -3,7 +3,7 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CHomeAppBar extends StatelessWidget{
+class CHomeAppBar extends StatelessWidget {
   const CHomeAppBar({super.key, this.padding = EdgeInsets.zero});
   final EdgeInsetsGeometry padding;
 
@@ -53,5 +53,4 @@ class CHomeAppBar extends StatelessWidget{
       ),
     );
   }
-
 }

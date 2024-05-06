@@ -5,7 +5,7 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CPaidStatusCard extends StatelessWidget {
-  const CPaidStatusCard({super.key,required this.isPaid});
+  const CPaidStatusCard({super.key, required this.isPaid});
   final bool isPaid;
 
   @override
@@ -26,13 +26,15 @@ class CPaidStatusCard extends StatelessWidget {
                 .copyWith(color: CColors.darkGrey),
           ),
           CRoundedContainer(
-            color: isPaid ? CColors.success.withOpacity(.14) : Colors.red.withOpacity(.14),
+            color: isPaid
+                ? CColors.success.withOpacity(.14)
+                : Colors.red.withOpacity(.14),
             radius: 6,
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Text(
-              isPaid? 'Paid' : "Un Paid",
+              isPaid ? 'Paid' : "Un Paid",
               style: CAppStyles.styleSemiBold14(context).copyWith(
-                color: isPaid? CColors.success : Colors.red,
+                color: isPaid ? CColors.success : Colors.red,
               ),
             ),
           ),

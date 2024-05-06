@@ -55,7 +55,7 @@ class PatientAuthRepoImpl implements PatientAuthRepo {
         () => ApiCalls.postData(EndPoints.sendOtp, {'email': email}));
     return result.fold((failure) => left(failure), (response) => right(unit));
   }
-  
+
   @override
   Future<Either<Failure, Unit>> checkOtp(email, otp) async {
     Either result = await ResponseHandler.handle(() =>

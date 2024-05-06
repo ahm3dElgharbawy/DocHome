@@ -85,9 +85,8 @@ class PatientProfileScreen extends StatelessWidget {
                       leadingBackgroundColor: Colors.deepPurpleAccent,
                       onTap: () {
                         showDialog(
-                          context: context,
-                          builder: (context) => const CLanguagesDialog()
-                        );
+                            context: context,
+                            builder: (context) => const CLanguagesDialog());
                       },
                     ),
                     const Divider(
@@ -96,7 +95,8 @@ class PatientProfileScreen extends StatelessWidget {
                     ),
                     CSettingsTile(
                       onTap: () {
-                        PreferenceServices.remove("PATIENT"); // remove local patient data
+                        PreferenceServices.remove(
+                            "PATIENT"); // remove local patient data
                         PreferenceServices.setInt("STEP", 1);
                         context.pushReplacementAll(const LoginScreen());
                       },

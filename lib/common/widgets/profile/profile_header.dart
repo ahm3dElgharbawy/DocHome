@@ -9,7 +9,8 @@ class CProfileHeader extends StatelessWidget {
       {super.key,
       required this.userName,
       required this.userEmail,
-      this.color = CColors.primary, required this.image});
+      this.color = CColors.primary,
+      required this.image});
   final String userName;
   final String userEmail;
   final Color color;
@@ -43,7 +44,7 @@ class CProfileHeader extends StatelessWidget {
           Text(
             userName,
             style: CAppStyles.styleRegular18(context)
-                .copyWith(color: Colors.white,fontWeight: FontWeight.bold),
+                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           Text(
             userEmail,

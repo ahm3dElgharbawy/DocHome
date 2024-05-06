@@ -11,14 +11,15 @@ sealed class CaregiverAuthEvent extends Equatable {
 class LoginCaregiverEvent extends CaregiverAuthEvent {
   final String email;
   final String password;
-  const LoginCaregiverEvent({required this.email,required this.password});
+  const LoginCaregiverEvent({required this.email, required this.password});
 }
 
 // register patient
 class RegisterCaregiverEvent extends CaregiverAuthEvent {
-  final Map<String,String> caregiverData;
-  final Map<String,File> files;
-  const RegisterCaregiverEvent({required this.caregiverData,required this.files});
+  final Map<String, String> caregiverData;
+  final Map<String, File> files;
+  const RegisterCaregiverEvent(
+      {required this.caregiverData, required this.files});
 }
 
 class GetCentersEvent extends CaregiverAuthEvent {
@@ -32,8 +33,3 @@ class GetCategoriesEvent extends CaregiverAuthEvent {
   @override
   List<Object> get props => [];
 }
-
-
-
-
-
