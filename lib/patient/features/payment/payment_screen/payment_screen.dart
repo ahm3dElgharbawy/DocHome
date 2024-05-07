@@ -4,7 +4,6 @@ import '../../../../common/widgets/appbars/main_appbar.dart';
 import '../../../../common/widgets/buttons/rounded_button.dart';
 import '../../../../utils/constants/image_strings.dart';
 
-
 class CreditCardForm extends StatefulWidget {
   const CreditCardForm({super.key});
 
@@ -68,7 +67,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
                             color: Colors.white70,
-                            borderRadius: BorderRadius.circular(screenWidth * 0.04),
+                            borderRadius:
+                                BorderRadius.circular(screenWidth * 0.04),
                           ),
                           child: const Center(
                             child: Image(image: AssetImage(CImages.visa1)),
@@ -124,7 +124,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
                       hintText: '0000 0000 0000 0000',
                       suffixIcon: Padding(
                         padding: EdgeInsets.all(screenWidth * 0.055),
-                        child: ImageIcon(const AssetImage(CImages.visa2),
+                        child: ImageIcon(
+                          const AssetImage(CImages.visa2),
                           size: screenWidth * 0.08,
                         ),
                       ),
@@ -175,7 +176,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
                               height: 0.10,
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(screenWidth * 0.05),
+                              borderRadius:
+                                  BorderRadius.circular(screenWidth * 0.05),
                             ),
                           ),
                           validator: (value) {
@@ -205,7 +207,8 @@ class _CreditCardFormState extends State<CreditCardForm> {
                               height: 0.10,
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(screenWidth * 0.05),
+                              borderRadius:
+                                  BorderRadius.circular(screenWidth * 0.05),
                             ),
                           ),
                           validator: (value) {
@@ -243,4 +246,3 @@ class _CreditCardFormState extends State<CreditCardForm> {
     );
   }
 }
-

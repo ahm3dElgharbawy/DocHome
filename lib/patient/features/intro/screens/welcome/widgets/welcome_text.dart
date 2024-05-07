@@ -25,8 +25,10 @@ class CWelcomeText extends StatelessWidget {
         ),
         const SizedBox(height: CSizes.spaceBtwItems),
         Text(
-          "the home care system is designed to enhance the delivery of healthcare services to individuals in the comfort of their homes".tr(context),
-          style: CAppStyles.styleRegular10(context).copyWith(color: Colors.white),
+          "the home care system is designed to enhance the delivery of healthcare services to individuals in the comfort of their homes"
+              .tr(context),
+          style:
+              CAppStyles.styleRegular10(context).copyWith(color: Colors.white),
           textAlign: TextAlign.center,
         )
       ],

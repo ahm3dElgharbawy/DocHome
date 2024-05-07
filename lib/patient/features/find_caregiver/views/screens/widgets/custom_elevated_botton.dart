@@ -4,7 +4,8 @@ class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
     required this.color,
-    required this.icon, required this.onTap,
+    required this.icon,
+    required this.onTap,
   });
   final Color color;
   final IconData icon;
@@ -17,10 +18,9 @@ class CustomElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          alignment: Alignment.center,
-          padding: EdgeInsets.zero
-        ),
+            backgroundColor: color,
+            alignment: Alignment.center,
+            padding: EdgeInsets.zero),
         child: Icon(icon),
       ),
     );

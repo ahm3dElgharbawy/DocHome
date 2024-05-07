@@ -14,7 +14,6 @@ abstract class CAppBarTheme {
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
-    
   );
 
   static const darkAppBarTheme = AppBarTheme(

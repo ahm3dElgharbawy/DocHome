@@ -4,7 +4,6 @@ import 'package:dochome/common/widgets/appbars/home_appbar.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/patient/features/authentication/data/models/patient.dart';
 import 'package:dochome/patient/features/home/widgets/category_list_view.dart';
-import 'package:dochome/patient/features/home/widgets/populer_doctor_list_view.dart';
 import 'package:dochome/utils/api/api_calls.dart';
 import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/services/preference_services.dart';
@@ -69,7 +68,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const PopularDoctorsListView(),
+              // const PopularDoctorsListView(),
             ],
           ),
         ),

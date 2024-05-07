@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 abstract class CHelperFunctions {
-  static void showSnackBar({required context,required String message, StatusType type = StatusType.failure}) {
+  static void showSnackBar(
+      {required context,
+      required String message,
+      StatusType type = StatusType.failure}) {
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

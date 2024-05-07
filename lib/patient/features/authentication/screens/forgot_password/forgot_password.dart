@@ -70,9 +70,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
                   if (state is SuccessState) {
-                    context.push(OTPScreen(email: emailController.text,));
-                  }
-                  else if (state is FailureState) {
+                    context.push(OTPScreen(
+                      email: emailController.text,
+                    ));
+                  } else if (state is FailureState) {
                     CHelperFunctions.showSnackBar(
                         context: context, message: state.message);
                   }

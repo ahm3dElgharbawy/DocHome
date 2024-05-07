@@ -16,28 +16,39 @@ class ContinueAsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(CSizes.defaultSpace),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text("Continue As".tr(context),style: CAppStyles.styleBold30(context).copyWith(color: CColors.primary),),
-                Image.asset(CImages.appLogo,height: 250,),
-                CRoundedButton(onPressed: (){
-                  CHelperFunctions.navigateToScreen(context, const LoginScreen());
-                }, title: "Patient".tr(context)),
-                const SizedBox(height: CSizes.spaceBtwItems),
-                CRoundedButton(onPressed: (){
-                  CHelperFunctions.navigateToScreen(context, const CareGiverLoginScreen());
-                }, title: "Caregiver".tr(context))
-              ],
+          padding: const EdgeInsets.all(CSizes.defaultSpace),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Continue As".tr(context),
+                    style: CAppStyles.styleBold30(context)
+                        .copyWith(color: CColors.primary),
+                  ),
+                  Image.asset(
+                    CImages.appLogo,
+                    height: 250,
+                  ),
+                  CRoundedButton(
+                      onPressed: () {
+                        CHelperFunctions.navigateToScreen(
+                            context, const LoginScreen());
+                      },
+                      title: "Patient".tr(context)),
+                  const SizedBox(height: CSizes.spaceBtwItems),
+                  CRoundedButton(
+                      onPressed: () {
+                        CHelperFunctions.navigateToScreen(
+                            context, const CareGiverLoginScreen());
+                      },
+                      title: "Caregiver".tr(context))
+                ],
+              ),
             ),
-          ),
-        )
-      ),
+          )),
     );
   }
 }
-

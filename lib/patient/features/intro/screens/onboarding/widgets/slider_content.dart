@@ -5,7 +5,11 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class COnBoardingSliderContent extends StatelessWidget {
-  const COnBoardingSliderContent({super.key, required this.image, required this.title, required this.subtitle});
+  const COnBoardingSliderContent(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.subtitle});
   final String image;
   final String title;
   final String subtitle;
@@ -17,16 +21,21 @@ class COnBoardingSliderContent extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(width: CHelperFunctions.screenHeight(context) * .6,child: Image.asset(image),),
+            SizedBox(
+              width: CHelperFunctions.screenHeight(context) * .6,
+              child: Image.asset(image),
+            ),
             const SizedBox(height: CSizes.spaceBtwSections),
             Text(
               title,
-              style: CAppStyles.styleBold30(context).apply(color: CColors.primary, fontSizeFactor: .9),
+              style: CAppStyles.styleBold30(context)
+                  .apply(color: CColors.primary, fontSizeFactor: .9),
             ),
             const SizedBox(height: CSizes.spaceBtwItems),
             Text(
               subtitle,
-              style: CAppStyles.styleRegular16(context).copyWith(color: CColors.darkerGrey),
+              style: CAppStyles.styleRegular16(context)
+                  .copyWith(color: CColors.darkerGrey),
               textAlign: TextAlign.center,
             ),
           ],

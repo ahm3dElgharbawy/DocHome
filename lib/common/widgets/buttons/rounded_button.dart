@@ -10,7 +10,8 @@ class CRoundedButton extends StatelessWidget {
       this.margin,
       this.width = double.infinity,
       this.height = 50,
-      this.color = CColors.primary, this.child});
+      this.color = CColors.primary,
+      this.child});
   final VoidCallback onPressed;
   final String title;
   final EdgeInsets? margin;

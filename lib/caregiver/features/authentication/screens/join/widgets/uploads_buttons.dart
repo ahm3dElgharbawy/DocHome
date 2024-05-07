@@ -32,5 +32,3 @@ class CUploadsButtons extends StatelessWidget {
     );
   }
 }
-
-

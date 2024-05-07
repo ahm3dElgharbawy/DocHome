@@ -8,12 +8,12 @@ class AppServices {
     if (_appServices == null) {
       prefs = await SharedPreferences.getInstance();
       _appServices = AppServices._(prefs: prefs);
-    }
-    else{
+    } else {
       return _appServices;
     }
   }
-  static getInstance(){
+
+  static getInstance() {
     return _appServices;
   }
 }

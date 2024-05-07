@@ -53,8 +53,14 @@ class _HomeState extends State<Home> {
             label: 'Bookings',
           ),
           const NavigationDestination(
-            icon: Icon(Icons.chat_bubble_outline_rounded,color: CColors.primary,),
-            selectedIcon: Icon(Icons.chat_bubble,color: CColors.primary,),
+            icon: Icon(
+              Icons.chat_bubble_outline_rounded,
+              color: CColors.primary,
+            ),
+            selectedIcon: Icon(
+              Icons.chat_bubble,
+              color: CColors.primary,
+            ),
             label: 'chats',
           ),
           const NavigationDestination(

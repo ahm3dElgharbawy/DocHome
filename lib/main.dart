@@ -12,6 +12,7 @@ import 'localization/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PreferenceServices.init();
+  // FindCargiverRepoImpl().getAllServicesinCategory();
   runApp(const MyApp());
 }
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocProviders.init(), 
+      providers: AppBlocProviders.init(),
       child: BlocBuilder<LocaleCubit, LocaleState>(
         builder: (context, state) {
           return state is ChangeLocaleState

@@ -1,5 +1,6 @@
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
-import 'package:dochome/patient/features/find_caregiver/screens/booking_screen.dart';
+import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
+import 'package:dochome/patient/features/find_caregiver/views/screens/booking_screen.dart';
 import 'package:dochome/patient/features/home/models/doctor_details_model.dart';
 import 'package:dochome/patient/features/home/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -9,9 +10,9 @@ import 'package:flutter/material.dart';
 class DoctorInfoItem extends StatelessWidget {
   const DoctorInfoItem({
     super.key,
-    required this.doctorDetailsModel,
+    required this.cargiverModel,
   });
-  final DoctorDetailsModel doctorDetailsModel;
+  final CargiverModel cargiverModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,7 +39,7 @@ class DoctorInfoItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Image.asset(
-                  doctorDetailsModel.image,
+                  cargiverModel.image!,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -46,18 +47,18 @@ class DoctorInfoItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    doctorDetailsModel.name,
+                    cargiverModel.name!,
                     style: CAppStyles.styleRegular15(context)
                         .copyWith(fontFamily: 'Outfit'),
                   ),
                   const SizedBox(
                     height: 2,
                   ),
-                  Text(
-                    doctorDetailsModel.title,
-                    style: CAppStyles.styleRegular12(context)
-                        .copyWith(fontFamily: 'Outfit'),
-                  ),
+                  // Text(
+                  //   cargiverModel.,
+                  //   style: CAppStyles.styleRegular12(context)
+                  //       .copyWith(fontFamily: 'Outfit'),
+                  // ),
                   const SizedBox(
                     height: 8,
                   ),

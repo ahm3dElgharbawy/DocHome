@@ -2,7 +2,8 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class CNavigationBarTheme {
-  static NavigationBarThemeData lightNavigationBarTheme = NavigationBarThemeData(
+  static NavigationBarThemeData lightNavigationBarTheme =
+      NavigationBarThemeData(
     backgroundColor: CColors.white,
     indicatorColor: CColors.softGrey,
     labelTextStyle: MaterialStateProperty.resolveWith(

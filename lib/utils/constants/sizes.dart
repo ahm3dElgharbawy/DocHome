@@ -1,4 +1,3 @@
-
 class CSizes {
   // Padding and margin sizes
   static const double xs = 4.0;
@@ -67,6 +66,3 @@ class CSizes {
   // icon button
   static const double splashRadius = 20;
 }
-
-
-

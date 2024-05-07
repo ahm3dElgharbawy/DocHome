@@ -12,7 +12,10 @@ class UpcomingSchedule extends StatelessWidget {
         children: [
           const Text(
             "About Doctor",
-            style: TextStyle(fontSize: 18,fontFamily: 'Outfit', fontWeight: FontWeight.w500),
+            style: TextStyle(
+                fontSize: 18,
+                fontFamily: 'Outfit',
+                fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 15),
           Container(
@@ -43,7 +46,10 @@ class UpcomingSchedule extends StatelessWidget {
                     subtitle: const Text("Physical therapy"),
                     trailing: CircleAvatar(
                       radius: 20,
-                      child: ElevatedButton.icon(onPressed: (){}, icon: const Icon(Icons.error_outline), label: const Text('mo')),
+                      child: ElevatedButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.error_outline),
+                          label: const Text('mo')),
                       //backgroundImage: AssetImage("assets/images/booking/doctor1.jpg"),
                     ),
                   ),

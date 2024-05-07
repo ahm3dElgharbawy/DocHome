@@ -40,7 +40,9 @@ class _CJoinFormState extends State<CJoinForm> {
       listener: (context, state) {
         if (state is SuccessRegisterCaregiver) {
           CHelperFunctions.showSnackBar(
-              context: context, message: CStrings.caregiverSuccessRegister,type: StatusType.success);
+              context: context,
+              message: CStrings.caregiverSuccessRegister,
+              type: StatusType.success);
           context.pushReplacementAll(const CareGiverLoginScreen());
         } else if (state is FailureState) {
           CHelperFunctions.showSnackBar(

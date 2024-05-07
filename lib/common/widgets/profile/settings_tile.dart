@@ -4,7 +4,12 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CSettingsTile extends StatelessWidget {
-  const CSettingsTile({super.key, required this.title, required this.leadingIcon, required this.leadingBackgroundColor, this.onTap});
+  const CSettingsTile(
+      {super.key,
+      required this.title,
+      required this.leadingIcon,
+      required this.leadingBackgroundColor,
+      this.onTap});
   final String title;
   final IconData leadingIcon;
   final Color leadingBackgroundColor;
@@ -17,7 +22,8 @@ class CSettingsTile extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: CSizes.md,vertical: CSizes.md),
+          padding: const EdgeInsets.symmetric(
+              horizontal: CSizes.md, vertical: CSizes.md),
           child: Row(
             children: [
               CCircularContainer(
@@ -26,7 +32,7 @@ class CSettingsTile extends StatelessWidget {
                 child: Icon(leadingIcon, color: Colors.white),
               ),
               const SizedBox(width: CSizes.spaceBtwItems),
-              Text(title,style: CAppStyles.styleMedium14(context)),
+              Text(title, style: CAppStyles.styleMedium14(context)),
               const Spacer(),
               const Icon(Icons.arrow_forward_ios_rounded, size: CSizes.iconSm)
             ],

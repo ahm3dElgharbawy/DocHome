@@ -31,7 +31,6 @@ abstract class CAppTheme {
     // inputDecorationTheme: CTextFieldTheme.lightTextFieldDecorationTheme,
     // chipTheme: CChipTheme.lightChipTheme,
     checkboxTheme: CCheckBoxTheme.lightCheckBoxTheme,
-    
   );
   static ThemeData darkTheme = ThemeData(
     // fontFamily: "Poppins",

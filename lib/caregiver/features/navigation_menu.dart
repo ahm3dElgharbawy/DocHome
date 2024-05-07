@@ -23,7 +23,10 @@ class _CCaregiverNavigationMenuState extends State<CCaregiverNavigationMenu> {
   ];
   List<String> labels = ['bookings', 'chats', "profile"];
   List<Widget> icons = [
-    SvgPicture.asset(CImages.bookings,color: Colors.black,),
+    SvgPicture.asset(
+      CImages.bookings,
+      color: Colors.black,
+    ),
     const Icon(Icons.chat_bubble_outline_rounded),
     const Icon(Icons.person_outline)
   ];

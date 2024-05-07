@@ -4,7 +4,6 @@ import 'package:dochome/common/widgets/chat/send_message_bottom_bar.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-
 class CaregiverSingleChatScreen extends StatelessWidget {
   const CaregiverSingleChatScreen({
     super.key,
@@ -19,7 +18,7 @@ class CaregiverSingleChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CChatAppBar(username: userName, image: image),
+      appBar: CChatAppBar(username: userName, image: image),
       body: Column(
         children: [
           Expanded(
@@ -28,8 +27,7 @@ class CaregiverSingleChatScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(CSizes.defaultSpace),
                 children: const [
                   MessageWidget(
-                      message:
-                          "Dr. Hoda, I need help reading the prescription",
+                      message: "Dr. Hoda, I need help reading the prescription",
                       createdAt: "12:10 PM",
                       isMe: true),
                   MessageWidget(
@@ -44,7 +42,6 @@ class CaregiverSingleChatScreen extends StatelessWidget {
                       message: "Send me a picture of the prescription",
                       createdAt: "12:10 PM",
                       isMe: false),
-                  
                 ]),
           ),
           const CSendMessageBottomBar()

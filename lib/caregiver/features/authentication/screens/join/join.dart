@@ -27,7 +27,7 @@ class JoinScreen extends StatelessWidget {
               Text("Join to Us", style: CAppStyles.styleSemiBold25(context)),
               const SizedBox(height: CSizes.spaceBtwItems),
               const CJoinForm(),
-              
+
               //? don't have an account
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

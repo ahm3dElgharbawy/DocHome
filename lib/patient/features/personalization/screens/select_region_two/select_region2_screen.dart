@@ -19,7 +19,7 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
   TextEditingController searchController = TextEditingController();
 
   Widget _buildRegionOption(String title) {
-    return CRoundedContainer (
+    return CRoundedContainer(
       width: double.infinity,
       enableBorder: true,
       borderColor: CColors.primary,
@@ -27,11 +27,8 @@ class _SelectRegion2ScreenState extends State<SelectRegion2Screen> {
       radius: 12,
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.05),
-          child:  RadioListTile(
-        title: Text(
-          title,
-          style: CAppStyles.styleRegular18(context)
-        ),
+      child: RadioListTile(
+        title: Text(title, style: CAppStyles.styleRegular18(context)),
         value: title,
         groupValue: region,
         onChanged: (value) {

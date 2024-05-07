@@ -6,21 +6,19 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class CTextFieldWithInnerShadow extends StatefulWidget {
-  const CTextFieldWithInnerShadow({
-    super.key,
-    this.margin,
-    this.controller,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.onTapSuffixIcon,
-    required this.hintText,
-    this.validator,
-    this.obscureText = false,
-    this.keyboardType,
-    this.readOnly = false,
-    this.onTap
-    
-  });
+  const CTextFieldWithInnerShadow(
+      {super.key,
+      this.margin,
+      this.controller,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.onTapSuffixIcon,
+      required this.hintText,
+      this.validator,
+      this.obscureText = false,
+      this.keyboardType,
+      this.readOnly = false,
+      this.onTap});
   final String hintText;
   final EdgeInsets? margin;
   final TextEditingController? controller;

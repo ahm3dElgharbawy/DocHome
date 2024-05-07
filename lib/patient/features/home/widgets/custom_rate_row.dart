@@ -7,7 +7,6 @@ class CustomRateRow extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,8 +17,8 @@ class CustomRateRow extends StatelessWidget {
         ),
         Text(
           '${4.5} | ${144} Reviews',
-          style: CAppStyles.styleRegular10(context)
-              .copyWith(fontFamily: 'Outfit'),
+          style:
+              CAppStyles.styleRegular10(context).copyWith(fontFamily: 'Outfit'),
         ),
       ],
     );

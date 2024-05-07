@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 class CDropdown extends StatefulWidget {
-  const CDropdown({super.key, required this.items, required this.hint, this.validator,this.onChanged});
+  const CDropdown(
+      {super.key,
+      required this.items,
+      required this.hint,
+      this.validator,
+      this.onChanged});
   final List items;
   final String hint;
   final String? Function(String?)? validator;

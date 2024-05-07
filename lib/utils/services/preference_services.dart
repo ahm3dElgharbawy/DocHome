@@ -20,18 +20,22 @@ class PreferenceServices {
     var prefs = await _instance;
     return prefs.setString(key, value);
   }
+
   static Future<bool> setInt(String key, int value) async {
     var prefs = await _instance;
     return prefs.setInt(key, value);
   }
+
   static Future<int?> getInt(String key) async {
     var prefs = await _instance;
     return prefs.getInt(key);
   }
+
   static Future<bool> remove(String key) async {
     var prefs = await _instance;
     return prefs.remove(key);
   }
+
   static Future<bool> clear(String key) async {
     var prefs = await _instance;
     return prefs.clear();

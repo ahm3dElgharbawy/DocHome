@@ -20,7 +20,7 @@ class CTermsAndConditions extends StatelessWidget {
           builder: (context, setState) => Checkbox(
             value: bloc.agreeTerms,
             onChanged: (val) {
-              setState((){
+              setState(() {
                 bloc.agreeTerms = val!;
               });
             },

@@ -19,8 +19,8 @@ class AppLocalizations {
   late Map<String, String> _localizedStrings;
 
   Future loadJsonLanguage() async {
-    String jsonString =
-        await rootBundle.loadString("assets/langs/${locale!.languageCode}.json");
+    String jsonString = await rootBundle
+        .loadString("assets/langs/${locale!.languageCode}.json");
 
     Map<String, dynamic> jsonMap = json.decode(jsonString);
     _localizedStrings = jsonMap.map((key, value) {
@@ -47,8 +47,8 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool shouldReload(covariant LocalizationsDelegate<AppLocalizations> old) => false;
-  
+  bool shouldReload(covariant LocalizationsDelegate<AppLocalizations> old) =>
+      false;
 }
 
 extension TranslateX on String {
