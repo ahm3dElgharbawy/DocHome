@@ -1,55 +1,16 @@
-import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo_impl.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/cargiver_cubit/cargiver_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_app_bar.dart';
-import 'package:dochome/patient/features/home/models/doctor_details_model.dart';
 import 'package:dochome/patient/features/home/widgets/doctor_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StuffList extends StatelessWidget {
-  const StuffList({super.key});
-  static List nursingStuff = const [
-    DoctorDetailsModel(
-        image: 'assets/images/Rectangle 45.png',
-        name: 'Dr. Asmaa Adel ',
-        title: 'Doctor of physical therapy',
-        rate: 4.5,
-        reviews: 177),
-    DoctorDetailsModel(
-        image: 'assets/images/Rectangle 45.png',
-        name: 'Dr. Asmaa Adel ',
-        title: 'Doctor of physical therapy',
-        rate: 4.5,
-        reviews: 177),
-    DoctorDetailsModel(
-        image: 'assets/images/Rectangle 45.png',
-        name: 'Dr. Asmaa Adel ',
-        title: 'Doctor of physical therapy',
-        rate: 4.5,
-        reviews: 177),
-    DoctorDetailsModel(
-        image: 'assets/images/Rectangle 45.png',
-        name: 'Dr. Asmaa Adel ',
-        title: 'Doctor of physical therapy',
-        rate: 4.5,
-        reviews: 177),
-    DoctorDetailsModel(
-        image: 'assets/images/Rectangle 45.png',
-        name: 'Dr. Asmaa Adel ',
-        title: 'Doctor of physical therapy',
-        rate: 4.5,
-        reviews: 177),
-    DoctorDetailsModel(
-        image: 'assets/images/Rectangle 45.png',
-        name: 'Dr. Asmaa Adel ',
-        title: 'Doctor of physical therapy',
-        rate: 4.5,
-        reviews: 177),
-  ];
+  const StuffList({super.key, required this.title});
+final String title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Nursing Stuff'),
+      appBar:  CustomAppBar(title: '$title Stuff'),
       body: BlocBuilder<CargiverCubit, CargiverState>(
         builder: (context, state) {
           if (state is CargiverLoding) {
