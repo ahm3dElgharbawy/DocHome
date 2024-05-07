@@ -1,4 +1,5 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/screens/signup/widgets/sign_up_form.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
@@ -25,7 +26,7 @@ class SignupScreen extends StatelessWidget {
                 child: Image.asset(CImages.appLogo),
               ),
               // const SizedBox(height: CSizes.spaceBtwItems),
-              Text("Create an Account",
+              Text("Create an Account".tr(context),
                   style: CAppStyles.styleSemiBold25(context)),
               const SizedBox(height: CSizes.spaceBtwItems),
               //? Signup form
@@ -35,7 +36,7 @@ class SignupScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "I have an Account ?",
+                    "I have an Account ?".tr(context),
                     style: CAppStyles.styleRegular16(context),
                   ),
                   TextButton(
@@ -43,7 +44,7 @@ class SignupScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "Sign in",
+                      "Sign in".tr(context),
                       style: CAppStyles.styleSemiBold16(context).copyWith(
                           color: CColors.primary,
                           decoration: TextDecoration.underline),

@@ -1,3 +1,4 @@
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/sign_with.dart';
 import 'package:dochome/patient/features/authentication/screens/signup/signup.dart';
@@ -25,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                   child: Image.asset(CImages.appLogo),
                 ),
                 // const SizedBox(height: CSizes.spaceBtwItems),
-                Text("Login", style: CAppStyles.styleSemiBold25(context)),
+                Text("Login".tr(context), style: CAppStyles.styleSemiBold25(context)),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 const CLoginForm(),
                 //? sign with section
@@ -35,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an Account ? ",
+                      "Don't have an Account ? ".tr(context),
                       style: CAppStyles.styleRegular16(context),
                     ),
                     TextButton(
@@ -43,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                         context.push(const SignupScreen());
                       },
                       child: Text(
-                        "Sign up",
+                        "Sign up".tr(context),
                         style: CAppStyles.styleSemiBold16(context).copyWith(
                             color: CColors.primary,
                             decoration: TextDecoration.underline),

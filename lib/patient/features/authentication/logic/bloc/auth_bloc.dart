@@ -38,7 +38,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (failure) => FailureState(
             message: failure.message,
           ),
-          (data) => SuccessState(message: CStrings.loginSuccess, data: data),
+          (patient) => SuccessLoginState(message: CStrings.loginSuccess, patient: patient),
         ));
       } else if (event is RegisterPatientEvent) {
         emit(RegisterPatientLoadingState());

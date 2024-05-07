@@ -2,6 +2,7 @@ import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/otp/otp.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -43,12 +44,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Forgot\nPassword?",
+                "Forgot\nPassword?".tr(context),
                 style: CAppStyles.styleSemiBold24(context),
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Don't worry ! Please enter your email address",
+                "Don't worry ! Please enter your email address".tr(context),
                 style: CAppStyles.styleRegular20(context)
                     .copyWith(color: CColors.darkGrey),
               ),
@@ -56,7 +57,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Form(
                 key: formKey,
                 child: CTextFieldWithInnerShadow(
-                  hintText: "Email",
+                  hintText: "Email".tr(context),
                   margin: EdgeInsets.zero,
                   prefixIcon: const Icon(
                     Icons.email,
@@ -85,7 +86,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             );
                       }
                     },
-                    title: "Send",
+                    title: "Send".tr(context),
                     child:
                         state is LoadingState ? const CLoadingWidget() : null,
                   );

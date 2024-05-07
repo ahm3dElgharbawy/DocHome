@@ -10,7 +10,9 @@ sealed class AuthState extends Equatable {
 final class AuthInitial extends AuthState {}
 
 final class LoadingState extends AuthState {}
+
 final class LoginPatientLoadingState extends AuthState {}
+
 final class RegisterPatientLoadingState extends AuthState {}
 
 final class LoadingCentersState extends AuthState {}
@@ -24,11 +26,19 @@ final class LoadedCentersState extends AuthState {
 
 final class SuccessState extends AuthState {
   final String message;
-  final Patient? data;
-  const SuccessState({required this.message, this.data});
+  const SuccessState({required this.message});
 
   @override
   List<Object> get props => [message];
+}
+
+final class SuccessLoginState extends AuthState {
+  final String message;
+  final Patient patient;
+  const SuccessLoginState(
+      {required this.message, required this.patient});
+  @override
+  List<Object> get props => [message, patient];
 }
 
 final class FailureState extends AuthState {

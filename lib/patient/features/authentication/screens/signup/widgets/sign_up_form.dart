@@ -2,10 +2,10 @@ import 'package:dochome/common/widgets/main_widgets/dropdown.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/patient/features/authentication/screens/signup/widgets/terms_and_conditions.dart';
-import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/constants/strings.dart';
 import 'package:dochome/utils/helpers/enums.dart';
@@ -14,7 +14,6 @@ import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class CSignupForm extends StatefulWidget {
   const CSignupForm({super.key});
@@ -57,22 +56,23 @@ class _CSignupFormState extends State<CSignupForm> {
             children: [
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(0),
-                hintText: "Patient Name",
+                hintText: "Patient Name".tr(context),
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.person),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(1),
-                hintText: "Phone",
+                hintText: "Phone".tr(context),
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
+                validator: (val) => CTextFieldValidator.phoneNumberTextFieldValidator(val),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(2),
-                hintText: "Email",
+                hintText: "Email".tr(context),
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
@@ -81,24 +81,26 @@ class _CSignupFormState extends State<CSignupForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(3),
-                hintText: "Password",
+                hintText: "Password".tr(context),
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
+                validator: (val) => CTextFieldValidator.passwordTextFieldValidator(val),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(4),
-                hintText: "Confirm Password",
+                hintText: "Confirm Password".tr(context),
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
+                validator: (val) => CTextFieldValidator.passwordTextFieldValidator(val)
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               //? Centers dropdown menu
               CDropdown(
                 items: authBloc.centers ?? [],
-                hint: "Center",
+                hint: "Center".tr(context),
                 validator: CTextFieldValidator.requiredTextField,
                 onChanged: (centerId) {
                   authBloc.centerId = centerId;
@@ -111,7 +113,7 @@ class _CSignupFormState extends State<CSignupForm> {
                 onPressed: () {
                   authBloc.registerPatient(context);
                 },
-                title: "Sign up",
+                title: "Sign up".tr(context),
                 child: state is RegisterPatientLoadingState ? const CLoadingWidget() : null,
               ),
             ],

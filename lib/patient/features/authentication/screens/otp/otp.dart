@@ -1,6 +1,7 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/reset_password/reset_password.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -44,12 +45,12 @@ class _OTPScreenState extends State<OTPScreen> {
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Verification",
+                "Verification".tr(context),
                 style: CAppStyles.styleSemiBold24(context),
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Enter Verification Code",
+                "Enter Verification Code".tr(context),
                 style: CAppStyles.styleRegular20(context)
                     .copyWith(color: CColors.darkGrey),
               ),
@@ -81,13 +82,13 @@ class _OTPScreenState extends State<OTPScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't receive code ?",
+                        "Don't receive code ?".tr(context),
                         style: CAppStyles.styleRegular14(context),
                       ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Re-send",
+                          "Re-send".tr(context),
                           style: CAppStyles.styleSemiBold14(context)
                               .copyWith(color: Colors.black),
                         ),
@@ -117,10 +118,10 @@ class _OTPScreenState extends State<OTPScreen> {
                         } else {
                           CHelperFunctions.showSnackBar(
                               context: context,
-                              message: "You must add the otp");
+                              message: "You must add the otp".tr(context));
                         }
                       },
-                      title: "Continue",
+                      title: "Continue".tr(context),
                       child: state is LoadingState
                           ? const CLoadingWidget()
                           : null);

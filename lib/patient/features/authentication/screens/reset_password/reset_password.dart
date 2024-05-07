@@ -2,6 +2,7 @@ import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -48,19 +49,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     const SizedBox(height: CSizes.spaceBtwItems),
                     Text(
-                      "New Password",
+                      "New Password".tr(context),
                       style: CAppStyles.styleSemiBold24(context),
                     ),
                     const SizedBox(height: CSizes.spaceBtwItems),
                     Text(
-                      "Enter New password ",
+                      "Enter New password ".tr(context),
                       style: CAppStyles.styleRegular20(context)
                           .copyWith(color: CColors.darkGrey),
                     ),
                     const SizedBox(height: CSizes.spaceBtwSections),
                     CTextFieldWithInnerShadow(
                       controller: passwordController,
-                      hintText: "Password",
+                      hintText: "Password".tr(context),
                       margin: EdgeInsets.zero,
                       prefixIcon: const Icon(
                         Icons.lock,
@@ -72,7 +73,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     const SizedBox(height: CSizes.spaceBtwInputFields),
                     CTextFieldWithInnerShadow(
                       controller: passwordConfirmationController,
-                      hintText: "Confirm Password",
+                      hintText: "Confirm Password".tr(context),
                       margin: EdgeInsets.zero,
                       prefixIcon: const Icon(
                         Icons.lock,
@@ -107,7 +108,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               );
                             }
                           },
-                          title: "Save",
+                          title: "Save".tr(context),
                           child: state is LoadingState ? const CLoadingWidget() : null,
                         );
                       },

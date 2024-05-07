@@ -6,6 +6,7 @@ import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/api/api_calls.dart';
 import 'package:dochome/utils/network/network_info.dart';
 import 'package:dochome/utils/api/response_handler.dart';
+import 'package:dochome/utils/services/preference_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:dochome/utils/errors/failures.dart';
 
@@ -36,6 +37,8 @@ class PatientAuthRepoImpl implements PatientAuthRepo {
     );
     return result.fold((failure) => left(failure), (response) {
       final Map<String, dynamic> user = jsonDecode(response.body)['user'];
+      final String token = jsonDecode(response.body)['access_token'];
+      PreferenceServices.setString("TOKEN", token); // Store token
       return right(
         Patient.fromJson(user),
       );

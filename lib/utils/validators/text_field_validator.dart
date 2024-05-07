@@ -5,6 +5,18 @@ abstract class CTextFieldValidator {
     }
     return null;
   }
+  static String? phoneNumberTextFieldValidator(String? value) {
+    if (value != null || value!.length == 11) {
+      return "the phone number must be 11 digit";
+    }
+    return null;
+  }
+  static String? passwordTextFieldValidator(String? value) {
+    if (value != null || value!.length >= 8) {
+      return "must be greater than or equal 8 digits";
+    }
+    return null;
+  }
 
   static String? emailCheck(String? value, {String message = "Invalid email"}) {
     final RegExp emailRegex = RegExp(

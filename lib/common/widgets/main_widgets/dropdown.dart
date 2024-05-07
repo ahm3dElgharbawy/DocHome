@@ -38,9 +38,7 @@ class _CDropdownState extends State<CDropdown> {
               value: item.id.toString(),
               child: Text(
                 trans(enText: item.nameEn, arText:item.nameAr),
-                style: const TextStyle(
-                  fontSize: 14,
-                ),
+                style: CAppStyles.styleMedium14(context),
               ),
             ),
           )

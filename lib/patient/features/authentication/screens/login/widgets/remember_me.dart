@@ -1,3 +1,4 @@
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/forgot_password/forgot_password.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
@@ -24,7 +25,7 @@ class CRememberMe extends StatelessWidget {
                 });
               }),
         ),
-        Text("Remember me", style: CAppStyles.styleRegular13(context)),
+        Text("Remember me".tr(context), style: CAppStyles.styleRegular13(context)),
         const Spacer(),
         TextButton(
           onPressed: () {
@@ -32,7 +33,7 @@ class CRememberMe extends StatelessWidget {
                 context, const ForgotPasswordScreen());
           },
           child: Text(
-            "Forget your password?",
+            "Forget your password?".tr(context),
             style: CAppStyles.styleRegular13(context).copyWith(
                 decoration: TextDecoration.underline, color: Colors.black),
           ),

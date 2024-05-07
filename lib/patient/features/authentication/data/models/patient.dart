@@ -3,7 +3,7 @@ class Patient {
   final String name;
   final String email;
   final String phone;
-  final String? image;
+  final String? avatar;
   final int centerId;
 
   Patient({
@@ -11,7 +11,7 @@ class Patient {
     required this.name,
     required this.email,
     required this.phone,
-    required this.image,
+    required this.avatar,
     required this.centerId,
   });
 
@@ -20,7 +20,7 @@ class Patient {
         name: json["name"],
         email: json["email"],
         phone: json["phone"],
-        image: json["image"],
+        avatar: json["profile_image"],
         centerId: json["center_id"],
       );
 
@@ -29,7 +29,7 @@ class Patient {
         "name": name,
         "email": email,
         "phone": phone,
-        "image": image,
+        "profile_image": avatar,
         "center_id": centerId,
       };
 }

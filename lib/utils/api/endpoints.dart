@@ -24,7 +24,7 @@ abstract class EndPoints {
   //? [get] provide 'categoryID' when using this end point like => getCategory + "1"
   static const getCategory = "$baseUrl/categories/";
   //? [get] all services in the category
-  static const allServices = "$baseUrl/categories/{id}/services";
+  static const allServicesInCategory = "$baseUrl/categories/";
   //? [get] provide 'categoryID' when using this end point like => getCategory + "1"
   static const getService = "$baseUrl/services/{id}";
 

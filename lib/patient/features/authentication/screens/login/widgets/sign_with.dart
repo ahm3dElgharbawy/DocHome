@@ -1,3 +1,4 @@
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
@@ -19,7 +20,7 @@ class CSignInWith extends StatelessWidget {
               const Expanded(
                   child: Divider(
                       thickness: 1, endIndent: 10, color: CColors.darkGrey)),
-              Text("Or sign in  with",
+              Text("Or sign in  with".tr(context),
                   style: CAppStyles.styleRegular16(context)
                       .copyWith(color: CColors.darkGrey)),
               const Expanded(

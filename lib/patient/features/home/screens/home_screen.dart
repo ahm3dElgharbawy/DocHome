@@ -5,6 +5,8 @@ import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/patient/features/authentication/data/models/patient.dart';
 import 'package:dochome/patient/features/home/widgets/category_list_view.dart';
 import 'package:dochome/patient/features/home/widgets/populer_doctor_list_view.dart';
+import 'package:dochome/utils/api/api_calls.dart';
+import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String,dynamic> localPatientData = jsonDecode(PreferenceServices.getString("PATIENT")!);
     Patient patient = Patient.fromJson(localPatientData);
+    getCategoryCaregivers();
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -72,5 +75,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  getCategoryCaregivers() async{
+    final response = await ApiCalls.getData("${EndPoints.allServicesInCategory}1/caregivers");
+    print("########################");
+    print(response.body);
+    print("########################");
   }
 }

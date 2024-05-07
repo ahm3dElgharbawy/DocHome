@@ -4,5 +4,5 @@ void main() {
     "professional_card_image": 222,
     "id_card_image": 333,
   };
-
+  files.addAll({"test": 1});
 }

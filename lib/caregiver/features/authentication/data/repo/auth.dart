@@ -8,6 +8,7 @@ import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/api/api_calls.dart';
 import 'package:dochome/utils/network/network_info.dart';
 import 'package:dochome/utils/api/response_handler.dart';
+import 'package:dochome/utils/services/preference_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:dochome/utils/errors/failures.dart';
 
@@ -35,8 +36,9 @@ class CaregiverAuthRepoImpl implements CaregiverAuthRepo {
       ),
     );
     return result.fold((failure) => left(failure), (response) {
-      final Map<String, dynamic> caregiver =
-          jsonDecode(response.body)['caregiver'];
+      final Map<String, dynamic> caregiver = jsonDecode(response.body)['caregiver'];
+      final String token = jsonDecode(response.body)['access_token'];
+      PreferenceServices.setString("TOKEN", token); // Store token
       return right(Caregiver.fromJson(caregiver));
     });
   }
