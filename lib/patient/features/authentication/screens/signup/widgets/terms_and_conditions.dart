@@ -1,3 +1,4 @@
+import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/terms&conditions/terms_abd_conditions.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -26,14 +27,14 @@ class CTermsAndConditions extends StatelessWidget {
             },
           ),
         ),
-        Text("I Agree To The", style: CAppStyles.styleRegular13(context)),
+        Text("I Agree To The".tr(context), style: CAppStyles.styleRegular13(context)),
         TextButton(
           onPressed: () {
             CHelperFunctions.navigateToScreen(
                 context, const TermsAndConditionScreen());
           },
           child: Text(
-            "Terms And Conditions",
+            "Terms And Conditions".tr(context),
             style: CAppStyles.styleSemiBold13(context).copyWith(
                 decoration: TextDecoration.underline, color: CColors.primary),
           ),

@@ -4,9 +4,9 @@ import 'package:dartz/dartz.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/service_model.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo.dart';
+import 'package:dochome/utils/api/api_calls.dart';
+import 'package:dochome/utils/api/response_handler.dart';
 import 'package:dochome/utils/errors/failures.dart';
-import 'package:dochome/utils/services/api_calls.dart';
-import 'package:dochome/utils/services/response_handler.dart';
 
 class FindCargiverRepoImpl extends FindCargiverRepo {
   @override
