@@ -3,19 +3,21 @@ import 'dart:convert';
 import 'package:dochome/common/widgets/appbars/home_appbar.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/patient/features/authentication/data/models/patient.dart';
-import 'package:dochome/patient/features/home/widgets/category_list_view.dart';
+import 'package:dochome/patient/features/home/views/screens/widgets/category_list_view.dart';
 import 'package:dochome/utils/api/api_calls.dart';
 import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Map<String,dynamic> localPatientData = jsonDecode(PreferenceServices.getString("PATIENT")!);
+    Map<String, dynamic> localPatientData =
+        jsonDecode(PreferenceServices.getString("PATIENT")!);
     Patient patient = Patient.fromJson(localPatientData);
     getCategoryCaregivers();
     return Scaffold(
@@ -69,6 +71,17 @@ class HomeScreen extends StatelessWidget {
                 height: 20,
               ),
               // const PopularDoctorsListView(),
+              // GestureDetector(
+              //   onTap: () {
+              //     print('aaaaaaaaaaaaaaaaaa');
+              //     print(PreferenceServices.getString('TOKEN'));
+              //   },
+              //   child: Container(
+              //     color: Colors.green,
+              //     height: 40,
+              //     width: 40,
+              //   ),
+              // )
             ],
           ),
         ),
@@ -76,10 +89,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  getCategoryCaregivers() async{
-    final response = await ApiCalls.getData("${EndPoints.allServicesInCategory}1/caregivers");
+  getCategoryCaregivers() async {
+    final response = await ApiCalls.getData(
+        "${EndPoints.allServicesInCategory}1/caregivers");
     print("########################");
-    print(response.body);
+    // print(response.body);
     print("########################");
   }
 }

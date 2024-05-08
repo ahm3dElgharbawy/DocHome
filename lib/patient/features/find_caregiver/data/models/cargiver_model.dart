@@ -5,7 +5,7 @@ class CargiverModel extends Equatable {
   final String? name;
   final String? email;
   final String? phone;
-  final String? image;
+  final String? profileImage;
   final dynamic status;
   final int? centerId;
   final int? categoryId;
@@ -18,7 +18,7 @@ class CargiverModel extends Equatable {
     this.name,
     this.email,
     this.phone,
-    this.image,
+    this.profileImage,
     this.status,
     this.centerId,
     this.categoryId,
@@ -32,7 +32,7 @@ class CargiverModel extends Equatable {
         name: json['name'] as String?,
         email: json['email'] as String?,
         phone: json['phone'] as String?,
-        image: json['image'] as String?,
+        profileImage: json['image'] as String?,
         status: json['status'] as dynamic,
         centerId: json['center_id'] as int?,
         categoryId: json['category_id'] as int?,
@@ -50,7 +50,7 @@ class CargiverModel extends Equatable {
         'name': name,
         'email': email,
         'phone': phone,
-        'image': image,
+        'image': profileImage,
         'status': status,
         'center_id': centerId,
         'category_id': categoryId,
@@ -66,7 +66,7 @@ class CargiverModel extends Equatable {
       name,
       email,
       phone,
-      image,
+      profileImage,
       status,
       centerId,
       categoryId,

@@ -26,7 +26,8 @@ class LoginScreen extends StatelessWidget {
                   child: Image.asset(CImages.appLogo),
                 ),
                 // const SizedBox(height: CSizes.spaceBtwItems),
-                Text("Login".tr(context), style: CAppStyles.styleSemiBold25(context)),
+                Text("Login".tr(context),
+                    style: CAppStyles.styleSemiBold25(context)),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 const CLoginForm(),
                 //? sign with section

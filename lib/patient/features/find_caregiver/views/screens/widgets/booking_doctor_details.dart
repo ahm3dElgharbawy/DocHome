@@ -2,7 +2,7 @@ import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/about_section.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_elevated_botton.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/status_section.dart';
-import 'package:dochome/patient/features/home/widgets/custom_rate_row.dart';
+import 'package:dochome/patient/features/home/views/screens/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';

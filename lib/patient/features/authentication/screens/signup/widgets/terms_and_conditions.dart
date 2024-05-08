@@ -27,7 +27,8 @@ class CTermsAndConditions extends StatelessWidget {
             },
           ),
         ),
-        Text("I Agree To The".tr(context), style: CAppStyles.styleRegular13(context)),
+        Text("I Agree To The".tr(context),
+            style: CAppStyles.styleRegular13(context)),
         TextButton(
           onPressed: () {
             CHelperFunctions.navigateToScreen(

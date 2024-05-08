@@ -24,7 +24,8 @@ class CategoryListViewItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(image),
+              // SvgPicture.asset(image),
+              Image.network(image),
               const SizedBox(
                 height: 8,
               ),

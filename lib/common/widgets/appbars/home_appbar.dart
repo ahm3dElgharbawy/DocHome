@@ -1,4 +1,4 @@
-import 'package:dochome/patient/features/home/screens/notifications_screen.dart';
+import 'package:dochome/patient/features/home/views/screens/notifications_screen.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

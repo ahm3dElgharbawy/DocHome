@@ -1,8 +1,7 @@
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/booking_screen.dart';
-import 'package:dochome/patient/features/home/models/doctor_details_model.dart';
-import 'package:dochome/patient/features/home/widgets/custom_rate_row.dart';
+import 'package:dochome/patient/features/home/views/screens/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,8 @@ class DoctorInfoItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Image.asset(
-                  cargiverModel.image!,
+                  cargiverModel.profileImage ??
+                      'assets/images/Rectangle 45.png',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -74,17 +74,34 @@ class DoctorInfoItem extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  CRoundedContainer(
-                    color: const Color(0xff20C968).withOpacity(.14),
-                    height: 18,
-                    width: 40,
-                    radius: 6,
-                    child: Text(
-                      'Active',
-                      style: CAppStyles.styleRegular10(context).copyWith(
-                        color: const Color(0xff20C968),
-                      ),
-                    ),
+                  SizedBox(
+                    child: cargiverModel.status != 1
+                        ? CRoundedContainer(
+                            color: const Color(0xff20C968).withOpacity(.14),
+                            height: 18,
+                            width: 40,
+                            radius: 6,
+                            child: Text(
+                              'Active',
+                              style:
+                                  CAppStyles.styleRegular10(context).copyWith(
+                                color: const Color(0xff20C968),
+                              ),
+                            ),
+                          )
+                        : CRoundedContainer(
+                            color: const Color.fromARGB(255, 221, 100, 91),
+                            height: 18,
+                            width: 40,
+                            radius: 6,
+                            child: Text(
+                              'Offline',
+                              style:
+                                  CAppStyles.styleRegular10(context).copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                   ),
                 ],
               )

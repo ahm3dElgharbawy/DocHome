@@ -35,8 +35,7 @@ final class SuccessState extends AuthState {
 final class SuccessLoginState extends AuthState {
   final String message;
   final Patient patient;
-  const SuccessLoginState(
-      {required this.message, required this.patient});
+  const SuccessLoginState({required this.message, required this.patient});
   @override
   List<Object> get props => [message, patient];
 }

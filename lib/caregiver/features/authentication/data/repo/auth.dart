@@ -36,7 +36,8 @@ class CaregiverAuthRepoImpl implements CaregiverAuthRepo {
       ),
     );
     return result.fold((failure) => left(failure), (response) {
-      final Map<String, dynamic> caregiver = jsonDecode(response.body)['caregiver'];
+      final Map<String, dynamic> caregiver =
+          jsonDecode(response.body)['caregiver'];
       final String token = jsonDecode(response.body)['access_token'];
       PreferenceServices.setString("TOKEN", token); // Store token
       return right(Caregiver.fromJson(caregiver));

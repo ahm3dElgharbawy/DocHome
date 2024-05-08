@@ -23,7 +23,9 @@ class ServicesList extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return  StuffList(title: title,);
+            return StuffList(
+              title: title,
+            );
           }));
         },
         backgroundColor: CColors.primary,

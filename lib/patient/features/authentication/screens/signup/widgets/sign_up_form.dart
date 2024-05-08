@@ -67,7 +67,8 @@ class _CSignupFormState extends State<CSignupForm> {
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
-                validator: (val) => CTextFieldValidator.phoneNumberTextFieldValidator(val),
+                validator: (val) =>
+                    CTextFieldValidator.phoneNumberTextFieldValidator(val),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
@@ -85,17 +86,18 @@ class _CSignupFormState extends State<CSignupForm> {
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
-                validator: (val) => CTextFieldValidator.passwordTextFieldValidator(val),
+                validator: (val) =>
+                    CTextFieldValidator.passwordTextFieldValidator(val),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
-                controller: authBloc.signupControllers.elementAt(4),
-                hintText: "Confirm Password".tr(context),
-                margin: EdgeInsets.zero,
-                prefixIcon: const Icon(Icons.lock),
-                obscureText: true,
-                validator: (val) => CTextFieldValidator.passwordTextFieldValidator(val)
-              ),
+                  controller: authBloc.signupControllers.elementAt(4),
+                  hintText: "Confirm Password".tr(context),
+                  margin: EdgeInsets.zero,
+                  prefixIcon: const Icon(Icons.lock),
+                  obscureText: true,
+                  validator: (val) =>
+                      CTextFieldValidator.passwordTextFieldValidator(val)),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               //? Centers dropdown menu
               CDropdown(
@@ -114,7 +116,9 @@ class _CSignupFormState extends State<CSignupForm> {
                   authBloc.registerPatient(context);
                 },
                 title: "Sign up".tr(context),
-                child: state is RegisterPatientLoadingState ? const CLoadingWidget() : null,
+                child: state is RegisterPatientLoadingState
+                    ? const CLoadingWidget()
+                    : null,
               ),
             ],
           ),
@@ -122,6 +126,4 @@ class _CSignupFormState extends State<CSignupForm> {
       ),
     );
   }
-
-  
 }

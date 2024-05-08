@@ -42,7 +42,7 @@ class _CDropdownState extends State<CDropdown> {
             (item) => DropdownMenuItem<String>(
               value: item.id.toString(),
               child: Text(
-                trans(enText: item.nameEn, arText:item.nameAr),
+                trans(enText: item.nameEn, arText: item.nameAr),
                 style: CAppStyles.styleMedium14(context),
               ),
             ),

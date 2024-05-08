@@ -6,5 +6,6 @@ import 'package:dochome/utils/errors/failures.dart';
 abstract class FindCargiverRepo {
   Future<Either<Failure, List<ServiceModel>>> getAllServicesinCategory(
       {int? id});
-  Future<Either<Failure, List<CargiverModel>>> getAllCaregiversinCategory({int? id});
+  Future<Either<Failure, List<CargiverModel>>> getAllCaregiversinCategory(
+      {int? id});
 }

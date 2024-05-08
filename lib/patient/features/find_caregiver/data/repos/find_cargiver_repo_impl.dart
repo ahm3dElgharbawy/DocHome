@@ -24,6 +24,7 @@ class FindCargiverRepoImpl extends FindCargiverRepo {
           services.map((service) => ServiceModel.fromJson(service)).toList());
     });
   }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
   @override
   Future<Either<Failure, List<CargiverModel>>> getAllCaregiversinCategory(
