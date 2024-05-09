@@ -2,6 +2,7 @@ import 'package:dochome/patient/features/find_caregiver/views/logic/cargiver_cub
 import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/services_list.dart';
 import 'package:dochome/patient/features/home/views/logic/categories_cubit/categories_cubit.dart';
+import 'package:dochome/patient/features/home/views/screens/widgets/categories_loding.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,15 @@ import 'category_list_view_item.dart';
 
 class CategoryListView extends StatelessWidget {
   const CategoryListView({super.key});
-
+  static List images = [
+    CImages.nursingCategory,
+    CImages.analysisabsCategory,
+    CImages.analysisabsCategory,
+    CImages.physicaltherapyCategory,
+    CImages.nursingCategory,
+    CImages.nursingCategory,
+    CImages.nursingCategory,
+  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,22 +26,38 @@ class CategoryListView extends StatelessWidget {
       child: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
           if (state is CategoriesLoding) {
-            return const Center(child: CircularProgressIndicator());
+            return CategorieShimmerLoding();
           } else if (state is CategoriesSuccess) {
             return ListView.builder(
                 itemCount: state.categories.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: CategoryListViewItem(
-                      image: state.categories[1].image!,
-                      text: state.categories[2].nameEn!,
+                    padding: const EdgeInsets.only(right: 20),
+                    child: GestureDetector(
+                      onTap: () {
+                        BlocProvider.of<ServiceCubit>(context).getAllServices(
+                          id: state.categories[index].id,
+                        );
+                        BlocProvider.of<CargiverCubit>(context).getAllCargivers(
+                          id: state.categories[index].id,
+                        );
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ServicesList(
+                            title: state.categories[index].nameEn!,
+                          );
+                        }));
+                      },
+                      child: CategoryListViewItem(
+                        image: images[index],
+                        categories: state.categories[index],
+                      ),
                     ),
                   );
                 });
-          } else{
-             return const Center(
+          } else {
+            return const Center(
                 child: SizedBox(
               child: Text('HHHHHHHHHH'),
             ));
