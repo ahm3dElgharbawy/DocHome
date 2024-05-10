@@ -1,12 +1,13 @@
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
+import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/booking_doctor_details.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:flutter/material.dart';
 
 class BookingScreen extends StatelessWidget {
-  const BookingScreen({super.key});
-
+  const BookingScreen({super.key, required this.cargiverModel});
+final CargiverModel cargiverModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +43,9 @@ class BookingScreen extends StatelessWidget {
                 },
                 child: const Icon(Icons.arrow_back_ios_new_outlined),
               )),
-          const Positioned.fill(
+           Positioned.fill(
             top: 300,
-            child: BookingDoctorDetails(),
+            child: BookingDoctorDetails(cargiverModel: cargiverModel,),
           ),
         ],
       ),

@@ -8,4 +8,7 @@ abstract class FindCargiverRepo {
       {int? id});
   Future<Either<Failure, List<CargiverModel>>> getAllCaregiversinCategory(
       {int? id});
+
+  Future<Either<Failure, Unit>> storeNewBooking(
+      Map<String, dynamic> bookingData);
 }

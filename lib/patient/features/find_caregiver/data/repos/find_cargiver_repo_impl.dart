@@ -5,6 +5,7 @@ import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_mod
 import 'package:dochome/patient/features/find_caregiver/data/models/service_model.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo.dart';
 import 'package:dochome/utils/api/api_calls.dart';
+import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/api/response_handler.dart';
 import 'package:dochome/utils/errors/failures.dart';
 
@@ -40,5 +41,13 @@ class FindCargiverRepoImpl extends FindCargiverRepo {
         cargivers.map((e) => CargiverModel.fromJson(e)).toList(),
       );
     });
+  }
+  
+  @override
+  Future<Either<Failure, Unit>> storeNewBooking(Map<String, dynamic> bookingData)async {
+    Either result = await ResponseHandler.handle(
+      () => ApiCalls.postData(EndPoints.storeNewBooking, bookingData),
+    );
+    return result.fold((failure) => left(failure), (response) => right(unit));
   }
 }

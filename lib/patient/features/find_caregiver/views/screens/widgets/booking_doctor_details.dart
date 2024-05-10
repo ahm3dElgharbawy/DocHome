@@ -1,4 +1,5 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
+import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/about_section.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_elevated_botton.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/status_section.dart';
@@ -9,9 +10,9 @@ import 'package:flutter/material.dart';
 
 class BookingDoctorDetails extends StatelessWidget {
   const BookingDoctorDetails({
-    super.key,
+    super.key, required this.cargiverModel,
   });
-
+final CargiverModel cargiverModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +37,7 @@ class BookingDoctorDetails extends StatelessWidget {
                     FittedBox(
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Dr. Ahmed faheem ',
+                        cargiverModel.name!,
                         style: CAppStyles.styleRegular23(context),
                       ),
                     ),

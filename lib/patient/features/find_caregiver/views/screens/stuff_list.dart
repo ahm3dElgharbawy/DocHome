@@ -1,4 +1,5 @@
 import 'package:dochome/patient/features/find_caregiver/views/logic/cargiver_cubit/cargiver_cubit.dart';
+import 'package:dochome/patient/features/find_caregiver/views/screens/booking_screen.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_app_bar.dart';
 import 'package:dochome/patient/features/home/views/screens/widgets/doctor_info.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,20 @@ class StuffList extends StatelessWidget {
               child: ListView.builder(
                   itemCount: state.cargivers.length,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child:
-                          DoctorInfoItem(cargiverModel: state.cargivers[index]),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return  BookingScreen(
+                            cargiverModel: state.cargivers[index],
+                          );
+                        }));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: DoctorInfoItem(
+                            cargiverModel: state.cargivers[index]),
+                      ),
                     );
                   }),
             );
