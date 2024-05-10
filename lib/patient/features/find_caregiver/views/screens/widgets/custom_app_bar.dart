@@ -1,5 +1,7 @@
+import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
