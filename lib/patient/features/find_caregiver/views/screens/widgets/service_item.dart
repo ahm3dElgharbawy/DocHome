@@ -47,7 +47,7 @@ class _ServiceItemState extends State<ServiceItem> {
               .selectedServices
               .add(widget.index + 1);
         }
-        print(BlocProvider.of<ServiceCubit>(context).selectedServices);
+        // print(BlocProvider.of<ServiceCubit>(context).selectedServices);
       },
       child: Container(
         width: double.infinity,

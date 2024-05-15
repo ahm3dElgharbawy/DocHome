@@ -2,6 +2,7 @@ import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/about_section.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_elevated_botton.dart';
+import 'package:dochome/patient/features/find_caregiver/views/screens/enable_location_screen.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/status_section.dart';
 import 'package:dochome/patient/features/home/views/screens/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -10,9 +11,10 @@ import 'package:flutter/material.dart';
 
 class BookingDoctorDetails extends StatelessWidget {
   const BookingDoctorDetails({
-    super.key, required this.cargiverModel,
+    super.key,
+    required this.cargiverModel,
   });
-final CargiverModel cargiverModel;
+  final CargiverModel cargiverModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -84,7 +86,12 @@ final CargiverModel cargiverModel;
             ),
             CRoundedButton(
               title: 'Make an Appointment',
-              onPressed: () {},
+              onPressed: () {
+                print('1234');
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return  EnableLocationScreen();
+                }));
+              },
             ),
             const SizedBox(
               height: 20,
