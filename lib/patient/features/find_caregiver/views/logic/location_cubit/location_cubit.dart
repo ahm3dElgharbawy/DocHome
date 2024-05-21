@@ -6,12 +6,12 @@ part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
   LocationCubit() : super(LocationInitial());
+  double? latitude;
+  double? longitude;
   getLocation() async {
     Position position;
     bool serviceEnabled;
     LocationPermission permission;
-    double latitude ;
-    double longitude;
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     permission = await Geolocator.checkPermission();
@@ -25,8 +25,9 @@ class LocationCubit extends Cubit<LocationState> {
     if (permission == LocationPermission.whileInUse) {
       position = await Geolocator.getCurrentPosition();
 
-       latitude = position.latitude;
-       longitude = position.longitude;
+      latitude = position.latitude;
+      longitude = position.longitude;
+      print(latitude);
     }
   }
 }

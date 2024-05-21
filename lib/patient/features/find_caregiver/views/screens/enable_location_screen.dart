@@ -6,6 +6,7 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
 
 class EnableLocationScreen extends StatelessWidget {
   const EnableLocationScreen({super.key});
@@ -50,6 +51,28 @@ class EnableLocationScreen extends StatelessWidget {
                   title: 'Get the current location',
                   onPressed: () async {
                     await BlocProvider.of<LocationCubit>(context).getLocation();
+                    print(BlocProvider.of<LocationCubit>(context).latitude);
+                    // Position position;
+                    // bool serviceEnabled;
+                    // LocationPermission permission;
+                    // double latitude;
+                    // double longitude;
+
+                    // serviceEnabled =
+                    //     await Geolocator.isLocationServiceEnabled();
+                    // permission = await Geolocator.checkPermission();
+                    // if (permission == LocationPermission.denied) {
+                    //   permission = await Geolocator.requestPermission();
+                    //   if (permission == LocationPermission.denied) {
+                    //     return Future.error('Location permissions are denied');
+                    //   }
+                    // } else if (permission == LocationPermission.whileInUse) {
+                    //   position = await Geolocator.getCurrentPosition();
+
+                    //   latitude = position.latitude;
+                    //   longitude = position.longitude;
+                    //   print(longitude.toString());
+                    // }
                   },
                 ),
               ],
