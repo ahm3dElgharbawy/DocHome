@@ -27,7 +27,7 @@ class LocationCubit extends Cubit<LocationState> {
 
       latitude = position.latitude;
       longitude = position.longitude;
-      print(latitude);
+      // print(latitude);
     }
   }
 }

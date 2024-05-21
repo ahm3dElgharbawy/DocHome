@@ -8,3 +8,5 @@ sealed class BookingState extends Equatable {
 }
 
 final class BookingInitial extends BookingState {}
+final class BookingSuccess extends BookingState {}
+final class BookingFaluier extends BookingState {}

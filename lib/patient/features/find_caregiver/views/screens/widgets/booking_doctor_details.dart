@@ -1,5 +1,6 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/booking_cubit/booking_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/location_cubit/location_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/about_section.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_elevated_botton.dart';
@@ -108,7 +109,17 @@ class _BookingDoctorDetailsState extends State<BookingDoctorDetails> {
                     )
                   : CRoundedButton(
                       title: 'Make an Appointment',
-                      onPressed: () {},
+                      onPressed: () async {
+                        await BlocProvider.of<BookingCubit>(context).sendPostRequest(
+                          latitude: 34.56233,
+                          longitude: 54.6788,
+                          services: [1,2],
+                          caregiverId: 1,
+                          bookingDate: '22/22024',
+                          startDate: '22/22024',
+                          phoneNumber: '01225087487'
+                        );
+                      },
                     ),
             ),
             

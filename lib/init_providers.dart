@@ -4,6 +4,7 @@ import 'package:dochome/localization/cubit/locale_cubit.dart';
 import 'package:dochome/patient/features/authentication/data/repo/auth.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo_impl.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/booking_cubit/booking_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/cargiver_cubit/cargiver_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/location_cubit/location_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
@@ -49,6 +50,9 @@ abstract class AppBlocProviders {
       BlocProvider(
           create: (context) =>
               LocationCubit()..getLocation()),
+      BlocProvider(
+          create: (context) =>
+              BookingCubit()..sendPostRequest()),
     ];
   }
 }
