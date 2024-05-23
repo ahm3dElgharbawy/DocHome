@@ -1,8 +1,11 @@
+import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo_impl.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/stuff_list.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_app_bar.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/services_list_view.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ServicesList extends StatelessWidget {
   const ServicesList({
@@ -22,9 +25,15 @@ class ServicesList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return  StuffList(title: title,);
-          }));
+          if (BlocProvider.of<ServiceCubit>(context)
+              .selectedServices
+              .isNotEmpty) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return StuffList(
+                title: title,
+              );
+            }));
+          }
         },
         backgroundColor: CColors.primary,
         child: Center(

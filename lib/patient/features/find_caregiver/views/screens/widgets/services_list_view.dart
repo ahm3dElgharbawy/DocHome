@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ServicesListView extends StatelessWidget {
-  const ServicesListView({
+ const ServicesListView({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ServiceCubit, ServiceState>(
@@ -20,7 +19,10 @@ class ServicesListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: ServiceItem(service: state.services[index]),
+                  child: ServiceItem(
+                    service: state.services[index],
+                    index: index,
+                  ),
                 );
               });
         } else {

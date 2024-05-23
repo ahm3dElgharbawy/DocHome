@@ -5,7 +5,7 @@ import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/remember_me.dart';
-import 'package:dochome/patient/features/home/screens/home.dart';
+import 'package:dochome/patient/features/home/views/screens/home.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
@@ -24,7 +24,8 @@ class CLoginForm extends StatelessWidget {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) async {
         if (state is SuccessLoginState) {
-          PreferenceServices.setString("PATIENT", jsonEncode(state.patient.toJson()));
+          PreferenceServices.setString(
+              "PATIENT", jsonEncode(state.patient.toJson()));
           if (authBloc.rememberMe) {
             PreferenceServices.setInt("STEP", 2);
           }
@@ -78,7 +79,9 @@ class CLoginForm extends StatelessWidget {
                     }
                   },
                   title: "Sign in".tr(context),
-                  child: state is LoginPatientLoadingState ? const CLoadingWidget() : null,
+                  child: state is LoginPatientLoadingState
+                      ? const CLoadingWidget()
+                      : null,
                 ),
               ],
             ),

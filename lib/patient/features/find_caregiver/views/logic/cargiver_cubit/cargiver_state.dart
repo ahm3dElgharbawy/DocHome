@@ -9,7 +9,6 @@ sealed class CargiverState extends Equatable {
 
 final class CargiverInitial extends CargiverState {}
 
-
 final class CargiverLoding extends CargiverState {}
 
 final class CargiverSuccess extends CargiverState {
@@ -23,4 +22,3 @@ final class CargiverFailure extends CargiverState {
 
   const CargiverFailure({required this.errorMasege});
 }
-

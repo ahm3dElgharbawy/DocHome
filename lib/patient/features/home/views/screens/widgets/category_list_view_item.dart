@@ -1,3 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dochome/patient/features/home/data/models/categorie_model.dart';
+import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,11 +9,12 @@ class CategoryListViewItem extends StatelessWidget {
   const CategoryListViewItem({
     super.key,
     required this.image,
-    required this.text,
     this.onTap,
+    required this.categories,
   });
-  final String image, text;
+  final String image;
   final Function()? onTap;
+  final CategorieModel categories;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,13 +29,15 @@ class CategoryListViewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(image),
+              // CachedNetworkImage(imageUrl: 'https://dochomd4u.000webhostapp.com"${categories.image}'),
               const SizedBox(
                 height: 8,
               ),
               Text(
-                text,
+                categories.nameEn!,
                 style: CAppStyles.styleSemiBold10(context),
-              )
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
         ),

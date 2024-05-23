@@ -24,4 +24,6 @@ class ServiceCubit extends Cubit<ServiceState> {
               emit(ServiceSuccess(services: service)),
             });
   }
+
+   List<int> selectedServices = [];
 }

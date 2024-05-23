@@ -9,8 +9,12 @@ import 'package:dochome/patient/features/chat/data/repo/chat.dart';
 import 'package:dochome/patient/features/chat/logic/bloc/chat_bloc.dart';
 import 'package:dochome/patient/features/chatbot/logic/cubit/chat_bot_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo_impl.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/booking_cubit/booking_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/cargiver_cubit/cargiver_cubit.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/location_cubit/location_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
+import 'package:dochome/patient/features/home/data/repos/home_repo_impl.dart';
+import 'package:dochome/patient/features/home/views/logic/categories_cubit/categories_cubit.dart';
 import 'package:dochome/utils/network/network_info.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -71,6 +75,15 @@ abstract class AppBlocProviders {
       BlocProvider(
           create: (context) =>
               CargiverCubit(FindCargiverRepoImpl())..getAllCargivers()),
+      BlocProvider(
+          create: (context) =>
+              CategoriesCubit(HomeRepoImpl())..getAllCategories()),
+      BlocProvider(
+          create: (context) =>
+              LocationCubit()..getLocation()),
+      BlocProvider(
+          create: (context) =>
+              BookingCubit()..sendPostRequest()),
     ];
   }
 }

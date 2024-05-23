@@ -35,6 +35,8 @@ dependencies:
   pusher_channels_flutter: ^2.2.1
   cached_network_image: ^3.3.1
   flutter_gemini: ^2.0.3
+  shimmer: ^3.0.0
+  geolocator: ^8.0.0
 
 
 #--- dev dependencies ---#

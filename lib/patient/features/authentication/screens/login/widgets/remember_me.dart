@@ -25,7 +25,8 @@ class CRememberMe extends StatelessWidget {
                 });
               }),
         ),
-        Text("Remember me".tr(context), style: CAppStyles.styleRegular13(context)),
+        Text("Remember me".tr(context),
+            style: CAppStyles.styleRegular13(context)),
         const Spacer(),
         TextButton(
           onPressed: () {

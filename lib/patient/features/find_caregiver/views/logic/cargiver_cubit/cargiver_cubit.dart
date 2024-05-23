@@ -13,7 +13,7 @@ class CargiverCubit extends Cubit<CargiverState> {
     emit(CargiverLoding());
 
     var result = await findCargiverRepo.getAllCaregiversinCategory(id: id);
-print(result.toString());
+    // print(result.toString());
     result.fold(
         (failure) => {
               emit(CargiverFailure(errorMasege: failure.message)),

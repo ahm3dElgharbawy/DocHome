@@ -1,5 +1,5 @@
 import 'package:dochome/caregiver/features/navigation_menu.dart';
-import 'package:dochome/patient/features/home/screens/home.dart';
+import 'package:dochome/patient/features/home/views/screens/home.dart';
 import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
 import 'package:dochome/patient/features/intro/screens/onboarding/onboarding.dart';
 import 'package:dochome/patient/features/intro/screens/welcome/widgets/container_with_gradient.dart';
