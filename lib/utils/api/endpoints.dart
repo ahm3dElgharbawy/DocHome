@@ -1,6 +1,7 @@
 abstract class EndPoints {
-  static const baseUrl = "https://dochomd4u.000webhostapp.com/api";
-  // static const baseUrl = "http://192.168.248.10:8000/api";
+  // static const domainUrl = "https://dochomd4u.000webhostapp.com";
+  static const domainUrl = "http://192.168.146.10:8000"; // local server
+  static const baseUrl = "$domainUrl/api"; 
   
   // Patient authentication routes
   static const loginPatient = "$baseUrl/login/user";
@@ -19,6 +20,12 @@ abstract class EndPoints {
   static const loginCaregiver = "$baseUrl/login/caregiver";
   static const registerCaregiver = "$baseUrl/register/caregiver";
   static const logoutCaregiver = "$baseUrl/logout/caregiver";
+  // Chat 
+  static const createNewChat  = "$baseUrl/chat"; // [Post] user_id & caregiver_id && Authorization in header
+  static const getAllChats  = "$baseUrl/chat"; // [Get] Authorization in header
+  static const getSingleChat  = "$baseUrl/chat/{id}"; // [Get] Authorization in header
+  static const getChatMessages  = "$baseUrl/chat_message"; // [Get] chat_id & page
+  static const addChatMessage  = "$baseUrl/chat_message"; // [Post] chat_id & caregiver_id & message
 
   // Categories
   //? [get] all categories

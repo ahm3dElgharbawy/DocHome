@@ -37,7 +37,7 @@ class CRoundedButton extends StatelessWidget {
         child: child ??
             Text(
               title,
-              style: CAppStyles.styleBold16(context),
+              style: CAppStyles.styleMedium16(context),
             ),
       ),
     );

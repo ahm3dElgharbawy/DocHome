@@ -7,10 +7,8 @@ import 'package:dochome/utils/api/api_calls.dart';
 import 'package:dochome/utils/network/network_info.dart';
 import 'package:dochome/utils/api/response_handler.dart';
 import 'package:dochome/utils/services/preference_services.dart';
-import 'package:http/http.dart' as http;
 import 'package:dochome/utils/errors/failures.dart';
 
-typedef LoginOrRegisterPatient = Future<http.Response> Function();
 
 abstract class PatientAuthRepo {
   Future<Either<Failure, Patient>> patientLogin(

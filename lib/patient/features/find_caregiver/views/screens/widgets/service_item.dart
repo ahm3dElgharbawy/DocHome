@@ -4,7 +4,7 @@ import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class ServiceItem extends StatefulWidget {
-  ServiceItem({
+  const ServiceItem({
     super.key,
     required this.service,
   });

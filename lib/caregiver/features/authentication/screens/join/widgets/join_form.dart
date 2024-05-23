@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dochome/caregiver/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/caregiver/features/authentication/screens/join/widgets/uploads_buttons.dart';
 import 'package:dochome/caregiver/features/authentication/screens/login/caregiver_login.dart';
@@ -51,7 +49,7 @@ class _CJoinFormState extends State<CJoinForm> {
       },
       builder: (context, state) {
         return Form(
-          key: bloc.joinFormKey,
+          key: bloc.formKey,
           child: Column(
             children: [
               CTextFieldWithInnerShadow(
@@ -78,7 +76,7 @@ class _CJoinFormState extends State<CJoinForm> {
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
-                validator: (p0) => CTextFieldValidator.requiredTextField(p0),
+                validator: (p0) => CTextFieldValidator.passwordTextFieldValidator(p0),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
@@ -87,7 +85,7 @@ class _CJoinFormState extends State<CJoinForm> {
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
-                validator: (p0) => CTextFieldValidator.requiredTextField(p0),
+                validator: (p0) => CTextFieldValidator.phoneNumberTextFieldValidator(p0),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               //? caregiver centers drop down menu
@@ -123,7 +121,7 @@ class _CJoinFormState extends State<CJoinForm> {
               const SizedBox(height: CSizes.spaceBtwItems),
               CRoundedButton(
                 onPressed: () {
-                  if (bloc.joinFormKey.currentState!.validate()) {
+                  if (bloc.formKey.currentState!.validate()) {
                     bool emptyFiles = false;
                     for (int i = 0; i < bloc.files.length; i++) {
                       if (bloc.files.elementAt(i) == null) {

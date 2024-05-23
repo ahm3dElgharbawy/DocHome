@@ -5,17 +5,21 @@ abstract class CTextFieldValidator {
     }
     return null;
   }
+
   static String? phoneNumberTextFieldValidator(String? value) {
-    if (value != null || value!.length == 11) {
+    if (value != null && value.length != 11) {
       return "the phone number must be 11 digit";
+    } else {
+      return requiredTextField(value);
     }
-    return null;
   }
+
   static String? passwordTextFieldValidator(String? value) {
-    if (value != null || value!.length >= 8) {
+    if (value != null && value.length < 8) {
       return "must be greater than or equal 8 digits";
+    } else {
+      return requiredTextField(value);
     }
-    return null;
   }
 
   static String? emailCheck(String? value, {String message = "Invalid email"}) {

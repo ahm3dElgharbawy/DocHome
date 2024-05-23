@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dochome/utils/api/endpoints.dart';
+import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CChatAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CChatAppBar({super.key, required this.username, required this.image});
+  const CChatAppBar({super.key, required this.username, this.image});
   final String username;
-  final String image;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +19,16 @@ class CChatAppBar extends StatelessWidget implements PreferredSizeWidget {
       foregroundColor: Colors.black,
       title: ListTile(
         contentPadding: EdgeInsets.zero,
-        leading: CircleAvatar(backgroundImage: AssetImage(image)),
-        title: Text(username, style: CAppStyles.styleSemiBold16(context)),
-        subtitle: Text(
-          "last seen today at 7:10 PM",
-          style: CAppStyles.styleRegular12(context),
+        leading: CircleAvatar(
+          backgroundImage: image == null
+              ? const AssetImage(CImages.user)
+              : CachedNetworkImageProvider("${EndPoints.domainUrl}/$image") as ImageProvider,
         ),
+        title: Text(username, style: CAppStyles.styleSemiBold16(context)),
+        // subtitle: Text(
+        //   "last seen today at 7:10 PM",
+        //   style: CAppStyles.styleRegular12(context),
+        // ),
       ),
     );
   }

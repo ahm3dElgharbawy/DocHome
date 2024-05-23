@@ -1,15 +1,11 @@
 import 'package:dochome/caregiver/features/authentication/screens/join/join.dart';
 import 'package:dochome/caregiver/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
-import 'package:dochome/caregiver/features/navigation_menu.dart';
-import 'package:dochome/common/widgets/buttons/rounded_button.dart';
-import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
-import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 
 class CareGiverLoginScreen extends StatelessWidget {
@@ -18,7 +14,7 @@ class CareGiverLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(),
+      appBar: const CMainAppBar(showBackArrow: false,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),

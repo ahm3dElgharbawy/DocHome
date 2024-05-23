@@ -33,6 +33,7 @@ class CImages {
   static const String apple = "assets/icons/social-media/apple.png";
   static const String google = "assets/icons/social-media/google.png";
   static const String facebook = "assets/icons/social-media/facebook.png";
+  static const String appIcon = "assets/icons/launcher_icon.png";
 
   // -- Select Region
   static const String region1 = "assets/images/region/region1.png";

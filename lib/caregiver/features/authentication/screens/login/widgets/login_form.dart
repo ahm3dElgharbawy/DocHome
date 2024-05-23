@@ -6,7 +6,6 @@ import 'package:dochome/caregiver/features/navigation_menu.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
-import 'package:dochome/patient/features/home/screens/home.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
@@ -22,7 +21,7 @@ class CCaregiverLoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<CaregiverAuthBloc>();
     return Form(
-      key: bloc.loginFormKey,
+      key: bloc.formKey,
       child: Column(
         children: [
           CTextFieldWithInnerShadow(
@@ -61,7 +60,7 @@ class CCaregiverLoginForm extends StatelessWidget {
             },
             builder: (context, state) => CRoundedButton(
               onPressed: () {
-                if (bloc.loginFormKey.currentState!.validate()) {
+                if (bloc.formKey.currentState!.validate()) {
                   bloc.add(
                     LoginCaregiverEvent(
                       email: bloc.loginControllers.elementAt(0).text,

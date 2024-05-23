@@ -4,11 +4,12 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CSendMessageBottomBar extends StatelessWidget {
-  const CSendMessageBottomBar({super.key});
+  const CSendMessageBottomBar({super.key, required this.onSend, required this.controller});
+  final VoidCallback onSend;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    final messageController = TextEditingController();
     return Card(
       color: Colors.grey[200],
       margin: EdgeInsets.zero,
@@ -31,7 +32,7 @@ class CSendMessageBottomBar extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: TextField(
-                controller: messageController,
+                controller: controller,
                 maxLines: 2,
                 minLines: 1,
                 cursorColor: Colors.black,
@@ -60,7 +61,7 @@ class CSendMessageBottomBar extends StatelessWidget {
           ),
           IconButton(
             splashRadius: 22,
-            onPressed: () {},
+            onPressed: onSend,
             icon: const Icon(
               Icons.send,
               size: 26,

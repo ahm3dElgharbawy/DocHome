@@ -30,6 +30,7 @@ class ResponseHandler {
         );
       }
     } catch (e) {
+      print(e);
       switch (e.runtimeType) {
         case ClientException:
           return left(const ClientFailure("Client failure"));

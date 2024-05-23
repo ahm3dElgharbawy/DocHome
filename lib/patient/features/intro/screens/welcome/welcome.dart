@@ -1,3 +1,4 @@
+import 'package:dochome/caregiver/features/navigation_menu.dart';
 import 'package:dochome/patient/features/home/screens/home.dart';
 import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
 import 'package:dochome/patient/features/intro/screens/onboarding/onboarding.dart';
@@ -36,11 +37,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void waitAndGo(context) {
     Future.delayed(const Duration(seconds: 3), () async {
       int? currentStep = await PreferenceServices.getInt("STEP") ?? 0;
+      final patient = PreferenceServices.getString("PATIENT");
       final page = currentStep == 0
           ? const OnBoardingScreen()
           : (currentStep == 1)
               ? const ContinueAsScreen()
-              : const Home();
+              : patient== null || patient.isEmpty 
+                  ? const CCaregiverNavigationMenu()
+                  : const Home();
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => page),

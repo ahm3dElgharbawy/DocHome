@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 
 class MessageWidget extends StatelessWidget {
   const MessageWidget(
-      {super.key,
-      required this.message,
-      required this.createdAt,
-      required this.isMe});
+      {super.key, required this.message, this.createdAt, required this.isMe});
   final String message;
-  final String createdAt;
+  final String? createdAt;
   final bool isMe;
   @override
   Widget build(BuildContext context) {
@@ -28,18 +25,21 @@ class MessageWidget extends StatelessWidget {
             crossAxisAlignment:
                 isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
             children: [
-              Text(
+              SelectableText(
                 message,
                 style: CAppStyles.styleRegular14(context)
                     .copyWith(color: isMe ? Colors.white : Colors.black),
                 textAlign: isMe ? TextAlign.end : TextAlign.start,
               ),
-              const SizedBox(height: 10),
-              Text(
-                createdAt,
-                style: CAppStyles.styleRegular14(context).copyWith(
-                    color: isMe ? Colors.white70 : Colors.grey.shade600),
-              ),
+              if (createdAt != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    createdAt!,
+                    style: CAppStyles.styleRegular14(context).copyWith(
+                        color: isMe ? Colors.white70 : Colors.grey.shade600),
+                  ),
+                ),
             ],
           ),
         ),

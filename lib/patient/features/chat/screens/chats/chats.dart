@@ -1,11 +1,14 @@
 import 'package:dochome/common/widgets/chat/chat_tile.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
+import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
+import 'package:dochome/patient/features/chat/logic/bloc/chat_bloc.dart';
 import 'package:dochome/patient/features/chat/screens/single_chat/chat.dart';
-import 'package:dochome/utils/constants/image_strings.dart';
+import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PatientChatsScreen extends StatefulWidget {
   const PatientChatsScreen({super.key});
@@ -16,6 +19,12 @@ class PatientChatsScreen extends StatefulWidget {
 
 class _PatientChatsScreenState extends State<PatientChatsScreen> {
   @override
+  void initState() {
+    super.initState();
+    context.read<PatientChatBloc>().add(const GetChatsEvent());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CMainAppBar(
@@ -23,50 +32,59 @@ class _PatientChatsScreenState extends State<PatientChatsScreen> {
         centerTitle: true,
         showBackArrow: false,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
-          child: Column(children: [
-            const CTextFieldWithInnerShadow(
-              hintText: "search..",
-              margin: EdgeInsets.zero,
-              prefixIcon: Icon(Icons.search),
+      body: BlocConsumer<PatientChatBloc, ChatState>(
+        listener: (context, state) {
+          if (state is SuccessLoadingChatsState) {
+            print("Chats : ${state.chats}");
+          }
+          if (state is ChatCreatedSuccessfullyState) {
+            print("success create the chat");
+          }
+          if (state is ChatFailureState) {
+            print(state.message);
+          }
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
+              child: Column(children: [
+                const CTextFieldWithInnerShadow(
+                  hintText: "search..,",
+                  margin: EdgeInsets.zero,
+                  prefixIcon: Icon(Icons.search),
+                ),
+                const SizedBox(height: CSizes.spaceBtwItems),
+                state is LoadingChatsState
+                    ? const CLoadingWidget(indicatorColor: CColors.primary)
+                    : Column(
+                        children: context.read<PatientChatBloc>().chats.map((chatModel) {
+                          final caregiver =
+                              chatModel.participants.elementAt(0).caregiver;
+                          return ChatTile(
+                            lastMessage: chatModel.lastMessage ?? "no messages",
+                            time: chatModel.lastMessageTime ?? "",
+                            image: caregiver.profileImage,
+                            name: caregiver.name,
+                            onTap: () {
+                              CHelperFunctions.navigateToScreen(
+                                context,
+                                PatientSingleChatScreen(
+                                  caregiverId: caregiver.id.toString(),
+                                  caregiverName: caregiver.name,
+                                  avatar: caregiver.profileImage,
+                                  chatId: chatModel.id,
+                                ),
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
+              ]),
             ),
-            const SizedBox(height: CSizes.spaceBtwItems),
-            ChatTile(
-              lastMessage: "hello there how are you",
-              time: "7:20 PM",
-              image: CImages.doc1,
-              name: "Hoda Mohamed",
-              unReadMessages: 3,
-              onTap: () {
-                CHelperFunctions.navigateToScreen(
-                  context,
-                  const PatientSingleChatScreen(
-                    userId: '1',
-                    userName: "Hoda Mohamed",
-                    image: CImages.doc1,
-                  ),
-                );
-              },
-            ),
-            const ChatTile(
-              lastMessage: "thank you",
-              time: "9:10 PM",
-              image: CImages.doc2,
-              name: "Essra Gamal",
-              unReadMessages: 4,
-            ),
-            const ChatTile(
-              lastMessage: "send me your x-ray please",
-              time: "4:33 PM",
-              image: CImages.doc3,
-              name: "Ahmed Ali",
-              unReadMessages: 5,
-              isLastMessage: false,
-            ),
-          ]),
-        ),
+          );
+        },
       ),
     );
   }

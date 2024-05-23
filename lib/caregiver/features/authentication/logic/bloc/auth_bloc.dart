@@ -4,7 +4,6 @@ import 'package:dochome/caregiver/features/authentication/data/models/category.d
 import 'package:dochome/caregiver/features/authentication/data/repo/auth.dart';
 import 'package:dochome/patient/features/authentication/data/models/center.dart';
 import 'package:dochome/utils/constants/strings.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -22,8 +21,7 @@ class CaregiverAuthBloc extends Bloc<CaregiverAuthEvent, CaregiverAuthState> {
           TextEditingController()); // Register fields [email, password, phone]
   List<File?> files = List.generate(
       3, (index) => null); // [profileImage, identityCard, professionCard]
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  GlobalKey<FormState> joinFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool rememberMe = false;
   List<CenterModel>? centers = [];
   List<CategoryModel>? categories = [];

@@ -90,7 +90,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   registerPatient(BuildContext context) {
-    if (patientLoginFormKey.currentState!.validate()) {
+    if (patientRegisterFormKey.currentState!.validate()) {
       List<TextEditingController> controllers = signupControllers;
       //? show error on confirmation password not match
       if (controllers.elementAt(3).text != controllers.elementAt(4).text) {
