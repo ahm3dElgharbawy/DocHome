@@ -59,7 +59,7 @@ class CategoryListView extends StatelessWidget {
           } else {
             return const Center(
                 child: SizedBox(
-              child: Text('HHHHHHHHHH'),
+              child: Text('Failed'),
             ));
           }
 

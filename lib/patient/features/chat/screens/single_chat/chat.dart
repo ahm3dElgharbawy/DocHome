@@ -4,6 +4,7 @@ import 'package:dochome/common/widgets/chat/chat_appbar.dart';
 import 'package:dochome/common/widgets/chat/message_widget.dart';
 import 'package:dochome/common/widgets/chat/send_message_bottom_bar.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
+import 'package:dochome/common/widgets/shimmers/chat_messages_shimmer.dart';
 import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/chat/logic/bloc/chat_bloc.dart';
 import 'package:dochome/utils/api/endpoints.dart';
@@ -61,9 +62,7 @@ class _PatientSingleChatScreenState extends State<PatientSingleChatScreen> {
               },
               builder: (context, state) {
                 return state is LoadingChatMessagesState
-                    ? const CLoadingWidget(
-                        indicatorColor: CColors.primary,
-                      )
+                    ? const CustomChatMessagesLoadingShimmer()
                     : ListView(
                         reverse: true,
                         padding: const EdgeInsets.all(CSizes.defaultSpace),

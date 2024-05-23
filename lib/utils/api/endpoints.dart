@@ -1,6 +1,6 @@
 abstract class EndPoints {
-  // static const domainUrl = "https://dochomd4u.000webhostapp.com";
-  static const domainUrl = "http://192.168.146.10:8000"; // local server
+  static const domainUrl = "https://dochomd4u.000webhostapp.com";
+  // static const domainUrl = "http://192.168.146.10:8000"; // local server
   static const baseUrl = "$domainUrl/api"; 
   
   // Patient authentication routes

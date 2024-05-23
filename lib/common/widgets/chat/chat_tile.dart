@@ -86,7 +86,7 @@ class ChatTile extends StatelessWidget {
         ),
         if (!isLastChat)
           const Divider(
-            indent: 60,
+            indent: 0,
           )
       ],
     );

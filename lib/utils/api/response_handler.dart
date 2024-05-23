@@ -14,6 +14,7 @@ class ResponseHandler {
         NetworkInfoImpl(internetChecker: InternetConnectionChecker());
     try {
       if (await networkInfo.isConnected) {
+        
         Response response = await request();
         debugPrint("############################");
         debugPrint(response.body);

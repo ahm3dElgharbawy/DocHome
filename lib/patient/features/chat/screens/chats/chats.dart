@@ -1,6 +1,7 @@
 import 'package:dochome/common/widgets/chat/chat_tile.dart';
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
+import 'package:dochome/common/widgets/shimmers/chats_shimmer.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/patient/features/chat/logic/bloc/chat_bloc.dart';
 import 'package:dochome/patient/features/chat/screens/single_chat/chat.dart';
@@ -57,7 +58,7 @@ class _PatientChatsScreenState extends State<PatientChatsScreen> {
                 ),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 state is LoadingChatsState
-                    ? const CLoadingWidget(indicatorColor: CColors.primary)
+                    ? const CustomChatsLoadingShimmer()
                     : Column(
                         children: context.read<PatientChatBloc>().chats.map((chatModel) {
                           final caregiver =

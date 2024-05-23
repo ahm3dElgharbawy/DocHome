@@ -46,7 +46,7 @@ class CaregiverProfileScreen extends StatelessWidget {
                     ),
                     const CSettingsTile(
                       title: "Support",
-                      leadingIcon: Icons.support,
+                      leadingIcon: Icons.support_agent,
                       leadingBackgroundColor: Color(0xff00b383),
                     ),
                     const Divider(
