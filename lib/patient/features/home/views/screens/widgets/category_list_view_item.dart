@@ -8,11 +8,13 @@ class CategoryListViewItem extends StatelessWidget {
     super.key,
     required this.image,
     this.onTap,
-    required this.categories,
+    // required this.categories, 
+    this.text,
   });
   final String image;
   final Function()? onTap;
-  final CategorieModel categories;
+  // final CategorieModel categories;
+  final String ? text;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -32,7 +34,7 @@ class CategoryListViewItem extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                categories.nameEn!,
+                text!,
                 style: CAppStyles.styleSemiBold10(context),
                 textAlign: TextAlign.center,
               ),

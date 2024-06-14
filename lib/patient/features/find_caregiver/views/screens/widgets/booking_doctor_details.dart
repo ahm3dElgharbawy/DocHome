@@ -1,14 +1,20 @@
+import 'dart:convert';
+
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
+import 'package:dochome/patient/features/authentication/data/models/patient.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/booking_cubit/booking_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/location_cubit/location_cubit.dart';
+import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/about_section.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_elevated_botton.dart';
 import 'package:dochome/patient/features/home/views/screens/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/services/preference_services.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class BookingDoctorDetails extends StatefulWidget {
   const BookingDoctorDetails({
@@ -24,6 +30,13 @@ class BookingDoctorDetails extends StatefulWidget {
 class _BookingDoctorDetailsState extends State<BookingDoctorDetails> {
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> localPatientData =
+        jsonDecode(PreferenceServices.getString("PATIENT")!);
+    Patient patient = Patient.fromJson(localPatientData);
+    //////////////////////////
+    DateTime now = DateTime.now();
+    DateFormat format = DateFormat('yyyy-MM-dd HH:mm:ss');
+    String formatedDate = format.format(now);
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -91,14 +104,15 @@ class _BookingDoctorDetailsState extends State<BookingDoctorDetails> {
                 height: 20,
               ),
             ),
-          
+
             const SizedBox(
               height: 10,
             ),
             SizedBox(
               child: BlocProvider.of<LocationCubit>(context).latitude == null
                   ? CRoundedButton(
-                      title: 'Enable location',
+                    color: Colors.blueGrey,
+                      title: 'Enable location To Continue',
                       onPressed: () async {
                         await BlocProvider.of<LocationCubit>(context)
                             .getLocation();
@@ -108,19 +122,36 @@ class _BookingDoctorDetailsState extends State<BookingDoctorDetails> {
                   : CRoundedButton(
                       title: 'Make an Appointment',
                       onPressed: () async {
-                        await BlocProvider.of<BookingCubit>(context).sendPostRequest(
-                          latitude: 34.56233,
-                          longitude: 54.6788,
-                          services: [1,2],
-                          caregiverId: 1,
-                          bookingDate: '22/22024',
-                          startDate: '22/22024',
-                          phoneNumber: '01225087487'
-                        );
+                        await BlocProvider.of<BookingCubit>(context)
+                            .sendPostRequest(
+                                latitude:
+                                    BlocProvider.of<LocationCubit>(context)
+                                        .latitude,
+                                longitude:
+                                    BlocProvider.of<LocationCubit>(context)
+                                        .longitude,
+                                services: BlocProvider.of<ServiceCubit>(context)
+                                    .selectedServices,
+                                caregiverId: widget.cargiverModel.id,
+                                bookingDate: formatedDate,
+                                startDate: '22/22024',
+                                phoneNumber: patient.phone);
+                        //  print('wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww');
+
+                        // print( BlocProvider.of<LocationCubit>(context)
+                        //         .latitude);
+                        // print( BlocProvider.of<LocationCubit>(context)
+                        //         .longitude);
+                        // print( BlocProvider.of<ServiceCubit>(context)
+                        //     .selectedServices);
+                        //     print(widget.cargiverModel.id);
+                        //     print(formatedDate);
+                        //     print(patient.phone);
+                        //     print('wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww');
                       },
                     ),
             ),
-            
+
             const SizedBox(
               height: 20,
             ),
