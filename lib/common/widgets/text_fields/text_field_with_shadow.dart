@@ -18,7 +18,7 @@ class CTextFieldWithInnerShadow extends StatefulWidget {
       this.obscureText = false,
       this.keyboardType,
       this.readOnly = false,
-      this.onTap});
+      this.onTap, this.initialValue});
   final String hintText;
   final EdgeInsets? margin;
   final TextEditingController? controller;
@@ -30,6 +30,7 @@ class CTextFieldWithInnerShadow extends StatefulWidget {
   final TextInputType? keyboardType;
   final bool readOnly;
   final VoidCallback? onTap;
+  final String? initialValue;
 
   @override
   State<CTextFieldWithInnerShadow> createState() =>
@@ -69,6 +70,7 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
         //? our text field
         TextFormField(
           controller: widget.controller,
+          initialValue: widget.initialValue,
           validator: widget.validator ?? CTextFieldValidator.requiredTextField,
           obscureText: isHidden,
           keyboardType: widget.keyboardType,

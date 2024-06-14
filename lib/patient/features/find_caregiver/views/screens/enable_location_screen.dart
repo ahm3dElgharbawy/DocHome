@@ -1,12 +1,9 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/location_cubit/location_cubit.dart';
-import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_app_bar.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geolocator/geolocator.dart';
 
 class EnableLocationScreen extends StatelessWidget {
   const EnableLocationScreen({super.key});

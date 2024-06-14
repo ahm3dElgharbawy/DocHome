@@ -1,6 +1,5 @@
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/patient/features/find_caregiver/data/models/cargiver_model.dart';
-import 'package:dochome/patient/features/find_caregiver/views/screens/booking_screen.dart';
 import 'package:dochome/patient/features/home/views/screens/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/app_styles.dart';

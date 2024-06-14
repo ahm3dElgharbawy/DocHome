@@ -4,8 +4,6 @@ import 'package:dochome/patient/features/find_caregiver/views/logic/booking_cubi
 import 'package:dochome/patient/features/find_caregiver/views/logic/location_cubit/location_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/about_section.dart';
 import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/custom_elevated_botton.dart';
-import 'package:dochome/patient/features/find_caregiver/views/screens/enable_location_screen.dart';
-import 'package:dochome/patient/features/find_caregiver/views/screens/widgets/status_section.dart';
 import 'package:dochome/patient/features/home/views/screens/widgets/custom_rate_row.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/theme/app_styles.dart';

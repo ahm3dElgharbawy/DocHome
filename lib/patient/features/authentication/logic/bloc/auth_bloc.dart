@@ -4,7 +4,7 @@ import 'package:dochome/patient/features/authentication/data/models/patient.dart
 import 'package:dochome/patient/features/authentication/data/repo/auth.dart';
 import 'package:dochome/utils/constants/strings.dart';
 import 'package:dochome/utils/errors/failures.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -18,8 +18,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       List.generate(2, (i) => TextEditingController()); // Login fields
   final signupControllers =
       List.generate(5, (i) => TextEditingController()); // Register fields
-  GlobalKey<FormState> patientLoginFormKey = GlobalKey<FormState>();
-  GlobalKey<FormState> patientRegisterFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 
   bool rememberMe = false;
   bool agreeTerms = false;
@@ -50,8 +50,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } else if (event is SendOtpEvent) {
         emit(LoadingState());
         final eitherFailureOrSuccess = await repoImp.sendOtp(event.email);
-        emit(_mapFailureOrSuccessState(
-            eitherFailureOrSuccess, CStrings.sendOtpSuccess));
+        emit(
+          eitherFailureOrSuccess.fold(
+            (failure) => FailureState(message: failure.message),
+            (success) => const SuccessSendOtp(),
+          ),
+        );
       } else if (event is CheckOtpEvent) {
         emit(LoadingState());
         final eitherFailureOrSuccess =
@@ -91,17 +95,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   registerPatient(BuildContext context) {
-    if (patientRegisterFormKey.currentState!.validate()) {
+    if (registerFormKey.currentState!.validate()) {
       List<TextEditingController> controllers = signupControllers;
       //? show error on confirmation password not match
       if (controllers.elementAt(3).text != controllers.elementAt(4).text) {
-        return CHelperFunctions.showSnackBar(
-            context: context, message: CStrings.passwordNotMatch);
+        return CStrings.passwordNotMatch.showAsToast(Colors.red);
       }
       //? show error on not accept terms and conditions
       if (!agreeTerms) {
-        return CHelperFunctions.showSnackBar(
-            context: context, message: CStrings.agreeTerms);
+        CStrings.agreeTerms.showAsToast(Colors.red);
       }
       //? form data
       Map<String, String> patientData = {

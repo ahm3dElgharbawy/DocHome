@@ -26,7 +26,7 @@ class CategoryListView extends StatelessWidget {
       child: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
           if (state is CategoriesLoding) {
-            return CategorieShimmerLoding();
+            return const CategorieShimmerLoding();
           } else if (state is CategoriesSuccess) {
             return ListView.builder(
                 itemCount: state.categories.length,

@@ -1,9 +1,10 @@
-import 'package:dochome/caregiver/features/navigation_menu.dart';
-import 'package:dochome/patient/features/home/views/screens/home.dart';
+import 'package:dochome/caregiver/features/layout/navigation_menu.dart';
+import 'package:dochome/patient/features/layout/home.dart';
 import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
 import 'package:dochome/patient/features/intro/screens/onboarding/onboarding.dart';
 import 'package:dochome/patient/features/intro/screens/welcome/widgets/container_with_gradient.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  void waitAndGo(context) {
+  void waitAndGo(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () async {
       int? currentStep = await PreferenceServices.getInt("STEP") ?? 0;
       final patient = PreferenceServices.getString("PATIENT");
@@ -42,13 +43,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ? const OnBoardingScreen()
           : (currentStep == 1)
               ? const ContinueAsScreen()
-              : patient== null || patient.isEmpty 
+              : patient == null || patient.isEmpty
                   ? const CCaregiverNavigationMenu()
                   : const Home();
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => page),
-      );
+      if (context.mounted) {
+        context.pushReplacement(page);
+      }
     });
   }
 }

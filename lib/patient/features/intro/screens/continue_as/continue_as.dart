@@ -4,9 +4,11 @@ import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ContinueAsScreen extends StatelessWidget {
   const ContinueAsScreen({super.key});
@@ -20,24 +22,27 @@ class ContinueAsScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                CImages.appLogo,
-                width: 200,
+              SvgPicture.asset(
+                CImages.medicalStaff,
+                width: 400,
               ),
               Text(
-                "Best Care in The Comfort of\nYour Home",
-                style: CAppStyles.styleMedium14(context),
+                "Best Care in The Comfort of Your Home",
+                style: CAppStyles.styleSemiBold25(context).copyWith(color: Colors.black),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: CSizes.spaceBtwItems),
+              Text(
+                "would you like to continue as a patient or a caregiver",
+                style: CAppStyles.styleRegular14(context),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: CSizes.spaceBtwSections * 4),
               CRoundedButton(
                 onPressed: () {
-                  CHelperFunctions.navigateToScreen(
-                    context,
-                    const LoginScreen(),
-                  );
+                  context.push(const LoginScreen());
                 },
                 title: "Patient".tr(context),
               ),

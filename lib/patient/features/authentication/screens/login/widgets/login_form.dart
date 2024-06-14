@@ -5,10 +5,9 @@ import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/remember_me.dart';
-import 'package:dochome/patient/features/home/views/screens/home.dart';
+import 'package:dochome/patient/features/layout/home.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +34,7 @@ class CLoginForm extends StatelessWidget {
         }
         if (state is FailureState) {
           if (context.mounted) {
-            CHelperFunctions.showSnackBar(
-              context: context,
-              message: state.message,
-            );
+            state.message.showAsToast(Colors.red);
           }
         }
       },
@@ -46,7 +42,7 @@ class CLoginForm extends StatelessWidget {
         return IgnorePointer(
           ignoring: state is LoadingState ? true : false,
           child: Form(
-            key: authBloc.patientLoginFormKey,
+            key: authBloc.loginFormKey,
             child: Column(
               children: [
                 CTextFieldWithInnerShadow(
@@ -65,13 +61,13 @@ class CLoginForm extends StatelessWidget {
                   prefixIcon: const Icon(Icons.lock),
                   obscureText: true,
                   validator: (value) =>
-                      CTextFieldValidator.requiredTextField(value),
+                      CTextFieldValidator.passwordTextFieldValidator(value),
                 ),
                 //? remember me and forget password section
                 const CRememberMe(),
                 CRoundedButton(
                   onPressed: () {
-                    if (authBloc.patientLoginFormKey.currentState!.validate()) {
+                    if (authBloc.loginFormKey.currentState!.validate()) {
                       authBloc.add(LoginPatientEvent(
                         email: authBloc.loginControllers.elementAt(0).text,
                         password: authBloc.loginControllers.elementAt(1).text,

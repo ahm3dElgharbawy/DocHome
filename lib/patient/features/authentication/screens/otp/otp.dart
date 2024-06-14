@@ -3,12 +3,12 @@ import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
+import 'package:dochome/patient/features/authentication/screens/otp/widgets/timer_widget.dart';
 import 'package:dochome/patient/features/authentication/screens/reset_password/reset_password.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +40,7 @@ class _OTPScreenState extends State<OTPScreen> {
               Center(
                 child: SvgPicture.asset(
                   CImages.otp,
-                  height: 240,
+                  height: CSizes.defaultImageHeight,
                 ),
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
@@ -71,30 +71,9 @@ class _OTPScreenState extends State<OTPScreen> {
                     },
                   ),
                   const SizedBox(height: CSizes.spaceBtwItems),
-                  //? remaining time
-                  Text(
-                    "00:59 Sec",
-                    style: CAppStyles.styleMedium14(context),
-                  ),
-                  const SizedBox(height: CSizes.spaceBtwItems),
-                  //? resend the otp
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't receive code ?".tr(context),
-                        style: CAppStyles.styleRegular14(context),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Re-send".tr(context),
-                          style: CAppStyles.styleSemiBold14(context)
-                              .copyWith(color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
+                  TimerWidget(
+                    email: widget.email,
+                  )
                 ],
               ),
               const SizedBox(height: CSizes.spaceBtwSections),
@@ -105,8 +84,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       email: widget.email,
                     ));
                   } else if (state is FailureState) {
-                    CHelperFunctions.showSnackBar(
-                        context: context, message: state.message);
+                    state.message.showAsToast(Colors.red);
                   }
                 },
                 builder: (context, state) {
@@ -116,9 +94,9 @@ class _OTPScreenState extends State<OTPScreen> {
                           context.read<AuthBloc>().add(
                               CheckOtpEvent(email: widget.email, otp: otp!));
                         } else {
-                          CHelperFunctions.showSnackBar(
-                              context: context,
-                              message: "You must add the otp".tr(context));
+                          "You must add the otp"
+                              .tr(context)
+                              .showAsToast(Colors.red);
                         }
                       },
                       title: "Continue".tr(context),

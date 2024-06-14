@@ -6,6 +6,7 @@ import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -13,7 +14,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(),
+      appBar: const CMainAppBar(title: "Create an Account",),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
@@ -21,12 +22,9 @@ class SignupScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 200,
-                child: Image.asset(CImages.appLogo),
+                height: CSizes.defaultImageHeight,
+                child: SvgPicture.asset(CImages.register),
               ),
-              // const SizedBox(height: CSizes.spaceBtwItems),
-              Text("Create an Account".tr(context),
-                  style: CAppStyles.styleSemiBold25(context)),
               const SizedBox(height: CSizes.spaceBtwItems),
               //? Signup form
               const CSignupForm(),

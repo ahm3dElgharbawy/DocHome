@@ -1,12 +1,10 @@
 import 'package:dochome/caregiver/features/authentication/data/repo/auth.dart';
 import 'package:dochome/caregiver/features/authentication/logic/bloc/auth_bloc.dart';
-import 'package:dochome/caregiver/features/chat/data/repo/chat.dart';
-import 'package:dochome/caregiver/features/chat/logic/bloc/chat_bloc.dart';
+import 'package:dochome/components/chat/data/repo/chat.dart';
+import 'package:dochome/components/chat/logic/bloc/chat_bloc.dart';
 import 'package:dochome/localization/cubit/locale_cubit.dart';
 import 'package:dochome/patient/features/authentication/data/repo/auth.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
-import 'package:dochome/patient/features/chat/data/repo/chat.dart';
-import 'package:dochome/patient/features/chat/logic/bloc/chat_bloc.dart';
 import 'package:dochome/patient/features/chatbot/logic/cubit/chat_bot_cubit.dart';
 import 'package:dochome/patient/features/find_caregiver/data/repos/find_cargiver_repo_impl.dart';
 import 'package:dochome/patient/features/find_caregiver/views/logic/booking_cubit/booking_cubit.dart';
@@ -15,13 +13,12 @@ import 'package:dochome/patient/features/find_caregiver/views/logic/location_cub
 import 'package:dochome/patient/features/find_caregiver/views/logic/service_cubit/service_cubit.dart';
 import 'package:dochome/patient/features/home/data/repos/home_repo_impl.dart';
 import 'package:dochome/patient/features/home/views/logic/categories_cubit/categories_cubit.dart';
+import 'package:dochome/patient/features/personalization/logic/cubit/personalization_cubit.dart';
 import 'package:dochome/utils/network/network_info.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 abstract class AppBlocProviders {
-
-  
   static init() {
     return [
       BlocProvider(
@@ -45,27 +42,22 @@ abstract class AppBlocProviders {
       BlocProvider(
         create: (context) => ChatBotCubit(),
       ),
-      BlocProvider<PatientChatBloc>(
-        create: (context) => PatientChatBloc(
-        repoImpl: PatientChatRepoImpl(
-          networkInfo: NetworkInfoImpl(
-            internetChecker: InternetConnectionChecker(),
+      BlocProvider<ChatBloc>(
+        create: (context) => ChatBloc(
+          repoImpl: ChatRepoImpl(
+            networkInfo: NetworkInfoImpl(
+              internetChecker: InternetConnectionChecker(),
+            ),
           ),
-        ),
-      )
-        ..add(InitPusherEvent(),)
-      ),
-      
-      BlocProvider<CaregiverChatBloc>(
-        create: (context) => CaregiverChatBloc(
-        repoImpl: CaregiverChatRepoImpl(
-          networkInfo: NetworkInfoImpl(
-            internetChecker: InternetConnectionChecker(),
+        )..add(
+            InitPusherEvent(),
           ),
-        ),
-      )
       ),
-      
+
+      BlocProvider<PersonalizationCubit>(
+        create: (context) => PersonalizationCubit()
+      ),
+
       BlocProvider(
           create: (context) => LocaleCubit()
             ..getSavedLocale()), // Ge,t saved locale from local storage
@@ -78,12 +70,8 @@ abstract class AppBlocProviders {
       BlocProvider(
           create: (context) =>
               CategoriesCubit(HomeRepoImpl())..getAllCategories()),
-      BlocProvider(
-          create: (context) =>
-              LocationCubit()..getLocation()),
-      BlocProvider(
-          create: (context) =>
-              BookingCubit()..sendPostRequest()),
+      BlocProvider(create: (context) => LocationCubit()..getLocation()),
+      BlocProvider(create: (context) => BookingCubit()..sendPostRequest()),
     ];
   }
 }

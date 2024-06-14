@@ -7,9 +7,7 @@ import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/constants/strings.dart';
-import 'package:dochome/utils/helpers/enums.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,23 +32,19 @@ class _CJoinFormState extends State<CJoinForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CaregiverAuthBloc, CaregiverAuthState>(
-      listener: (context, state) {
-        if (state is SuccessRegisterCaregiver) {
-          CHelperFunctions.showSnackBar(
-              context: context,
-              message: CStrings.caregiverSuccessRegister,
-              type: StatusType.success);
-          context.pushReplacementAll(const CareGiverLoginScreen());
-        } else if (state is FailureState) {
-          CHelperFunctions.showSnackBar(
-              context: context, message: state.message);
-        }
-      },
-      builder: (context, state) {
-        return Form(
-          key: bloc.formKey,
-          child: Column(
+    return Form(
+      key: bloc.joinFormKey,
+      child: BlocConsumer<CaregiverAuthBloc, CaregiverAuthState>(
+        listener: (context, state) {
+          if (state is SuccessRegisterCaregiver) {
+            CStrings.caregiverSuccessRegister.showAsToast(Colors.green);
+            context.pushReplacementAll(const CareGiverLoginScreen());
+          } else if (state is FailureState) {
+            state.message.showAsToast(Colors.red);
+          }
+        },
+        builder: (context, state) {
+          return Column(
             children: [
               CTextFieldWithInnerShadow(
                 controller: bloc.joinControllers.elementAt(0),
@@ -76,7 +70,8 @@ class _CJoinFormState extends State<CJoinForm> {
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
-                validator: (p0) => CTextFieldValidator.passwordTextFieldValidator(p0),
+                validator: (p0) =>
+                    CTextFieldValidator.passwordTextFieldValidator(p0),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
@@ -85,7 +80,8 @@ class _CJoinFormState extends State<CJoinForm> {
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
-                validator: (p0) => CTextFieldValidator.phoneNumberTextFieldValidator(p0),
+                validator: (p0) =>
+                    CTextFieldValidator.phoneNumberTextFieldValidator(p0),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               //? caregiver centers drop down menu
@@ -99,7 +95,6 @@ class _CJoinFormState extends State<CJoinForm> {
                 },
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
-
               //? caregiver categories drop down menu
               CDropdown(
                 items: bloc.categories ?? [],
@@ -121,19 +116,12 @@ class _CJoinFormState extends State<CJoinForm> {
               const SizedBox(height: CSizes.spaceBtwItems),
               CRoundedButton(
                 onPressed: () {
-                  if (bloc.formKey.currentState!.validate()) {
+                  if (bloc.joinFormKey.currentState!.validate()) {
                     bool emptyFiles = false;
                     for (int i = 0; i < bloc.files.length; i++) {
                       if (bloc.files.elementAt(i) == null) {
                         emptyFiles = true;
-                        CHelperFunctions.showSnackBar(
-                          context: context,
-                          message: i == 0
-                              ? "Personal image is required"
-                              : (i == 1)
-                                  ? "id care is required"
-                                  : "profession card is required",
-                        );
+                        getUploadsMessage(i).showAsToast(Colors.red);
                       }
                     }
                     if (!emptyFiles) {
@@ -145,9 +133,19 @@ class _CJoinFormState extends State<CJoinForm> {
                 child: state is LoadingState ? const CLoadingWidget() : null,
               ),
             ],
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
+  }
+
+  String getUploadsMessage(int i) {
+    if (i == 0) {
+      return "Personal image is required";
+    } else if (i == 1) {
+      return "id care is required";
+    } else {
+      return "profession card is required";
+    }
   }
 }

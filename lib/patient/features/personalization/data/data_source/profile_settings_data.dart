@@ -1,12 +1,12 @@
 import 'package:dochome/common/widgets/dialogs/languages_dialog.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/patient/features/chatbot/screens/chatbot.dart';
-import 'package:dochome/patient/features/payment/payment_screen/payment_screen.dart';
 import 'package:dochome/patient/features/personalization/data/models/profile_settings.dart';
-import 'package:dochome/patient/features/personalization/screens/my_account_screen/myAccountScreen.dart';
+import 'package:dochome/patient/features/personalization/screens/my_account/my_account.dart';
 import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class ProfileSettingsData {
   static List<ProfileSettingsModel> data(BuildContext context) => [
@@ -24,23 +24,13 @@ abstract class ProfileSettingsData {
           },
         ),
         ProfileSettingsModel(
-          leadingBackgroundColor: const Color(0xFFBB2ED4),
-          title: "Manage Credits",
-          icon: Icons.credit_card,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const CreditCardForm(),
-              ),
-            );
-          },
-        ),
-        ProfileSettingsModel(
           leadingBackgroundColor: const Color(0xff00b383),
           title: "Support",
           icon: Icons.support_agent,
-          onTap: () {},
+          onTap: () async {
+            String whatsappUrl = "whatsapp://send?phone=+2001006158626";
+            await launchUrl(Uri.parse(whatsappUrl));
+          },
         ),
         ProfileSettingsModel(
           leadingBackgroundColor: Colors.deepPurpleAccent,

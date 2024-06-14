@@ -37,6 +37,10 @@ dependencies:
   flutter_gemini: ^2.0.3
   shimmer: ^3.0.0
   geolocator: ^8.0.0
+  open_file_plus: ^3.4.1+1
+  flutter_stripe: ^10.1.1
+  fluttertoast: ^8.2.5
+  url_launcher: ^6.3.0
 
 
 #--- dev dependencies ---#

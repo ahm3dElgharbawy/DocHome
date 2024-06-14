@@ -7,6 +7,7 @@ import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CareGiverLoginScreen extends StatelessWidget {
   const CareGiverLoginScreen({super.key});
@@ -14,7 +15,9 @@ class CareGiverLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(showBackArrow: false,),
+      appBar: const CMainAppBar(
+        title: "Caregiver Login",
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
@@ -22,12 +25,9 @@ class CareGiverLoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 200,
-                child: Image.asset(CImages.appLogo),
+                height: CSizes.defaultImageHeight,
+                child: SvgPicture.asset(CImages.login),
               ),
-              // const SizedBox(height: CSizes.spaceBtwItems),
-              Text("Login Caregiver",
-                  style: CAppStyles.styleSemiBold25(context)),
               const SizedBox(height: CSizes.spaceBtwItems),
               //? login form
               const CCaregiverLoginForm(),

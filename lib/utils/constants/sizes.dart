@@ -54,8 +54,10 @@ class CSizes {
   static const double cardRadiusLg = 16.0;
   static const double cardElevation = 2.0;
 
+
   // Image carousel height
   static const double imageCarouselHeight = 200.0;
+  static const double defaultImageHeight = 250; 
 
   // Loading indicator size
   static const double loadingIndicatorSize = 36.0;

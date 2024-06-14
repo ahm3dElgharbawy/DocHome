@@ -1,6 +1,5 @@
 import 'package:dochome/init_providers.dart';
 import 'package:dochome/localization/cubit/locale_cubit.dart';
-import 'package:dochome/patient/features/chatbot/screens/chatbot.dart';
 import 'package:dochome/patient/features/intro/screens/welcome/welcome.dart';
 import 'package:dochome/utils/constants/app_keys.dart';
 import 'package:dochome/utils/services/preference_services.dart';
@@ -9,13 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import 'localization/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await PreferenceServices.init();
-  Gemini.init(apiKey: AppKeys.geminiApiKey);
+  await PreferenceServices.initCacheHelper(); // init shared preferences
+  Stripe.publishableKey = AppKeys.stripePublishableKey; // for stripe
+  Gemini.init(apiKey: AppKeys.geminiApiKey); // for gemini
   runApp(const MyApp());
 }
 
@@ -41,8 +42,8 @@ class MyApp extends StatelessWidget {
                   ],
                   theme: CAppTheme.lightTheme,
                   home: const WelcomeScreen(),
-                  // home: const ChatBotScreen(),
-
+                  // home: const PaymentTestScreen(),
+                  // home: ,
                 )
               : const SizedBox();
         },

@@ -1,15 +1,27 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dochome/utils/api/endpoints.dart';
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/helpers/enums.dart';
+import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class MessageWidget extends StatelessWidget {
   const MessageWidget(
-      {super.key, required this.message, this.createdAt, required this.isMe});
+      {super.key,
+      required this.message,
+      this.createdAt,
+      required this.isMe,
+      this.file});
   final String message;
   final String? createdAt;
+  final String? file;
   final bool isMe;
   @override
   Widget build(BuildContext context) {
+    MediaType? fileType =
+        file == null ? null : CHelperFunctions.getMediaType(file!);
+    print(fileType);
     return Row(
       mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
@@ -25,12 +37,23 @@ class MessageWidget extends StatelessWidget {
             crossAxisAlignment:
                 isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
             children: [
-              SelectableText(
-                message,
-                style: CAppStyles.styleRegular14(context)
-                    .copyWith(color: isMe ? Colors.white : Colors.black),
-                textAlign: isMe ? TextAlign.end : TextAlign.start,
-              ),
+              if (file != null)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: fileType == MediaType.image
+                      ? CachedNetworkImage(imageUrl: "${EndPoints.domainUrl}/$file")
+                      : Image.asset(
+                          CHelperFunctions.getMediaImage(fileType),
+                          height: 100,
+                        ),
+                ),
+              if (message != "")
+                SelectableText(
+                  message,
+                  style: CAppStyles.styleRegular14(context)
+                      .copyWith(color: isMe ? Colors.white : Colors.black),
+                  textAlign: isMe ? TextAlign.end : TextAlign.start,
+                ),
               if (createdAt != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),

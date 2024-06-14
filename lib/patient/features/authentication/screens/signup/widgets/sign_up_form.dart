@@ -8,9 +8,7 @@ import 'package:dochome/patient/features/authentication/screens/login/login.dart
 import 'package:dochome/patient/features/authentication/screens/signup/widgets/terms_and_conditions.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/constants/strings.dart';
-import 'package:dochome/utils/helpers/enums.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,22 +34,16 @@ class _CSignupFormState extends State<CSignupForm> {
       listener: (context, state) {
         if (state is SuccessState) {
           context.pushReplacementAll(const LoginScreen());
-          CHelperFunctions.showSnackBar(
-              context: context,
-              message: CStrings.registerSuccess,
-              type: StatusType.success);
+          CStrings.registerSuccess.showAsToast(Colors.green);
         }
         if (state is FailureState) {
-          CHelperFunctions.showSnackBar(
-            context: context,
-            message: state.message,
-          );
+          state.message.showAsToast(Colors.red);
         }
       },
       builder: (context, state) => IgnorePointer(
         ignoring: state is LoadingState ? true : false,
         child: Form(
-          key: authBloc.patientRegisterFormKey,
+          key: authBloc.registerFormKey,
           child: Column(
             children: [
               CTextFieldWithInnerShadow(

@@ -2,13 +2,12 @@ import 'dart:convert';
 
 import 'package:dochome/caregiver/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/caregiver/features/authentication/screens/login/widgets/remember_me.dart';
-import 'package:dochome/caregiver/features/navigation_menu.dart';
+import 'package:dochome/caregiver/features/layout/navigation_menu.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ class CCaregiverLoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<CaregiverAuthBloc>();
     return Form(
-      key: bloc.formKey,
+      key: bloc.loginFormKey,
       child: Column(
         children: [
           CTextFieldWithInnerShadow(
@@ -54,13 +53,12 @@ class CCaregiverLoginForm extends StatelessWidget {
                   context.pushReplacementAll(const CCaregiverNavigationMenu());
                 }
               } else if (state is FailureState) {
-                CHelperFunctions.showSnackBar(
-                    context: context, message: state.message);
+                state.message.showAsToast(Colors.red);
               }
             },
             builder: (context, state) => CRoundedButton(
               onPressed: () {
-                if (bloc.formKey.currentState!.validate()) {
+                if (bloc.loginFormKey.currentState!.validate()) {
                   bloc.add(
                     LoginCaregiverEvent(
                       email: bloc.loginControllers.elementAt(0).text,

@@ -1,5 +1,4 @@
 import 'package:dochome/caregiver/features/bookings/screens/booking/widgets/bottom_sheet.dart';
-import 'package:dochome/common/widgets/containers/rounded_container.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
@@ -18,73 +17,96 @@ class CCareGiverBookingsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CRoundedContainer(
-      color: CColors.softGrey,
-      width: double.infinity,
-      height: null,
-      radius: 10,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      margin: const EdgeInsets.symmetric(vertical: CSizes.sm),
+    return GestureDetector(
       onTap: () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(CSizes.cardRadiusLg),
-              topRight: Radius.circular(CSizes.cardRadiusLg),
-            ),
-          ),
-          builder: (context) => SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
-            child: CBookingDetailsBottomSheet(
-              patientName: patientName,
-              location: location,
-              date: date,
-            ),
-          ),
-        );
+        viewBookingDetails(context);
       },
-      child: Row(children: [
-        const CRoundedContainer(
-          height: 50,
-          width: 50,
-          radius: 10,
-          color: Colors.transparent,
-          backgroundImage: AssetImage(CImages.user),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        margin: const EdgeInsets.symmetric(vertical: CSizes.sm),
+        decoration:  BoxDecoration(
+          color: CColors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: const Border(left: BorderSide(color: CColors.primary,width: 4),right: BorderSide(color: CColors.primary,width: 4)),
+          boxShadow: const [
+            BoxShadow(
+              color: CColors.grey,
+              blurRadius: 10,
+              spreadRadius: 1
+            )
+          ]
         ),
-        const SizedBox(
-          width: CSizes.spaceBtwItems,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                patientName,
-                style: CAppStyles.styleMedium13(context),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: CSizes.sm),
-                child: Text(
-                  location,
-                  style: CAppStyles.styleRegular13(context)
-                      .copyWith(color: CColors.darkGrey),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Appointment Date",
+              style: CAppStyles.styleMedium12(context)
+                  .copyWith(color: Colors.grey),
+            ),
+            const SizedBox(height: CSizes.spaceBtwItems / 2),
+            Row(
+              children: [
+                const Icon(
+                  Icons.access_time_rounded,
+                  size: 18,
                 ),
-              ),
-              Text(
-                date,
-                style: CAppStyles.styleMedium13(context)
-                    .copyWith(color: CColors.primary),
-              )
-            ],
-          ),
-        )
-      ]),
+                const SizedBox(width: CSizes.spaceBtwItems / 2),
+                Text("Wed Jun 24 , 4:30 AM",
+                    style: CAppStyles.styleRegular12(context)),
+              ],
+            ),
+            const Divider(
+              height: 20,
+              color: Colors.grey,
+            ),
+            Row(
+              children: [
+                const CircleAvatar(
+                    // backgroundImage: CachedNetworkImageProvider(""),
+                    backgroundImage: AssetImage(CImages.user)),
+                const SizedBox(width: CSizes.spaceBtwItems / 2),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Mahmoud ali",
+                      style: CAppStyles.styleMedium14(context),
+                    ),
+                    Text(
+                      "Kafr eldwar",
+                      style: CAppStyles.styleMedium12(context)
+                          .copyWith(color: Colors.grey),
+                    ),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  viewBookingDetails(context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(CSizes.cardRadiusLg),
+          topRight: Radius.circular(CSizes.cardRadiusLg),
+        ),
+      ),
+      builder: (context) => SizedBox(
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: CBookingDetailsBottomSheet(
+          patientName: patientName,
+          location: location,
+          date: date,
+        ),
+      ),
     );
   }
 }

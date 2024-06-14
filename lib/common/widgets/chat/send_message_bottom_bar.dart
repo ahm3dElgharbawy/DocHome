@@ -1,12 +1,15 @@
 import 'dart:math';
 
+import 'package:dochome/common/widgets/text_fields/outlined_text_field.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class CSendMessageBottomBar extends StatelessWidget {
-  const CSendMessageBottomBar({super.key, required this.onSend, required this.controller});
+  const CSendMessageBottomBar(
+      {super.key, required this.onSend, required this.controller, required this.onTapUpload});
   final VoidCallback onSend;
   final TextEditingController controller;
+  final VoidCallback onTapUpload;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class CSendMessageBottomBar extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
           IconButton(
-            onPressed: () {},
+            onPressed:  onTapUpload,
             splashRadius: 22,
             icon: Transform.rotate(
               angle: -pi / 4,
@@ -28,34 +31,13 @@ class CSendMessageBottomBar extends StatelessWidget {
               ),
             ),
           ),
+          
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 5),
-              child: TextField(
+              child: CustomOutlinedTextField(
                 controller: controller,
-                maxLines: 2,
-                minLines: 1,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: "Type a message...",
-                  contentPadding: const EdgeInsets.only(
-                    right: 16,
-                    left: 20,
-                    bottom: 10,
-                    top: 10,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Color(0xffE7E7E7)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Colors.grey.shade300),
-                  ),
-                ),
+                hintText: "Type a message...",
               ),
             ),
           ),

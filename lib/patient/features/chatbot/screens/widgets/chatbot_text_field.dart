@@ -35,7 +35,7 @@ class ChatBotTextField extends StatelessWidget {
             width: 35,
             child: Material(
               color: Colors.transparent,
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               clipBehavior: Clip.hardEdge,
               child: IconButton(
                 padding: EdgeInsets.zero,

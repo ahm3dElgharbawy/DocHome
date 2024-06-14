@@ -10,7 +10,6 @@ import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/constants/strings.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +28,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmationController =
       TextEditingController();
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,13 +44,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         child: Center(
           child: SingleChildScrollView(
             child: Form(
+              key: formkey,
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
                       child: SvgPicture.asset(
                         CImages.resetPassword,
-                        height: 240,
+                        height: CSizes.defaultImageHeight,
                       ),
                     ),
                     const SizedBox(height: CSizes.spaceBtwItems),
@@ -68,7 +75,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       ),
                       obscureText: true,
                       validator: (value) =>
-                          CTextFieldValidator.requiredTextField(value),
+                          CTextFieldValidator.passwordTextFieldValidator(value),
                     ),
                     const SizedBox(height: CSizes.spaceBtwInputFields),
                     CTextFieldWithInnerShadow(
@@ -79,6 +86,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         Icons.lock,
                       ),
                       obscureText: true,
+                      validator: (value) =>
+                          CTextFieldValidator.passwordTextFieldValidator(value),
                     ),
                     const SizedBox(height: CSizes.spaceBtwItems),
                     BlocConsumer<AuthBloc, AuthState>(
@@ -86,13 +95,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         if (state is SuccessState) {
                           context.pushReplacementAll(const LoginScreen());
                         } else if (state is FailureState) {
-                          CHelperFunctions.showSnackBar(
-                              context: context, message: state.message);
+                          state.message.showAsToast(Colors.red);
                         }
                       },
                       builder: (context, state) {
                         return CRoundedButton(
                           onPressed: () {
+                            if(!formkey.currentState!.validate()) return;
                             if (passwordController.text ==
                                 passwordConfirmationController.text) {
                               context.read<AuthBloc>().add(
@@ -102,10 +111,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                     ),
                                   );
                             } else {
-                              CHelperFunctions.showSnackBar(
-                                context: context,
-                                message: CStrings.passwordNotMatch,
-                              );
+                              CStrings.passwordNotMatch.showAsToast(Colors.red);
                             }
                           },
                           title: "Save".tr(context),

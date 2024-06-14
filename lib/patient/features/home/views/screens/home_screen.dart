@@ -91,8 +91,5 @@ class HomeScreen extends StatelessWidget {
   getCategoryCaregivers() async {
     final response = await ApiCalls.getData(
         "${EndPoints.allServicesInCategory}1/caregivers");
-    print("########################");
-    // print(response.body);
-    print("########################");
   }
 }

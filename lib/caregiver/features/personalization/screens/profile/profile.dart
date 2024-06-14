@@ -9,6 +9,7 @@ import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CaregiverProfileScreen extends StatelessWidget {
   const CaregiverProfileScreen({super.key});
@@ -44,10 +45,15 @@ class CaregiverProfileScreen extends StatelessWidget {
                       height: 0,
                       thickness: 1,
                     ),
-                    const CSettingsTile(
+                    CSettingsTile(
                       title: "Support",
                       leadingIcon: Icons.support_agent,
-                      leadingBackgroundColor: Color(0xff00b383),
+                      leadingBackgroundColor: const Color(0xff00b383),
+                      onTap: () async {
+                        String whatsappUrl =
+                            "whatsapp://send?phone=+2001006158626";
+                        await launchUrl(Uri.parse(whatsappUrl));
+                      },
                     ),
                     const Divider(
                       height: 0,

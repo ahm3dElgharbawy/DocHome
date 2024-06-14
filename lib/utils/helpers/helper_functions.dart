@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/helpers/enums.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 abstract class CHelperFunctions {
@@ -67,5 +71,40 @@ abstract class CHelperFunctions {
 
   static List<T> removeDuplicates<T>(List<T> list) {
     return list.toSet().toList();
+  }
+
+  static MediaType getMediaType(String file) {
+    String extension = file.split(".").last;
+    if (['jpg', 'png', 'jpeg', 'gif', 'bmp'].contains(extension)) {
+      return MediaType.image;
+    } else if (['mp4', 'mkv', 'avi', 'gif'].contains(extension)) {
+      return MediaType.video;
+    } else if (['mp3', 'wav'].contains(extension)) {
+      return MediaType.audio;
+    } else if (extension == "pdf") {
+      return MediaType.pdf;
+    } else {
+      return MediaType.other;
+    }
+  }
+
+  static String getMediaImage(MediaType? fileType) {
+    return fileType == MediaType.video
+        ? CImages.video
+        : fileType == MediaType.audio
+            ? CImages.audio
+            : fileType == MediaType.pdf
+                ? CImages.pdf
+                : CImages.file;
+  }
+
+  static Future<File?> pickFile() async {
+    XFile? file = await ImagePicker().pickMedia();
+    return file == null ? null : File(file.path);
+  }
+
+  static Future<File?> pickImage() async {
+    XFile? file =  await ImagePicker().pickImage(source: ImageSource.gallery);
+    return file == null ? null : File(file.path);
   }
 }

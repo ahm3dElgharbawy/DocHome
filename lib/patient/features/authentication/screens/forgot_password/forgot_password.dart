@@ -9,7 +9,6 @@ import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/helpers/extension.dart';
-import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Center(
                 child: SvgPicture.asset(
                   CImages.forgotPassword,
-                  height: 240,
+                  height: CSizes.defaultImageHeight,
                 ),
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
@@ -69,13 +68,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               const SizedBox(height: CSizes.spaceBtwSections * 2),
               BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
-                  if (state is SuccessState) {
-                    context.push(OTPScreen(
+                  if (state is SuccessSendOtp) {
+                    context.pushReplacement(OTPScreen(
                       email: emailController.text,
                     ));
                   } else if (state is FailureState) {
-                    CHelperFunctions.showSnackBar(
-                        context: context, message: state.message);
+                    state.message.showAsToast(Colors.red);
                   }
                 },
                 builder: (context, state) {

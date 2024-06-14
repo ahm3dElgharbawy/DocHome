@@ -32,6 +32,10 @@ final class SuccessState extends AuthState {
   List<Object> get props => [message];
 }
 
+final class SuccessSendOtp extends AuthState {
+  const SuccessSendOtp();
+}
+
 final class SuccessLoginState extends AuthState {
   final String message;
   final Patient patient;

@@ -5,6 +5,7 @@ import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class JoinScreen extends StatelessWidget {
   const JoinScreen({super.key});
@@ -12,7 +13,7 @@ class JoinScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(),
+      appBar: const CMainAppBar(title: "Join to Us",),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(CSizes.defaultSpace),
@@ -20,11 +21,10 @@ class JoinScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 200,
-                child: Image.asset(CImages.appLogo),
+                height: CSizes.defaultImageHeight,
+                child: SvgPicture.asset(CImages.register),
               ),
-              // const SizedBox(height: CSizes.spaceBtwItems),
-              Text("Join to Us", style: CAppStyles.styleSemiBold25(context)),
+
               const SizedBox(height: CSizes.spaceBtwItems),
               const CJoinForm(),
 
