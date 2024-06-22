@@ -1,5 +1,5 @@
-import 'package:dochome/caregiver/features/layout/navigation_menu.dart';
-import 'package:dochome/patient/features/layout/home.dart';
+import 'package:dochome/caregiver/features/layout/caregiver_layout_screen.dart';
+import 'package:dochome/patient/features/layout/patient_layout_screen.dart';
 import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
 import 'package:dochome/patient/features/intro/screens/onboarding/onboarding.dart';
 import 'package:dochome/patient/features/intro/screens/welcome/widgets/container_with_gradient.dart';
@@ -44,8 +44,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           : (currentStep == 1)
               ? const ContinueAsScreen()
               : patient == null || patient.isEmpty
-                  ? const CCaregiverNavigationMenu()
-                  : const Home();
+                  ? const CaregiverLayoutScreen()
+                  : const PatientLayoutScreen();
       if (context.mounted) {
         context.pushReplacement(page);
       }

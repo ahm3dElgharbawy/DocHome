@@ -1,10 +1,12 @@
 import 'package:dochome/init_providers.dart';
 import 'package:dochome/localization/cubit/locale_cubit.dart';
 import 'package:dochome/patient/features/intro/screens/welcome/welcome.dart';
+import 'package:dochome/test_location.dart';
 import 'package:dochome/utils/constants/app_keys.dart';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:dochome/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,6 +16,9 @@ import 'localization/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   await PreferenceServices.initCacheHelper(); // init shared preferences
   Stripe.publishableKey = AppKeys.stripePublishableKey; // for stripe
   Gemini.init(apiKey: AppKeys.geminiApiKey); // for gemini
@@ -42,8 +47,7 @@ class MyApp extends StatelessWidget {
                   ],
                   theme: CAppTheme.lightTheme,
                   home: const WelcomeScreen(),
-                  // home: const PaymentTestScreen(),
-                  // home: ,
+                  // home: const TestLocation(),
                 )
               : const SizedBox();
         },

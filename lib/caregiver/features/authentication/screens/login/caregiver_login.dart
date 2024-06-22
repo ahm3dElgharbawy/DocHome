@@ -4,6 +4,7 @@ import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,8 @@ class CareGiverLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(
-        title: "Caregiver Login",
+      appBar: CMainAppBar(
+        title: "Caregiver Login".tr,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -36,7 +37,7 @@ class CareGiverLoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Not A Caregiver Yet ? ",
+                    "Not A Caregiver Yet ? ".tr,
                     style: CAppStyles.styleRegular16(context),
                   ),
                   TextButton(
@@ -47,7 +48,7 @@ class CareGiverLoginScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      "Join us",
+                      "Join".tr,
                       style: CAppStyles.styleSemiBold16(context).copyWith(
                         color: CColors.primary,
                         decoration: TextDecoration.underline,

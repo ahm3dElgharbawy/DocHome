@@ -18,8 +18,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       List.generate(2, (i) => TextEditingController()); // Login fields
   final signupControllers =
       List.generate(5, (i) => TextEditingController()); // Register fields
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
 
   bool rememberMe = false;
   bool agreeTerms = false;
@@ -35,88 +33,104 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             email: event.email, password: event.password);
         // ------------------------
         emit(eitherFailureOrSuccess.fold(
-          (failure) => FailureState(
+          (failure) => LoginPatientFailureState(
             message: failure.message,
           ),
-          (patient) => SuccessLoginState(
+          (patient) => LoginPatientSuccessState(
               message: CStrings.loginSuccess, patient: patient),
         ));
       } else if (event is RegisterPatientEvent) {
         emit(RegisterPatientLoadingState());
         final eitherFailureOrSuccess =
             await repoImp.patientRegister(event.patientData);
-        emit(_mapFailureOrSuccessState(
-            eitherFailureOrSuccess, CStrings.registerSuccess));
+        emit(
+          eitherFailureOrSuccess.fold(
+            (failure) => RegisterPatientFailureState(
+              message: failure.message,
+            ),
+            (success) => RegisterPatientSuccessState(),
+          ),
+        );
       } else if (event is SendOtpEvent) {
-        emit(LoadingState());
+        emit(SendOtpLoadingState());
         final eitherFailureOrSuccess = await repoImp.sendOtp(event.email);
         emit(
           eitherFailureOrSuccess.fold(
-            (failure) => FailureState(message: failure.message),
-            (success) => const SuccessSendOtp(),
+            (failure) => SendOtpFailureState(message: failure.message),
+            (success) => SendOtpSuccessState(),
           ),
         );
       } else if (event is CheckOtpEvent) {
-        emit(LoadingState());
+        emit(CheckOtpLoadingState());
         final eitherFailureOrSuccess =
             await repoImp.checkOtp(event.email, event.otp);
-        emit(_mapFailureOrSuccessState(
-            eitherFailureOrSuccess, CStrings.checkOtpSuccess));
+        emit(
+          eitherFailureOrSuccess.fold(
+            (failure) {
+              return CheckOtpFailureState(message: failure.message);
+            },
+            (success) {
+              return CheckOtpSuccessState();
+            },
+          ),
+        );
       } else if (event is ResetPasswordEvent) {
-        emit(LoadingState());
+        emit(ResetPasswordLoadingState());
         final eitherFailureOrSuccess =
             await repoImp.resetPassword(event.email, event.newPassword);
-        emit(_mapFailureOrSuccessState(
-            eitherFailureOrSuccess, CStrings.resetPasswordSuccess));
+        emit(
+          eitherFailureOrSuccess.fold(
+            (failure) => ResetPasswordFailureState(message: failure.message),
+            (success) => ResetPasswordSuccessState(),
+          ),
+        );
       } else if (event is FetchCentersEvent) {
         emit(LoadingCentersState());
         final eitherFailureOrSuccess = await repoImp.getCenters();
         emit(eitherFailureOrSuccess.fold(
-          (failure) => FailureState(
+          (failure) => FailureLoadingCentersState(
             message: failure.message,
           ),
           (data) {
             centers = data;
-            return LoadedCentersState(centers: data);
+            return SuccessLoadingCentersState(centers: data);
           },
         ));
       }
     });
   }
 
-  AuthState _mapFailureOrSuccessState(
-      Either<Failure, dynamic> eitherFailureOrSuccess, String successMessage) {
-    return eitherFailureOrSuccess.fold(
-      (failure) => FailureState(
-        message: failure.message,
-      ),
-      (success) => SuccessState(message: successMessage),
-    );
-  }
+  // AuthState _mapFailureOrSuccessState(
+  //     Either<Failure, dynamic> eitherFailureOrSuccess, String successMessage) {
+  //   return eitherFailureOrSuccess.fold(
+  //     (failure) => FailureState(
+  //       message: failure.message,
+  //     ),
+  //     (success) => SuccessState(message: successMessage),
+  //   );
+  // }
 
   registerPatient(BuildContext context) {
-    if (registerFormKey.currentState!.validate()) {
-      List<TextEditingController> controllers = signupControllers;
-      //? show error on confirmation password not match
-      if (controllers.elementAt(3).text != controllers.elementAt(4).text) {
-        return CStrings.passwordNotMatch.showAsToast(Colors.red);
-      }
-      //? show error on not accept terms and conditions
-      if (!agreeTerms) {
-        CStrings.agreeTerms.showAsToast(Colors.red);
-      }
-      //? form data
-      Map<String, String> patientData = {
-        'name': controllers.elementAt(0).text,
-        'phone': controllers.elementAt(1).text,
-        'email': controllers.elementAt(2).text,
-        'password': controllers.elementAt(3).text,
-        'password_confirmation': controllers.elementAt(4).text,
-        'center_id': centerId!,
-      };
-      //? register event
-      add(RegisterPatientEvent(patientData: patientData));
+    List<TextEditingController> controllers = signupControllers;
+    //? show error on confirmation password not match
+    if (controllers.elementAt(3).text != controllers.elementAt(4).text) {
+      return CStrings.passwordNotMatch.showAsToast(Colors.red);
     }
+    //? show error on not accept terms and conditions
+    if (!agreeTerms) {
+      CStrings.agreeTerms.showAsToast(Colors.red);
+    }
+    //? form data
+    Map<String, String> patientData = {
+      'name': controllers.elementAt(0).text,
+      'phone': controllers.elementAt(1).text,
+      'email': controllers.elementAt(2).text,
+      'password': controllers.elementAt(3).text,
+      'password_confirmation': controllers.elementAt(4).text,
+      'center_id': centerId!,
+    };
+    //? register event
+    add(RegisterPatientEvent(patientData: patientData));
   }
 
   @override

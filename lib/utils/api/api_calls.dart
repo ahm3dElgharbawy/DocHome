@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:dochome/utils/services/preference_services.dart';
 import 'package:http/http.dart' as http;
@@ -12,13 +13,18 @@ abstract class ApiCalls {
     return response;
   }
 
-  static Future<http.Response> postData(String url, Object? body,
+  static Future<http.Response> postData(String url, Map<String, dynamic> body,
       [Map<String, String>? headers]) async {
     http.Response response = await http.post(
       Uri.parse(url),
-      body: body,
-      headers: _addTokenToHeaders(headers),
+      body: jsonEncode(body),
+      headers: _addTokenToHeaders(headers)
+        ..addAll({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }),
     );
+    print(response.statusCode);
     return response;
   }
 
@@ -52,13 +58,18 @@ abstract class ApiCalls {
     return response;
   }
 
-  static Future<http.Response> uploadFiles({required String url,String method = "PUT" ,required Map<String, File> files}) async {
-    http.MultipartRequest request = http.MultipartRequest(method, Uri.parse(url));
+  static Future<http.Response> uploadFiles(
+      {required String url,
+      String method = "PUT",
+      required Map<String, File> files}) async {
+    http.MultipartRequest request =
+        http.MultipartRequest(method, Uri.parse(url));
     //? Files preparing
     List<http.MultipartFile> filesToUpload = await _filesPreparing(files);
 
     //? Request preparing
-    request.headers.addAll(_addTokenToHeaders({"Content-Type": "multipart/form-data"}));
+    request.headers
+        .addAll(_addTokenToHeaders({"Content-Type": "multipart/form-data"}));
     request.files.addAll(filesToUpload);
 
     //? sending the request and getting the response

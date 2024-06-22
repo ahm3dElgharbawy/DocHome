@@ -144,6 +144,15 @@ abstract class CAppStyles {
       fontWeight: FontWeight.w400,
     );
   }
+  static TextStyle styleRegular30(context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 30),
+      fontFamily: Localizations.localeOf(context).languageCode == "en"
+          ? "Poppins"
+          : "Cairo",
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   ///Medium
   static TextStyle styleMedium8(context) {

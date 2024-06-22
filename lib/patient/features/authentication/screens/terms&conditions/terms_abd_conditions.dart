@@ -1,10 +1,10 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +46,7 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
                   child: Image.asset(CImages.appLogo),
                 ),
                 // const SizedBox(height: CSizes.spaceBtwItems),
-                Text("terms & conditions".tr(context),
+                Text("terms & conditions".tr,
                     style: CAppStyles.styleSemiBold25(context)),
                 const SizedBox(height: CSizes.spaceBtwItems),
                 CRoundedContainer(
@@ -64,7 +64,7 @@ class _TermsAndConditionScreenState extends State<TermsAndConditionScreen> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    title: "I Agree".tr(context))
+                    title: "I Agree".tr)
               ],
             ),
           ),

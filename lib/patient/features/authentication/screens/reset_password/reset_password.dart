@@ -2,7 +2,6 @@ import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -28,7 +27,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmationController =
       TextEditingController();
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
 
 
   @override
@@ -56,19 +55,19 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                     const SizedBox(height: CSizes.spaceBtwItems),
                     Text(
-                      "New Password".tr(context),
+                      "New Password".tr,
                       style: CAppStyles.styleSemiBold24(context),
                     ),
                     const SizedBox(height: CSizes.spaceBtwItems),
                     Text(
-                      "Enter New password ".tr(context),
+                      "Enter New password ".tr,
                       style: CAppStyles.styleRegular20(context)
                           .copyWith(color: CColors.darkGrey),
                     ),
                     const SizedBox(height: CSizes.spaceBtwSections),
                     CTextFieldWithInnerShadow(
                       controller: passwordController,
-                      hintText: "Password".tr(context),
+                      hintText: "Password".tr,
                       margin: EdgeInsets.zero,
                       prefixIcon: const Icon(
                         Icons.lock,
@@ -80,7 +79,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     const SizedBox(height: CSizes.spaceBtwInputFields),
                     CTextFieldWithInnerShadow(
                       controller: passwordConfirmationController,
-                      hintText: "Confirm Password".tr(context),
+                      hintText: "Confirm Password".tr,
                       margin: EdgeInsets.zero,
                       prefixIcon: const Icon(
                         Icons.lock,
@@ -92,9 +91,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     const SizedBox(height: CSizes.spaceBtwItems),
                     BlocConsumer<AuthBloc, AuthState>(
                       listener: (context, state) {
-                        if (state is SuccessState) {
+                        if (state is ResetPasswordSuccessState) {
+                          "success reset the password".tr.showAsToast(Colors.green);
                           context.pushReplacementAll(const LoginScreen());
-                        } else if (state is FailureState) {
+                        } else if (state is ResetPasswordFailureState) {
                           state.message.showAsToast(Colors.red);
                         }
                       },
@@ -104,6 +104,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                             if(!formkey.currentState!.validate()) return;
                             if (passwordController.text ==
                                 passwordConfirmationController.text) {
+                              
                               context.read<AuthBloc>().add(
                                     ResetPasswordEvent(
                                       email: widget.email,
@@ -114,9 +115,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               CStrings.passwordNotMatch.showAsToast(Colors.red);
                             }
                           },
-                          title: "Save".tr(context),
-                          child: state is LoadingState
-                              ? const CLoadingWidget()
+                          title: "Save".tr,
+                          child: state is ResetPasswordLoadingState
+                              ? const CLoadingWidget(indicatorColor: Colors.white) 
                               : null,
                         );
                       },

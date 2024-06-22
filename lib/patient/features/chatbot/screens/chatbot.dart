@@ -1,6 +1,7 @@
 import 'package:dochome/patient/features/chatbot/logic/cubit/chat_bot_cubit.dart';
 import 'package:dochome/patient/features/chatbot/screens/widgets/chatbot_text_field.dart';
 import 'package:dochome/patient/features/chatbot/screens/widgets/message_list.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,9 +23,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(
-          'Chatbot',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          'Chatbot'.tr,
+          style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: const Color(0xff343541),
       ),

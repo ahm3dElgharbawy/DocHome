@@ -1,8 +1,8 @@
+import 'package:dochome/common/widgets/failure_widget.dart';
 import 'package:dochome/common/widgets/main_widgets/dropdown.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/patient/features/authentication/screens/signup/widgets/terms_and_conditions.dart';
@@ -30,32 +30,34 @@ class _CSignupFormState extends State<CSignupForm> {
 
   @override
   Widget build(BuildContext context) {
+    final registerFormKey = GlobalKey<FormState>();
+
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is SuccessState) {
+        if (state is RegisterPatientSuccessState) {
           context.pushReplacementAll(const LoginScreen());
           CStrings.registerSuccess.showAsToast(Colors.green);
         }
-        if (state is FailureState) {
+        if (state is RegisterPatientFailureState) {
           state.message.showAsToast(Colors.red);
         }
       },
       builder: (context, state) => IgnorePointer(
-        ignoring: state is LoadingState ? true : false,
+        ignoring: state is RegisterPatientLoadingState ? true : false,
         child: Form(
-          key: authBloc.registerFormKey,
+          key: registerFormKey,
           child: Column(
             children: [
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(0),
-                hintText: "Patient Name".tr(context),
+                hintText: "Patient Name".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.person),
               ),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(1),
-                hintText: "Phone".tr(context),
+                hintText: "Phone".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
@@ -65,7 +67,7 @@ class _CSignupFormState extends State<CSignupForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(2),
-                hintText: "Email".tr(context),
+                hintText: "Email".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
@@ -74,7 +76,7 @@ class _CSignupFormState extends State<CSignupForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: authBloc.signupControllers.elementAt(3),
-                hintText: "Password".tr(context),
+                hintText: "Password".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
@@ -84,7 +86,7 @@ class _CSignupFormState extends State<CSignupForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                   controller: authBloc.signupControllers.elementAt(4),
-                  hintText: "Confirm Password".tr(context),
+                  hintText: "Confirm Password".tr,
                   margin: EdgeInsets.zero,
                   prefixIcon: const Icon(Icons.lock),
                   obscureText: true,
@@ -92,24 +94,30 @@ class _CSignupFormState extends State<CSignupForm> {
                       CTextFieldValidator.passwordTextFieldValidator(val)),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               //? Centers dropdown menu
-              CDropdown(
-                items: authBloc.centers ?? [],
-                hint: "Center".tr(context),
-                validator: CTextFieldValidator.requiredTextField,
-                onChanged: (centerId) {
-                  authBloc.centerId = centerId;
-                },
-              ),
+              state is FailureLoadingCentersState
+                  ? CustomFailureWidget(onTap: () {
+                      context.read<AuthBloc>().add(const FetchCentersEvent());
+                    })
+                  : CDropdown(
+                      items: authBloc.centers ?? [],
+                      hint: "Center".tr,
+                      validator: CTextFieldValidator.requiredTextField,
+                      onChanged: (centerId) {
+                        authBloc.centerId = centerId;
+                      },
+                    ),
               //? terms and conditions
               const CTermsAndConditions(),
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CRoundedButton(
                 onPressed: () {
-                  authBloc.registerPatient(context);
+                  if (registerFormKey.currentState!.validate()) {
+                    authBloc.registerPatient(context);
+                  }
                 },
-                title: "Sign up".tr(context),
+                title: "Sign up".tr,
                 child: state is RegisterPatientLoadingState
-                    ? const CLoadingWidget()
+                    ? const CLoadingWidget(indicatorColor: Colors.white)
                     : null,
               ),
             ],

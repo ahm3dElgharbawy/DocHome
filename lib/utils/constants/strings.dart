@@ -1,21 +1,23 @@
+import 'package:dochome/utils/helpers/extension.dart';
+
 abstract class CStrings {
   // success messages
-  static const String loginSuccess = "Login success";
-  static const String registerSuccess = "User successfully registered";
-  static const String sendOtpSuccess = "Send otp success";
-  static const String checkOtpSuccess = "check otp success";
-  static const String resetPasswordSuccess = "Reset password success";
-  static const String caregiverSuccessRegister =
-      "Join request sended successfully, Please wait until the admin accept you";
+  static String loginSuccess = "Login success".tr;
+  static String registerSuccess = "User successfully registered".tr;
+  static String sendOtpSuccess = "Send otp success".tr;
+  static String checkOtpSuccess = "check otp success".tr;
+  static String resetPasswordSuccess = "Reset password success".tr;
+  static String caregiverSuccessRegister =
+      "Joining request sended successfully, Please wait until the admin accept you".tr;
   // failure messages
-  static const String invalidCredentials = "invalid credentials";
-  static const String offlineFailure = "Your are offline";
-  static const String serverFailure = "Server failure";
-  static const String notFoundFailure = "Not Found";
-  static const String sendOtpFailure = "Send otp success";
-  static const String checkOtpFailure = "check otp failure";
-  static const String resetPasswordFailure = "Reset password failure";
-  static const String passwordNotMatch =
-      "Password and conformation password not match";
-  static const String agreeTerms = "Your must agree our terms and conditions";
+  static String invalidCredentials = "invalid credentials".tr;
+  static String offlineFailure = "Your are offline".tr;
+  static String serverFailure = "Server failure".tr;
+  static String notFoundFailure = "Not Found".tr;
+  static String sendOtpFailure = "Send otp success".tr;
+  static String checkOtpFailure = "check otp failure".tr;
+  static String resetPasswordFailure = "Reset password failure".tr;
+  static String passwordNotMatch =
+      "Password and confirmation password not match".tr;
+  static String agreeTerms = "Your must agree our terms and conditions".tr;
 }

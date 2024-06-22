@@ -17,7 +17,6 @@ final class SuccessLoginCaregiver extends CaregiverAuthState {
   final String message;
   final Caregiver? caregiver;
   const SuccessLoginCaregiver({required this.message, this.caregiver});
-
   @override
   List<Object> get props => [message];
 }

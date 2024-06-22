@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +58,7 @@ class _TimerWidgetState extends State<TimerWidget> {
       children: [
         //? remaining time
         Text(
-          "00:${remainingSeconds.toString().padLeft(2,"0")} Sec",
+          "00:${remainingSeconds.toString().padLeft(2,"0")} ${'Sec'.tr}",
           style: CAppStyles.styleMedium14(context),
         ),
         const SizedBox(height: CSizes.spaceBtwItems),
@@ -67,7 +67,7 @@ class _TimerWidgetState extends State<TimerWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Don't receive code ?".tr(context),
+              "Don't receive code ?".tr,
               style: CAppStyles.styleRegular14(context),
             ),
             TextButton(
@@ -76,7 +76,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                 context.read<AuthBloc>().add(SendOtpEvent(email: widget.email));
               },
               child: Text(
-                "Re-send".tr(context),
+                "Re-send".tr,
                 style: CAppStyles.styleSemiBold14(context)
                     .copyWith(color: Colors.black),
               ),

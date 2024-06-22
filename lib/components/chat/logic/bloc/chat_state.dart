@@ -9,35 +9,55 @@ sealed class ChatState extends Equatable {
 
 final class ChatInitial extends ChatState {}
 
-// loading
-final class LoadingChatsState extends ChatState {}
-
-final class LoadingChatMessagesState extends ChatState {}
-
-// success
-final class SuccessLoadingChatMessagesState extends ChatState {
-  final List<MessageModel> messages;
-  const SuccessLoadingChatMessagesState({required this.messages});
+// create new chat
+final class LoadingCreateChatState extends ChatState {}
+final class SuccessCreateChatState extends ChatState {}
+final class FailureCreateChatState extends ChatState {
+  final String message;
+  const FailureCreateChatState({required this.message});
 }
 
+// =========================( chats screen )=================================
+final class LoadingChatsState extends ChatState {}
 final class SuccessLoadingChatsState extends ChatState {
   final List<Chat> chats;
   const SuccessLoadingChatsState({required this.chats});
   @override
   List<Object> get props => [chats];
 }
+final class FailureChatState extends ChatState {
+  final String message;
+  const FailureChatState({required this.message});
+}
 
-final class ChatCreatedSuccessfullyState extends ChatState {}
+// =========================( chat messages )===============================
 
-final class MessageSentSuccessfullyState extends ChatState {
+final class LoadingChatMessagesState extends ChatState {}
+// success
+final class SuccessLoadingChatMessagesState extends ChatState {
+  final List<MessageModel> messages;
+  const SuccessLoadingChatMessagesState({required this.messages});
+}
+final class FailureLoadingChatMessagesState extends ChatState {
+  final String message;
+  const FailureLoadingChatMessagesState({required this.message});
+}
+
+// ========================( send message )=================================
+final class LoadingSendMessageState extends ChatState {
+  const LoadingSendMessageState();
+  @override
+  List<Object> get props => [];
+}
+final class SuccessSendMessageState extends ChatState {
   final MessageModel message;
-  const MessageSentSuccessfullyState({required this.message});
+  const SuccessSendMessageState({required this.message});
   @override
   List<Object> get props => [message];
 }
-
-// failure
-final class ChatFailureState extends ChatState {
+final class FailureSendMessageState extends ChatState {
   final String message;
-  const ChatFailureState({required this.message});
+  const FailureSendMessageState({required this.message});
+  @override
+  List<Object> get props => [message];
 }

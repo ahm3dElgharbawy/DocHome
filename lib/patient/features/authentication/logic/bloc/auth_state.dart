@@ -8,46 +8,72 @@ sealed class AuthState extends Equatable {
 }
 
 final class AuthInitial extends AuthState {}
-
-final class LoadingState extends AuthState {}
-
+// login
 final class LoginPatientLoadingState extends AuthState {}
 
-final class RegisterPatientLoadingState extends AuthState {}
-
-final class LoadingCentersState extends AuthState {}
-
-final class LoadedCentersState extends AuthState {
-  final List<CenterModel> centers;
-  const LoadedCentersState({required this.centers});
-  @override
-  List<Object> get props => [centers];
-}
-
-final class SuccessState extends AuthState {
-  final String message;
-  const SuccessState({required this.message});
-
-  @override
-  List<Object> get props => [message];
-}
-
-final class SuccessSendOtp extends AuthState {
-  const SuccessSendOtp();
-}
-
-final class SuccessLoginState extends AuthState {
+final class LoginPatientSuccessState extends AuthState {
   final String message;
   final Patient patient;
-  const SuccessLoginState({required this.message, required this.patient});
+  const LoginPatientSuccessState(
+      {required this.message, required this.patient});
   @override
   List<Object> get props => [message, patient];
 }
 
-final class FailureState extends AuthState {
+final class LoginPatientFailureState extends AuthState {
   final String message;
-  const FailureState({required this.message});
+  const LoginPatientFailureState({required this.message});
+}
 
+// register
+final class RegisterPatientLoadingState extends AuthState {}
+
+final class RegisterPatientSuccessState extends AuthState {}
+
+final class RegisterPatientFailureState extends AuthState {
+  final String message;
+  const RegisterPatientFailureState({required this.message});
+}
+
+// loading center
+final class LoadingCentersState extends AuthState {}
+
+final class SuccessLoadingCentersState extends AuthState {
+  final List<CenterModel> centers;
+  const SuccessLoadingCentersState({required this.centers});
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [centers];
+}
+final class FailureLoadingCentersState extends AuthState {
+  final String message;
+  const FailureLoadingCentersState({required this.message});
+}
+//##################
+final class SendOtpLoadingState extends AuthState {}
+
+final class SendOtpSuccessState extends AuthState {}
+
+final class SendOtpFailureState extends AuthState {
+  final String message;
+  const SendOtpFailureState({required this.message});
+}
+
+// ###################3
+
+final class CheckOtpLoadingState extends AuthState {}
+
+final class CheckOtpSuccessState extends AuthState {}
+
+final class CheckOtpFailureState extends AuthState {
+  final String message;
+  const CheckOtpFailureState({required this.message});
+}
+/// ###################3
+final class ResetPasswordLoadingState extends AuthState {}
+
+final class ResetPasswordSuccessState extends AuthState {}
+
+final class ResetPasswordFailureState extends AuthState {
+  final String message;
+  const ResetPasswordFailureState({required this.message});
 }

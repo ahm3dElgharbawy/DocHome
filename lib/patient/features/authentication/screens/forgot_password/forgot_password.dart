@@ -2,7 +2,6 @@ import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
 import 'package:dochome/common/widgets/text_fields/text_field_with_shadow.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/otp/otp.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -24,7 +23,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   TextEditingController emailController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,12 +42,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Forgot\nPassword?".tr(context),
+                "Forgot\nPassword?".tr,
                 style: CAppStyles.styleSemiBold24(context),
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Don't worry ! Please enter your email address".tr(context),
+                "Don't worry ! Please enter your email address".tr,
                 style: CAppStyles.styleRegular20(context)
                     .copyWith(color: CColors.darkGrey),
               ),
@@ -56,7 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Form(
                 key: formKey,
                 child: CTextFieldWithInnerShadow(
-                  hintText: "Email".tr(context),
+                  hintText: "Email".tr,
                   margin: EdgeInsets.zero,
                   prefixIcon: const Icon(
                     Icons.email,
@@ -68,11 +67,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               const SizedBox(height: CSizes.spaceBtwSections * 2),
               BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
-                  if (state is SuccessSendOtp) {
-                    context.pushReplacement(OTPScreen(
-                      email: emailController.text,
-                    ));
-                  } else if (state is FailureState) {
+                  if (state is SendOtpSuccessState) {
+                    context.pushReplacement(
+                      OTPScreen(
+                        email: emailController.text,
+                      ),
+                    );
+                    "code sended successfully to your email".tr.showAsToast(Colors.green);
+                  } else if (state is SendOtpFailureState) {
                     state.message.showAsToast(Colors.red);
                   }
                 },
@@ -85,9 +87,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             );
                       }
                     },
-                    title: "Send".tr(context),
-                    child:
-                        state is LoadingState ? const CLoadingWidget() : null,
+                    title: "Send".tr,
+                    child: state is SendOtpLoadingState
+                        ? const CLoadingWidget(indicatorColor: Colors.white)
+                        : null,
                   );
                 },
               )

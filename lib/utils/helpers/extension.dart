@@ -1,3 +1,5 @@
+import 'package:dochome/localization/app_localizations.dart';
+import 'package:dochome/utils/api/endpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -45,5 +47,24 @@ extension StringAsToast on String {
       textColor: Colors.white,
       fontSize: 16.0,
     );
+  }
+}
+
+extension ApiImage on String {
+  String asLink(){
+    return EndPoints.imagePath(this);
+  } 
+}
+
+
+extension ScreenHelper on BuildContext {
+  get height => MediaQuery.of(this).size.height;
+  get width => MediaQuery.of(this).size.width;
+}
+String welcome = "welcome";
+extension LocalizationShortCut on String {
+  String get tr {
+    final String result = AppLocalizations.instance.translate(this);
+    return result == "" ?  this : result;
   }
 }

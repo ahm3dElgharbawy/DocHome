@@ -4,7 +4,10 @@ abstract class CColors {
   // App theme colors
   static const Color primary = Color(0xff4D8BBB);
   static const Color secondary = Color(0xFFFFE24B);
-  static const Color accent = Color(0xFFb0c7ff);
+  static const Color accent = Color(0xFFb0c7ff); 
+  // shimmer color
+  static const Color shimmerBaseColor = Color(0xFFF5F5F5); 
+  static const Color shimmerHighlightColor = Color(0xFFE0E0E0); 
 
   // Text colors
   static const Color textPrimary = Color(0xFF333333);

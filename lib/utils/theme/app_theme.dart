@@ -1,4 +1,5 @@
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:dochome/utils/theme/custom_themes/appbar_theme.dart';
 import 'package:dochome/utils/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:dochome/utils/theme/custom_themes/chip_theme.dart';
@@ -21,6 +22,11 @@ abstract class CAppTheme {
     primaryColor: CColors.primary,
     disabledColor: CColors.grey,
     scaffoldBackgroundColor: CColors.white,
+    
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      primary: CColors.primary,
+    ),
+
     // textTheme: CTextTheme.lightTextTheme,
     // elevatedButtonTheme: CElevatedButtonTheme.lightElevatedButtonTheme,
     // outlinedButtonTheme: COutlinedButtonTheme.lightOutlinedButtonTheme,

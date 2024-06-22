@@ -1,5 +1,4 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:dochome/patient/features/authentication/screens/signup/signup.dart';
 import 'package:dochome/utils/constants/colors.dart';
@@ -16,7 +15,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CMainAppBar(title: "Patient Login",),
+      appBar: CMainAppBar(title: "Patient Login".tr,),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -29,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                     child: SvgPicture.asset(CImages.login),
                   ),
                   // const SizedBox(height: CSizes.spaceBtwItems),
-                  // Text("Login".tr(context),
+                  // Text("Login".tr,
                   //     style: CAppStyles.styleSemiBold25(context)),
                   const SizedBox(height: CSizes.spaceBtwItems),
                   const CLoginForm(),
@@ -40,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an Account ? ",
+                        "Don't have an Account ? ".tr,
                         style: CAppStyles.styleRegular16(context),
                       ),
                       TextButton(
@@ -48,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                           context.push(const SignupScreen());
                         },
                         child: Text(
-                          "Sign up".tr(context),
+                          "Sign up".tr,
                           style: CAppStyles.styleSemiBold16(context).copyWith(
                               color: CColors.primary,
                               decoration: TextDecoration.underline),

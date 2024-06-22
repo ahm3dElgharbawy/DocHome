@@ -17,6 +17,7 @@ class CImages {
   static const String doctorImage = "assets/logos/doctorImage.svg";
   static const String bookings =
       'assets/images/streamline_waiting-appointments-calendar.svg';
+  static const String empty = 'assets/images/empty.png';
   static const String medicalStaff = "assets/images/staff.svg";
   // -- Onboarding images
   static const String onBoarding1 = "assets/images/onboarding/onboarding-1.png";

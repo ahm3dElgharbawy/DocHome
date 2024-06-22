@@ -32,8 +32,10 @@ class _CJoinFormState extends State<CJoinForm> {
 
   @override
   Widget build(BuildContext context) {
+  final joinFormKey = GlobalKey<FormState>();
+
     return Form(
-      key: bloc.joinFormKey,
+      key: joinFormKey,
       child: BlocConsumer<CaregiverAuthBloc, CaregiverAuthState>(
         listener: (context, state) {
           if (state is SuccessRegisterCaregiver) {
@@ -48,7 +50,7 @@ class _CJoinFormState extends State<CJoinForm> {
             children: [
               CTextFieldWithInnerShadow(
                 controller: bloc.joinControllers.elementAt(0),
-                hintText: "Name",
+                hintText: "Name".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.person),
                 validator: (value) =>
@@ -57,7 +59,7 @@ class _CJoinFormState extends State<CJoinForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: bloc.joinControllers.elementAt(1),
-                hintText: "Email",
+                hintText: "Email".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.email),
                 keyboardType: TextInputType.emailAddress,
@@ -66,7 +68,7 @@ class _CJoinFormState extends State<CJoinForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: bloc.joinControllers.elementAt(2),
-                hintText: "Password",
+                hintText: "Password".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.lock),
                 obscureText: true,
@@ -76,7 +78,7 @@ class _CJoinFormState extends State<CJoinForm> {
               const SizedBox(height: CSizes.spaceBtwInputFields),
               CTextFieldWithInnerShadow(
                 controller: bloc.joinControllers.elementAt(3),
-                hintText: "Phone",
+                hintText: "Phone".tr,
                 margin: EdgeInsets.zero,
                 prefixIcon: const Icon(Icons.phone),
                 keyboardType: TextInputType.phone,
@@ -87,7 +89,7 @@ class _CJoinFormState extends State<CJoinForm> {
               //? caregiver centers drop down menu
               CDropdown(
                 items: bloc.centers ?? [],
-                hint: "Select the Center",
+                hint: "Select the Center".tr,
                 validator: (value) =>
                     CTextFieldValidator.requiredTextField(value),
                 onChanged: (centerId) {
@@ -98,7 +100,7 @@ class _CJoinFormState extends State<CJoinForm> {
               //? caregiver categories drop down menu
               CDropdown(
                 items: bloc.categories ?? [],
-                hint: "Select Your Category",
+                hint: "Select Your Category".tr,
                 validator: (value) =>
                     CTextFieldValidator.requiredTextField(value),
                 onChanged: (categoryId) {
@@ -116,7 +118,7 @@ class _CJoinFormState extends State<CJoinForm> {
               const SizedBox(height: CSizes.spaceBtwItems),
               CRoundedButton(
                 onPressed: () {
-                  if (bloc.joinFormKey.currentState!.validate()) {
+                  if (joinFormKey.currentState!.validate()) {
                     bool emptyFiles = false;
                     for (int i = 0; i < bloc.files.length; i++) {
                       if (bloc.files.elementAt(i) == null) {
@@ -129,8 +131,8 @@ class _CJoinFormState extends State<CJoinForm> {
                     }
                   }
                 },
-                title: "Send Join Request",
-                child: state is LoadingState ? const CLoadingWidget() : null,
+                title: "Send Joining Request".tr,
+                child: state is LoadingState ? const CLoadingWidget(indicatorColor: Colors.white) : null,
               ),
             ],
           );
@@ -141,11 +143,11 @@ class _CJoinFormState extends State<CJoinForm> {
 
   String getUploadsMessage(int i) {
     if (i == 0) {
-      return "Personal image is required";
+      return "profile image is required".tr;
     } else if (i == 1) {
-      return "id care is required";
+      return "id care is required".tr;
     } else {
-      return "profession card is required";
+      return "profession card is required".tr;
     }
   }
 }

@@ -14,7 +14,7 @@ class CProfileHeader extends StatelessWidget {
   final String userName;
   final String userEmail;
   final Color color;
-  final Widget image;
+  final ImageProvider image;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class CProfileHeader extends StatelessWidget {
             width: 60,
             padding: const EdgeInsets.all(2),
             color: Colors.white,
-            child: image,
+            backgroundImage: image,
           ),
           const SizedBox(
             height: CSizes.spaceBtwItems,
@@ -48,6 +48,7 @@ class CProfileHeader extends StatelessWidget {
           ),
           Text(
             userEmail,
+            textDirection: TextDirection.ltr,
             style: CAppStyles.styleRegular14(context)
                 .copyWith(color: Colors.white),
           ),

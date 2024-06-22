@@ -1,6 +1,5 @@
 import 'package:dochome/caregiver/features/authentication/screens/login/caregiver_login.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/screens/login/login.dart';
 import 'package:dochome/utils/constants/image_strings.dart';
 import 'package:dochome/utils/constants/sizes.dart';
@@ -29,13 +28,13 @@ class ContinueAsScreen extends StatelessWidget {
                 width: 400,
               ),
               Text(
-                "Best Care in The Comfort of Your Home",
+                "Best Care in The Comfort of Your Home".tr,
                 style: CAppStyles.styleSemiBold25(context).copyWith(color: Colors.black),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "would you like to continue as a patient or a caregiver",
+                "would you like to continue as a patient or a caregiver".tr,
                 style: CAppStyles.styleRegular14(context),
                 textAlign: TextAlign.center,
               ),
@@ -44,7 +43,7 @@ class ContinueAsScreen extends StatelessWidget {
                 onPressed: () {
                   context.push(const LoginScreen());
                 },
-                title: "Patient".tr(context),
+                title: "Patient".tr,
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               SizedBox(
@@ -61,7 +60,7 @@ class ContinueAsScreen extends StatelessWidget {
                       shape: const StadiumBorder(),
                       side: const BorderSide(color: Colors.grey)),
                   child: Text(
-                    "Caregiver".tr(context),
+                    "Caregiver".tr,
                     style: CAppStyles.styleMedium16(context)
                         .copyWith(color: Colors.black),
                   ),

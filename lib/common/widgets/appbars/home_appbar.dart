@@ -1,11 +1,14 @@
-import 'package:dochome/patient/features/home/views/screens/notifications_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dochome/common/widgets/containers/circular_container.dart';
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CHomeAppBar extends StatelessWidget {
-  const CHomeAppBar({super.key, this.padding = EdgeInsets.zero});
+  const CHomeAppBar({super.key, this.padding = EdgeInsets.zero, required this.avatar, required this.onTapActions});
   final EdgeInsetsGeometry padding;
+  final String avatar;
+  final VoidCallback onTapActions;
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +17,10 @@ class CHomeAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
+          CCircularContainer(
             height: 36,
             width: 36,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadiusDirectional.circular(88),
-              color: const Color(0xffEBF1F0),
-            ),
-            child: Center(
-              child: SvgPicture.asset('assets/images/account.svg'),
-            ),
+            backgroundImage: CachedNetworkImageProvider(avatar.asLink()),
           ),
           Container(
             height: 36,
@@ -32,14 +29,7 @@ class CHomeAppBar extends StatelessWidget {
                 borderRadius: BorderRadiusDirectional.circular(88),
                 color: const Color(0xffEBF1F0)),
             child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return const NotificationsScreen();
-                  }),
-                );
-              },
+              onTap: onTapActions,
               child: const Center(
                 child: Icon(
                   Icons.notifications,

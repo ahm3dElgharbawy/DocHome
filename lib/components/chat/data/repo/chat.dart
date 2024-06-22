@@ -49,7 +49,6 @@ class ChatRepoImpl implements ChatRepo {
     );
 
     return result.fold((failure) => left(failure), (response) {
-      print(response.body);
       MessageModel message = MessageModel.fromJson(jsonDecode(response.body)['data']);
       return right(message);
     });
@@ -63,7 +62,6 @@ class ChatRepoImpl implements ChatRepo {
 
     return result.fold((failure) => left(failure), (response) {
       final List allChats = jsonDecode(response.body)['data'];
-      print(allChats);
       List<Chat> chats = allChats.map((chat) => Chat.fromJson(chat)).toList();
       return right(chats);
     });
@@ -94,7 +92,7 @@ class ChatRepoImpl implements ChatRepo {
       {required int patientId, required int caregiverId}) async {
     Either<Failure, Response> result = await ResponseHandler.handle(
       () => ApiCalls.postData(EndPoints.createNewChat,
-          {'patient_id': patientId, 'caregiver_id': caregiverId}),
+          {'user_id': patientId, 'caregiver_id': caregiverId}),
     );
 
     return result.fold((failure) => left(failure), (response) {

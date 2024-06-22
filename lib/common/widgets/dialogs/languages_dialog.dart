@@ -1,8 +1,8 @@
 import 'package:dochome/common/widgets/containers/rounded_container.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/localization/cubit/locale_cubit.dart';
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +36,7 @@ class CLanguagesDialog extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Arabic".tr(context),
+                            "Arabic".tr,
                             style: CAppStyles.styleMedium16(context),
                           ),
                           if (state.locale.languageCode == 'ar')
@@ -58,7 +58,7 @@ class CLanguagesDialog extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "English".tr(context),
+                            "English".tr,
                             style: CAppStyles.styleMedium16(context),
                           ),
                           if (state.locale.languageCode == 'en')

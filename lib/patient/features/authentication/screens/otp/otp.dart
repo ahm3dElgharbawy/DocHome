@@ -1,7 +1,6 @@
 import 'package:dochome/common/widgets/appbars/main_appbar.dart';
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
 import 'package:dochome/common/widgets/main_widgets/loading_widget.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/otp/widgets/timer_widget.dart';
 import 'package:dochome/patient/features/authentication/screens/reset_password/reset_password.dart';
@@ -45,12 +44,12 @@ class _OTPScreenState extends State<OTPScreen> {
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Verification".tr(context),
+                "Verification".tr,
                 style: CAppStyles.styleSemiBold24(context),
               ),
               const SizedBox(height: CSizes.spaceBtwItems),
               Text(
-                "Enter Verification Code".tr(context),
+                "Enter Verification Code".tr,
                 style: CAppStyles.styleRegular20(context)
                     .copyWith(color: CColors.darkGrey),
               ),
@@ -59,16 +58,20 @@ class _OTPScreenState extends State<OTPScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //?? here we add otp
-                  OTPTextField(
-                    fieldWidth: 58,
-                    length: 4,
-                    fieldStyle: FieldStyle.box,
-                    width: 260,
-                    style: CAppStyles.styleMedium18(context),
-                    onChanged: (val) {},
-                    onCompleted: (val) {
-                      otp = val;
-                    },
+                  Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: OTPTextField(
+                      fieldWidth: 58,
+                      length: 4,
+                      fieldStyle: FieldStyle.box,
+                      width: 260,
+                    
+                      style: CAppStyles.styleMedium18(context),
+                      onChanged: (val) {},
+                      onCompleted: (val) {
+                        otp = val;
+                      },
+                    ),
                   ),
                   const SizedBox(height: CSizes.spaceBtwItems),
                   TimerWidget(
@@ -79,11 +82,13 @@ class _OTPScreenState extends State<OTPScreen> {
               const SizedBox(height: CSizes.spaceBtwSections),
               BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
-                  if (state is SuccessState) {
-                    context.push(ResetPasswordScreen(
-                      email: widget.email,
-                    ));
-                  } else if (state is FailureState) {
+                  if (state is CheckOtpSuccessState) {
+                    context.push(
+                      ResetPasswordScreen(
+                        email: widget.email,
+                      ),
+                    );
+                  } else if (state is CheckOtpFailureState) {
                     state.message.showAsToast(Colors.red);
                   }
                 },
@@ -94,14 +99,12 @@ class _OTPScreenState extends State<OTPScreen> {
                           context.read<AuthBloc>().add(
                               CheckOtpEvent(email: widget.email, otp: otp!));
                         } else {
-                          "You must add the otp"
-                              .tr(context)
-                              .showAsToast(Colors.red);
+                          "You must add the otp".tr.showAsToast(Colors.red);
                         }
                       },
-                      title: "Continue".tr(context),
-                      child: state is LoadingState
-                          ? const CLoadingWidget()
+                      title: "Continue".tr,
+                      child: state is CheckOtpLoadingState
+                          ? const CLoadingWidget(indicatorColor: Colors.white)
                           : null);
                 },
               )

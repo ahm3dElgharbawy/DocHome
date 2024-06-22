@@ -1,3 +1,4 @@
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:flutter/material.dart';
 
 class ChatBotTextField extends StatelessWidget {
@@ -19,10 +20,10 @@ class ChatBotTextField extends StatelessWidget {
             child: TextFormField(
               controller: controller,
               cursorColor: const Color(0xffECECEC),
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "Ask a question",
-                  hintStyle: TextStyle(color: Color(0xADECECEC))),
+                  hintText: "Ask a question".tr,
+                  hintStyle: const TextStyle(color: Color(0xADECECEC))),
               style: const TextStyle(color: Color(0xffECECEC)),
             ),
           ),

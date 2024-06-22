@@ -1,7 +1,7 @@
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/authentication/logic/bloc/auth_bloc.dart';
 import 'package:dochome/patient/features/authentication/screens/terms&conditions/terms_abd_conditions.dart';
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:dochome/utils/helpers/helper_functions.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class CTermsAndConditions extends StatelessWidget {
             },
           ),
         ),
-        Text("I Agree To The".tr(context),
+        Text("I Agree To The".tr,
             style: CAppStyles.styleRegular13(context)),
         TextButton(
           onPressed: () {
@@ -35,7 +35,7 @@ class CTermsAndConditions extends StatelessWidget {
                 context, const TermsAndConditionScreen());
           },
           child: Text(
-            "Terms And Conditions".tr(context),
+            "Terms And Conditions".tr,
             style: CAppStyles.styleSemiBold13(context).copyWith(
                 decoration: TextDecoration.underline, color: CColors.primary),
           ),

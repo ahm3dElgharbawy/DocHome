@@ -1,5 +1,4 @@
 import 'package:dochome/common/widgets/buttons/rounded_button.dart';
-import 'package:dochome/localization/app_localizations.dart';
 import 'package:dochome/patient/features/intro/logic/cubit/onboarding_cubit.dart';
 import 'package:dochome/patient/features/intro/screens/continue_as/continue_as.dart';
 import 'package:dochome/patient/features/intro/screens/onboarding/widgets/page_indicators.dart';
@@ -41,8 +40,8 @@ class OnBoardingScreen extends StatelessWidget {
                 state is OnboardingChangedState
                     ? CRoundedButton(
                         title: state.pageIndex == 2
-                            ? "Start".tr(context)
-                            : "Next".tr(context),
+                            ? "Start".tr
+                            : "Next".tr,
                         onPressed: state.pageIndex == 2
                             ? () {
                                 PreferenceServices.setInt("STEP",1); // To ignore onboarding next time
@@ -53,7 +52,7 @@ class OnBoardingScreen extends StatelessWidget {
                                 onBoardingCubit.gotTo(state.pageIndex + 1);
                               })
                     : CRoundedButton(
-                        title: "Next".tr(context),
+                        title: "Next".tr,
                         onPressed: () {
                           onBoardingCubit.gotTo(1);
                         })

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:dochome/common/widgets/text_fields/outlined_text_field.dart';
 import 'package:dochome/utils/constants/colors.dart';
+import 'package:dochome/utils/helpers/extension.dart';
 import 'package:flutter/material.dart';
 
 class CSendMessageBottomBar extends StatelessWidget {
@@ -37,7 +38,7 @@ class CSendMessageBottomBar extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 5),
               child: CustomOutlinedTextField(
                 controller: controller,
-                hintText: "Type a message...",
+                hintText: "Type a message...".tr,
               ),
             ),
           ),

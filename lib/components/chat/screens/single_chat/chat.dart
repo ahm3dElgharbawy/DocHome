@@ -55,7 +55,7 @@ class _SingleChatScreenState extends State<SingleChatScreen> {
           Expanded(
             child: BlocConsumer<ChatBloc, ChatState>(
               listener: (context, state) {
-                if (state is ChatFailureState) {
+                if (state is FailureLoadingChatMessagesState) {
                   state.message.showAsToast(Colors.red);
                 }
               },

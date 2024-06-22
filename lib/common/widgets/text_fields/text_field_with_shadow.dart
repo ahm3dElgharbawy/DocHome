@@ -1,9 +1,7 @@
 import 'package:dochome/utils/constants/colors.dart';
 import 'package:dochome/utils/constants/sizes.dart';
 import 'package:dochome/utils/theme/app_styles.dart';
-import 'package:dochome/utils/validators/text_field_validator.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 
 class CTextFieldWithInnerShadow extends StatefulWidget {
   const CTextFieldWithInnerShadow(
@@ -18,7 +16,9 @@ class CTextFieldWithInnerShadow extends StatefulWidget {
       this.obscureText = false,
       this.keyboardType,
       this.readOnly = false,
-      this.onTap, this.initialValue});
+      this.onTap,
+      this.initialValue,
+      this.maxLines = 1});
   final String hintText;
   final EdgeInsets? margin;
   final TextEditingController? controller;
@@ -31,6 +31,7 @@ class CTextFieldWithInnerShadow extends StatefulWidget {
   final bool readOnly;
   final VoidCallback? onTap;
   final String? initialValue;
+  final int maxLines;
 
   @override
   State<CTextFieldWithInnerShadow> createState() =>
@@ -52,34 +53,38 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
           const EdgeInsets.symmetric(horizontal: CSizes.defaultSpace),
       child: Stack(children: [
         //? adding shadow from inside
-        Container(
-          width: double.infinity,
-          height: 50,
-          decoration: BoxDecoration(
-              color: CColors.softGrey,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(.3),
-                  blurRadius: 6,
-                  offset: const Offset(2, 2),
-                  inset: true,
-                ),
-              ]),
-        ),
+        // Container(
+        //   width: double.infinity,
+        //   height: 50,
+        //   decoration: BoxDecoration(
+        //       color: CColors.softGrey,
+        //       borderRadius: BorderRadius.circular(10),
+        //       boxShadow: [
+        //         BoxShadow(
+        //           color: Colors.black.withOpacity(.3),
+        //           blurRadius: 6,
+        //           offset: const Offset(2, 2),
+        //           inset: true,
+        //         ),
+        //       ]),
+        // ),
         //? our text field
         TextFormField(
           controller: widget.controller,
           initialValue: widget.initialValue,
-          validator: widget.validator ?? CTextFieldValidator.requiredTextField,
+          validator: widget.validator,
           obscureText: isHidden,
           keyboardType: widget.keyboardType,
           readOnly: widget.readOnly,
           onTap: widget.onTap,
+          minLines: 1,
+          maxLines: widget.maxLines,
           decoration: InputDecoration(
             hintText: widget.hintText,
             hintStyle: CAppStyles.styleMedium13(context)
                 .copyWith(color: const Color(0xff757575)),
+            filled: true,
+            fillColor: CColors.softGrey,
             prefixIcon: widget.prefixIcon,
             suffixIcon: widget.suffixIcon != null
                 ? GestureDetector(
@@ -89,7 +94,7 @@ class _CTextFieldWithInnerShadowState extends State<CTextFieldWithInnerShadow> {
                 : toggleVisibility(),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-            border: InputBorder.none,
+            border: OutlineInputBorder(borderSide: BorderSide.none,borderRadius: BorderRadius.circular(10))
           ),
         ),
       ]),

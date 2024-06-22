@@ -43,10 +43,10 @@ class PatientSendFileScreen extends StatelessWidget {
       ),
       body: BlocConsumer<ChatBloc, ChatState>(
         listener: (context, state) {
-          if (state is MessageSentSuccessfullyState) {
-            "Message send Successfully".showAsToast(Colors.green);
+          if (state is SuccessSendMessageState) {
+            "Message send Successfully".tr.showAsToast(Colors.green);
             Navigator.pop(context);
-          } else if (state is ChatFailureState) {
+          } else if (state is FailureSendMessageState) {
             state.message.showAsToast(Colors.red);
           }
         },
@@ -81,7 +81,7 @@ class PatientSendFileScreen extends StatelessWidget {
                   Expanded(
                     child: CustomOutlinedTextField(
                       controller: mediaDescriptionController,
-                      hintText: "Type a description...",
+                      hintText: "Type a description...".tr,
                     ),
                   ),
                   IconButton(

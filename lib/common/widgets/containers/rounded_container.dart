@@ -15,6 +15,7 @@ class CRoundedContainer extends StatelessWidget {
     this.enableBorder = false,
     this.borderColor = CColors.grey,
     this.backgroundImage,
+    this.centerChild = true
   });
   final double? height;
   final double? width;
@@ -27,6 +28,7 @@ class CRoundedContainer extends StatelessWidget {
   final bool enableBorder;
   final Color borderColor;
   final ImageProvider? backgroundImage;
+  final bool centerChild;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class CRoundedContainer extends StatelessWidget {
                     width: 1,
                   )
                 : null),
-        child: Center(child: child),
+        child: centerChild ? Center(child: child) : child,
       ),
     );
   }

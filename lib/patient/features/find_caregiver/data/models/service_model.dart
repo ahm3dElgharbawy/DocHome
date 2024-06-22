@@ -1,36 +1,31 @@
+import 'package:dochome/caregiver/features/authentication/data/models/category.dart';
 import 'package:equatable/equatable.dart';
 
 class ServiceModel extends Equatable {
   final int? id;
-  final String? nameAr;
-  final String? nameEn;
-  final String? price;
+  final String nameAr;
+  final String nameEn;
+  final String price;
   final int? categoryId;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  final CategoryModel? category;
 
-  const ServiceModel({
-    this.id,
-    this.nameAr,
-    this.nameEn,
-    this.price,
-    this.categoryId,
-    this.createdAt,
-    this.updatedAt,
-  });
+  const ServiceModel(
+      {this.id,
+      required this.nameAr,
+      required this.nameEn,
+      required this.price,
+      this.categoryId,
+      this.category});
 
   factory ServiceModel.fromJson(Map<String, dynamic> json) => ServiceModel(
         id: json['id'] as int?,
-        nameAr: json['name_ar'] as String?,
-        nameEn: json['name_en'] as String?,
-        price: json['price'] as String?,
+        nameAr: json['name_ar'],
+        nameEn: json['name_en'],
+        price: json['price'],
         categoryId: json['category_id'] as int?,
-        createdAt: json['created_at'] == null
-            ? null
-            : DateTime.parse(json['created_at'] as String),
-        updatedAt: json['updated_at'] == null
-            ? null
-            : DateTime.parse(json['updated_at'] as String),
+        category: json["category"] != null
+            ? CategoryModel.fromJson(json["category"])
+            : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -39,8 +34,7 @@ class ServiceModel extends Equatable {
         'name_en': nameEn,
         'price': price,
         'category_id': categoryId,
-        'created_at': createdAt?.toIso8601String(),
-        'updated_at': updatedAt?.toIso8601String(),
+        "category": category?.toJson(),
       };
 
   @override
@@ -51,8 +45,6 @@ class ServiceModel extends Equatable {
       nameEn,
       price,
       categoryId,
-      createdAt,
-      updatedAt,
     ];
   }
 }

@@ -21,8 +21,7 @@ class CaregiverAuthBloc extends Bloc<CaregiverAuthEvent, CaregiverAuthState> {
           TextEditingController()); // Register fields [email, password, phone]
   List<File?> files = List.generate(
       3, (index) => null); // [profileImage, identityCard, professionCard]
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  GlobalKey<FormState> joinFormKey = GlobalKey<FormState>();
+      
   bool rememberMe = false;
   List<CenterModel>? centers = [];
   List<CategoryModel>? categories = [];
@@ -56,7 +55,7 @@ class CaregiverAuthBloc extends Bloc<CaregiverAuthEvent, CaregiverAuthState> {
             (failure) => FailureState(
               message: failure.message,
             ),
-            (data) => const SuccessRegisterCaregiver(
+            (data) => SuccessRegisterCaregiver(
               message: CStrings.registerSuccess,
             ),
           ),
